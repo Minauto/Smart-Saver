@@ -16,12 +16,16 @@ namespace SmartSaver
         {
             InitializeComponent();
         }
-
-        private void exitBtn_Click(object sender, EventArgs e) => Close();
-
         private void balanceBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Your remaining balance is $100");
         }
+
+        private void historyBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e) => Close();
     }
 }
