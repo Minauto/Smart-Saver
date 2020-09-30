@@ -7,23 +7,23 @@ using System;
 public class Account
 {
 	//Nick of the account
-	public string Nickname {get; set};
+	public string Nickname { get; set; }
 	//Name of the person
-	public string Name {get; set};
+	public string Name { get; set; }
 	//Surname of the person
-	public string Surname {get; set};
+	public string Surname { get; set; }
 	//(Optional) Users Age
-	public int Age {get; set};
+	public int Age { get; set; }
 	//(Temporary) Users Password *Untill we do hashing*
-	public string Password {get; set};
+	public string Password { get; set; }
 
 	/// Functional info
 	//Users Balance
-	public float Balance {get; set};
+	public float Balance { get; set; }
 	//Amount of users deposits
-	public int DepositCount {get; set};
+	public int DepositCount { get; set; }
 	//Users goal
-	public float Goal {get; set};
+	public float Goal { get; set; }
 
 	public Account(string newNickname, string newName, string newSurname, int newAge, string newPassword)
 	{
