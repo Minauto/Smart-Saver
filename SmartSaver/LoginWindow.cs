@@ -60,15 +60,20 @@ namespace SmartSaver
             if (dt.Rows[0][0].ToString() == "1")
             {
                 this.Hide();
-                Form1 loggedInWindow = new Form1();
+                MainWindow loggedInWindow = new MainWindow();
                 loggedInWindow.Show();
             }
             else
             {
                 MessageBox.Show("Please Check Username and Password");
             }
-            
 
+
+        }
+
+        public void ShowWindow()
+        {
+            this.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
