@@ -26,6 +26,9 @@ namespace SmartSaver
 
         }
 
-        private void exitBtn_Click(object sender, EventArgs e) => Close();
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
