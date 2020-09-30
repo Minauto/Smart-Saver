@@ -45,12 +45,15 @@ namespace SmartSaver
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //SQLConnection between quotation add the connection string of the data base which you can find view/server_Explorer right click database and properties
-            //Two users added 
-            //admin admin
-            //admin1 admin
 
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\minau\Source\Repos\Smart-Saver\SmartSaver\Database1.mdf;Integrated Security=True");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+
+            string sourcePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            sourcePath = sourcePath.Remove(sourcePath.Length - 15);
+            sourcePath = sourcePath + @"\Database1.mdf";
+            //MessageBox.Show(sourcePath);
+
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
             SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Login where Username='" + textBox1.Text + "' and Password = '" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -64,6 +67,7 @@ namespace SmartSaver
             {
                 MessageBox.Show("Please Check Username and Password");
             }
+            
 
         }
 
