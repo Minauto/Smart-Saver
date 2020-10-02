@@ -12,9 +12,13 @@ namespace SmartSaver
 {
     public partial class MainWindow : Form
     {
+        Account account;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            account = new Account("laurynasn", "Laurynas", "Notrumas", 19, "pass123");
         }
         private void balanceBtn_Click(object sender, EventArgs e)
         {
@@ -23,13 +27,20 @@ namespace SmartSaver
 
         private void historyBtn_Click(object sender, EventArgs e)
         {
-
+            HistoryWindow hw = new HistoryWindow(account);
+            hw.Show();
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
             Application.Exit();
+        }
+
+        private void addADepositBtn_Click(object sender, EventArgs e)
+        {
+            DepositWindow dw = new DepositWindow(account);
+            dw.Show();
         }
     }
 }

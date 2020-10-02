@@ -1,4 +1,6 @@
+using SmartSaver;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// WORK IN PROGRESS
@@ -20,8 +22,10 @@ public class Account
 	/// Functional info
 	//Users Balance
 	public float Balance { get; set; }
-	//Amount of users deposits
-	public int DepositCount { get; set; }
+
+
+	private List<Deposit> deposits;
+
 	//Users goal
 	public float Goal { get; set; }
 
@@ -37,7 +41,7 @@ public class Account
 
 		///Preset, maybe some could be writen in
 		Balance = 0f;
-		DepositCount = 0;
+		deposits = new List<Deposit>();
 		Goal = 0f;
 	}
 
@@ -69,5 +73,15 @@ public class Account
 		//{
 		Nickname = WantedNickname;
         //}
+    }
+
+	public void addDeposit(int amount)
+    {
+		deposits.Add(new Deposit(amount));
+    }
+
+	public List<Deposit> GetDeposits()
+    {
+		return deposits;
     }
 }

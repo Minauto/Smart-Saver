@@ -153,8 +153,9 @@ namespace SmartSaver
             this.addADepositBtn.Text = "Add a deposit";
             this.addADepositBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addADepositBtn.UseVisualStyleBackColor = false;
+            this.addADepositBtn.Click += new System.EventHandler(this.addADepositBtn_Click);
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,7 +164,7 @@ namespace SmartSaver
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
