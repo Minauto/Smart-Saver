@@ -1,6 +1,7 @@
 using SmartSaver;
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 /// <summary>
 /// WORK IN PROGRESS
@@ -83,5 +84,10 @@ public class Account
 	public List<Deposit> GetDeposits()
     {
 		return deposits;
+    }
+
+	public void setDeposits(List<Deposit> deposits)
+    {
+		this.deposits = deposits;
     }
 }

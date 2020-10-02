@@ -19,5 +19,12 @@ namespace SmartSaver
             this.amount = amount;
             time = DateTime.Now;
         }
+
+        // parameterless constructor needed for XML serialization
+        public Deposit()
+        {
+            amount = 0;
+            time = DateTime.Now;
+        }
     }
 }
