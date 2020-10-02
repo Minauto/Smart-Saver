@@ -8,9 +8,10 @@ namespace SmartSaver
 {
     public class Deposit
     {
-
+        // Time when deposit was made
         public DateTime time { get; set; }
 
+        // Amount of the deposit in euros
         public int amount { get; set; }
 
         public Deposit(int amount)
