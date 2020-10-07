@@ -60,7 +60,7 @@ namespace SmartSaver
             if (true)
             {
                 this.Hide();
-                MainWindow loggedInWindow = new MainWindow();
+                MainWindow loggedInWindow = new MainWindow(this);
                 loggedInWindow.Show();
             }
             else

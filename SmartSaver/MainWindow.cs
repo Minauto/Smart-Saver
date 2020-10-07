@@ -13,11 +13,12 @@ namespace SmartSaver
     public partial class MainWindow : Form
     {
         Account account;
+        LoginWindow LogInW = new LoginWindow();
 
-        public MainWindow()
+        public MainWindow(LoginWindow Log)
         {
             InitializeComponent();
-
+            LogInW = Log;
             account = new Account("laurynasn", "Laurynas", "Notrumas", 19, "pass123");
             UpdateBalance();
         }
@@ -62,5 +63,26 @@ namespace SmartSaver
             BalanceDisplay.Text = "Your balance is " + account.Balance.ToString() + "€!";
         }
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            SettingsWindow sw = new SettingsWindow();
+            sw.Show();
+        }
+
+        private void logOutBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LogInW.Show();
+        }
+
+        private void BalanceDisplay_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
