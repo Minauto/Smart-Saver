@@ -15,11 +15,14 @@ namespace SmartSaver
     {
         private Account account;
 
+        private Form previousForm;
+
         // regex which matches only positive whole numbers
         private Regex regex = new Regex(@"^[1-9]\d*$");
 
-        public DepositWindow(Account account)
+        public DepositWindow(Account account, Form previousForm)
         {
+            this.previousForm = previousForm;
             InitializeComponent();
             this.account = account;
         }
@@ -28,12 +31,13 @@ namespace SmartSaver
         {
             tryAddingDeposit();
         }
-
+        
         private void tryAddingDeposit()
         {
             if (regex.IsMatch(amountTextBox.Text))
             {
                 account.addDeposit(int.Parse(amountTextBox.Text));
+                ((MainWindow)previousForm).UpdateBalance();
                 MessageBox.Show("Deposit of " + amountTextBox.Text + " € was added to the account successfully.");
                 this.Close();
             }

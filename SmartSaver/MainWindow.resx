@@ -118,30 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="balanceBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        7QAAAO0Bq2+TWQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAP/SURBVFhHvdd7
-        qBZFGIDxNTVN0/IC3sAIs4ykojLFxJT6wyIj0DASlCKLNCizQA3DNFTUQCq6IWZppRhFkHQzlS4oiV3t
-        qlhpqVQaUaCkdHyeb2e/M2cdz0lWHPjt2W/nsrOzM+/OyRoaGppFGoveqbyTIXmxQLoeP2A31mBkqlwV
-        yYsF0mYMQ1vcgg/wNe5B51SdE9V4kmUXoGuTzCybEP8O1wbiKezB0/4ulzkR+SHLWmEvfsS3WIY7cBFa
-        lSuFOp0wBdvgyIxD21TZ5uSH/Ok/Due9MQaPYRP24S08jGvRKW4g1Lkaq7ELc9CrXOZ48kOWTcTicmbI
-        a4eheACv4Rd8gWcwAf2jsj0xC1PiNpqTH/LGxpYzj4d0LsbjSXwKX98bmI7h6JCql5Ifsuxz9Cln/l+k
-        jhiJh7AWvrYteBx9U3UK+YEhLmdUQXJSD8Bt6JkqUzANxk2nyDGjbPoby0+B97Ay1YF9pQvt4fDFWkf5
-        rdGlVKc74vL94vxQZgSWJ643doBkQ87qD7ExcjmMFT7FdzA+bMejOB3zEZe3XLf4RqH9MxPX8g6QesD1
-        fWei0JX4EvXJSvLGBp0NqI9QyHMSGrJvxH1wNTyHGTBiDkL7ULbeAcPppLihcN0h34oB4ffFWBL9XoSp
-        UflLYWd/xTo8DzvqEjXeuEy/h0v1ZtQ78BPOLhqKGrwEq8L5+fgHDvMj4Vo3bIrKvw7zzyiupZAW44An
-        LXXgVswK597MJ/sT06IyO6Nzb/47WhoBy9QqtNQB48QL4bwrlsKJ+lG41hlbo/J24H6ch7vhzQ3Z3tzJ
-        Og1D4DyoVSg6YKM3FA1FDfox+gZ94MSbildRi3CkBzEvKm8H/sMncOL55H433Np58yfwNg6jSQcuxM8Y
-        XDQWNToaLr1zStf9in6F+seHZAfcS4zCQryEd+FqcVvnaPhanVuNHQiVXW6+inIUc2NyDVym7+NlONNf
-        QfeiftSBI3B/MBM+/VW4Au4zHAVfx19o2oHQgCNRjuH1AELqC99hx7helG8H7oX7Rj/Rvood8ME+g0Fq
-        NnygWgW/BX7Hq7oLBiA74PJy8vnencTuslxBxghfp/PI3XatAxYyWlVV28CS7MACGKx8TfvhpDTTh3U0
-        XsSk2rXyEFZFsgOuGvcCl8EnbwNXkxsX55OvdT3SjVRBsgPuqt/EQRRP/kc4/xeG/bm136lGqiDZAZec
-        G9mzYPAyKPk1dTT83DvRn0W6kSpIduAd+Nn2gmHbueAe0Q+Q88G/q5BupAqSccMY4MyX88D/JwxMroh+
-        8J8aI+TOZCNVkAzZK3AIv8EnNwKuhBsd/9E1DDtSg5KNnAyk02DQcit2OybjOjgX2uXlGrKjWcPNiQoj
-        ANYAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="exitBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA

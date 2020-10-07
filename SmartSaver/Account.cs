@@ -79,6 +79,7 @@ public class Account
 	public void addDeposit(int amount)
     {
 		deposits.Add(new Deposit(amount));
+		Balance += amount;
     }
 
 	public List<Deposit> GetDeposits()

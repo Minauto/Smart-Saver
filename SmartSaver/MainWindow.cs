@@ -19,10 +19,14 @@ namespace SmartSaver
             InitializeComponent();
 
             account = new Account("laurynasn", "Laurynas", "Notrumas", 19, "pass123");
+            UpdateBalance();
         }
         private void balanceBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Your remaining balance is $100");
+            
+            
+            
+            //MessageBox.Show("Your remaining balance is $1
         }
 
         private void historyBtn_Click(object sender, EventArgs e)
@@ -39,8 +43,24 @@ namespace SmartSaver
 
         private void addADepositBtn_Click(object sender, EventArgs e)
         {
-            DepositWindow dw = new DepositWindow(account);
+            DepositWindow dw = new DepositWindow(account, this);
             dw.Show();
+            UpdateBalance();
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void AddAWithdrawal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void UpdateBalance()
+        {
+            BalanceDisplay.Text = "Your balance is " + account.Balance.ToString() + "€!";
+        }
+
     }
 }

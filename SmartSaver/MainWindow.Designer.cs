@@ -32,12 +32,13 @@ namespace SmartSaver
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.applicationName = new System.Windows.Forms.Label();
-            this.balanceBtn = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.exitBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.historyBtn = new System.Windows.Forms.Button();
             this.addADepositBtn = new System.Windows.Forms.Button();
+            this.BalanceDisplay = new System.Windows.Forms.Label();
+            this.AddAWithdrawal = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,38 +51,21 @@ namespace SmartSaver
             this.applicationName.Location = new System.Drawing.Point(-7, 9);
             this.applicationName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.applicationName.Name = "applicationName";
-            this.applicationName.Size = new System.Drawing.Size(217, 41);
+            this.applicationName.Size = new System.Drawing.Size(273, 51);
             this.applicationName.TabIndex = 0;
             this.applicationName.Text = "Smart Saver";
             this.applicationName.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // balanceBtn
-            // 
-            this.balanceBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.balanceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.balanceBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.balanceBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.balanceBtn.Image = ((System.Drawing.Image)(resources.GetObject("balanceBtn.Image")));
-            this.balanceBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.balanceBtn.Location = new System.Drawing.Point(0, 83);
-            this.balanceBtn.Name = "balanceBtn";
-            this.balanceBtn.Size = new System.Drawing.Size(200, 58);
-            this.balanceBtn.TabIndex = 1;
-            this.balanceBtn.Text = "Balance";
-            this.balanceBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.balanceBtn.UseVisualStyleBackColor = false;
-            this.balanceBtn.Click += new System.EventHandler(this.balanceBtn_Click);
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelMenu.Controls.Add(this.AddAWithdrawal);
             this.panelMenu.Controls.Add(this.exitBtn);
             this.panelMenu.Controls.Add(this.applicationName);
             this.panelMenu.Controls.Add(this.settingsBtn);
             this.panelMenu.Controls.Add(this.historyBtn);
             this.panelMenu.Controls.Add(this.addADepositBtn);
-            this.panelMenu.Controls.Add(this.balanceBtn);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
@@ -113,7 +97,7 @@ namespace SmartSaver
             this.settingsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.settingsBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingsBtn.Image")));
             this.settingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.settingsBtn.Location = new System.Drawing.Point(0, 275);
+            this.settingsBtn.Location = new System.Drawing.Point(-3, 299);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(200, 58);
             this.settingsBtn.TabIndex = 4;
@@ -129,7 +113,7 @@ namespace SmartSaver
             this.historyBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.historyBtn.Image = ((System.Drawing.Image)(resources.GetObject("historyBtn.Image")));
             this.historyBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.historyBtn.Location = new System.Drawing.Point(0, 211);
+            this.historyBtn.Location = new System.Drawing.Point(-3, 235);
             this.historyBtn.Name = "historyBtn";
             this.historyBtn.Size = new System.Drawing.Size(200, 58);
             this.historyBtn.TabIndex = 3;
@@ -146,7 +130,7 @@ namespace SmartSaver
             this.addADepositBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addADepositBtn.Image = ((System.Drawing.Image)(resources.GetObject("addADepositBtn.Image")));
             this.addADepositBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addADepositBtn.Location = new System.Drawing.Point(0, 147);
+            this.addADepositBtn.Location = new System.Drawing.Point(0, 83);
             this.addADepositBtn.Name = "addADepositBtn";
             this.addADepositBtn.Size = new System.Drawing.Size(200, 58);
             this.addADepositBtn.TabIndex = 2;
@@ -155,12 +139,40 @@ namespace SmartSaver
             this.addADepositBtn.UseVisualStyleBackColor = false;
             this.addADepositBtn.Click += new System.EventHandler(this.addADepositBtn_Click);
             // 
+            // BalanceDisplay
+            // 
+            this.BalanceDisplay.BackColor = System.Drawing.Color.Transparent;
+            this.BalanceDisplay.Font = new System.Drawing.Font("Century Gothic", 26F);
+            this.BalanceDisplay.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.BalanceDisplay.Location = new System.Drawing.Point(206, 9);
+            this.BalanceDisplay.Name = "BalanceDisplay";
+            this.BalanceDisplay.Size = new System.Drawing.Size(442, 75);
+            this.BalanceDisplay.TabIndex = 7;
+            this.BalanceDisplay.Text = "BalanceInfo";
+            this.BalanceDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AddAWithdrawal
+            // 
+            this.AddAWithdrawal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddAWithdrawal.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.AddAWithdrawal.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddAWithdrawal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddAWithdrawal.Location = new System.Drawing.Point(3, 147);
+            this.AddAWithdrawal.Name = "AddAWithdrawal";
+            this.AddAWithdrawal.Size = new System.Drawing.Size(194, 82);
+            this.AddAWithdrawal.TabIndex = 8;
+            this.AddAWithdrawal.Text = "Add a withdrawal";
+            this.AddAWithdrawal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddAWithdrawal.UseVisualStyleBackColor = false;
+            this.AddAWithdrawal.Click += new System.EventHandler(this.AddAWithdrawal_Click);
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1065, 450);
+            this.Controls.Add(this.BalanceDisplay);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -180,12 +192,13 @@ namespace SmartSaver
         #endregion
 
         private System.Windows.Forms.Label applicationName;
-        private System.Windows.Forms.Button balanceBtn;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Button historyBtn;
         private System.Windows.Forms.Button addADepositBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.Label BalanceDisplay;
+        private System.Windows.Forms.Button AddAWithdrawal;
     }
 }
 
