@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Reflection;
+using System.IO;
 
 namespace SmartSaver
 {
@@ -43,32 +45,57 @@ namespace SmartSaver
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LogInButton_Click(object sender, EventArgs e)
         {
+            string workingDirectory = Environment.CurrentDirectory;
+            string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName;
 
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-
-            string sourcePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            sourcePath = sourcePath.Remove(sourcePath.Length - 15);
-            sourcePath = sourcePath + @"\Database1.mdf";
+            
+            sourcePath = sourcePath + @"\Database2.mdf";
             //MessageBox.Show(sourcePath);
-
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Login where Username='" + textBox1.Text + "' and Password = '" + textBox2.Text + "'", con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + UsernameTextBox.Text + "' and Password = '" + PasswordTextBox.Text + "'", con);
             DataTable dt = new DataTable();
-            //sda.Fill(dt);
-            if (true)
+            sda.Fill(dt);
+            if (dt.Rows[0][0].ToString() == "1")
             {
-                this.Hide();
-                MainWindow loggedInWindow = new MainWindow();
-                loggedInWindow.Show();
+                //Connecting to user data in Account table
+
+                SqlCommand cmd = new SqlCommand("Select * From Account Where Username='" + UsernameTextBox.Text + "'", con);
+                con.Open();
+                
+                
+                try
+                {
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    string username = reader["Username"].ToString();
+                    string password = reader["Password"].ToString();
+                    string name = reader["Name"].ToString();
+                    string surname = reader["Surname"].ToString();
+
+                    this.Hide();
+                    MainWindow loggedInWindow = new MainWindow(this, sourcePath, username, name, surname, password);
+                    loggedInWindow.Show();
+
+                } 
+                catch(Exception exc)
+                {
+                    MessageBox.Show(exc + "Reader failed to open");
+                }
+                
+                con.Close();
+                
+
             }
             else
             {
                 MessageBox.Show("Please Check Username and Password");
             }
-
-
+            
+            
         }
 
         public void ShowWindow()
@@ -79,6 +106,13 @@ namespace SmartSaver
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SignUpButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SignUpWindow signUpWin = new SignUpWindow(this);
+            signUpWin.Show();
         }
     }
 }

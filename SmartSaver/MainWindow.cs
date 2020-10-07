@@ -13,12 +13,22 @@ namespace SmartSaver
     public partial class MainWindow : Form
     {
         Account account;
+        LoginWindow logWin = new LoginWindow();
+        string databasePath;
 
-        public MainWindow()
+        public MainWindow(LoginWindow logWin, String databasePath, String username, String name, String surname, String password)
         {
-            InitializeComponent();
+            // To access database use Select sentences as follows: "select * From " + username + " where condition "
+            // There are 4 columns :
+            //  Id which is generated on its own [int]
+            //  Expenses is price spent [float]
+            //  ExpensesType is what you spent it on [nvarchar(50)]
+            //  Date used for storing the date of record [datetime]
 
-            account = new Account("laurynasn", "Laurynas", "Notrumas", 19, "pass123");
+            InitializeComponent();
+            this.logWin = logWin;
+            this.databasePath = databasePath;
+            account = new Account(username, name, surname, password);
         }
         private void balanceBtn_Click(object sender, EventArgs e)
         {
@@ -34,7 +44,8 @@ namespace SmartSaver
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
+            logWin.Show();
+            
         }
 
         private void addADepositBtn_Click(object sender, EventArgs e)

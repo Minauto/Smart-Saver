@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -62,12 +62,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Deposit.cs" />
     <Compile Include="DepositWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DepositWindow.Designer.cs">
       <DependentUpon>DepositWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpWindow.Designer.cs">
+      <DependentUpon>SignUpWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="HistoryWindow.cs">
       <SubType>Form</SubType>
@@ -92,6 +106,9 @@
     <EmbeddedResource Include="DepositWindow.resx">
       <DependentUpon>DepositWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SignUpWindow.resx">
+      <DependentUpon>SignUpWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HistoryWindow.resx">
       <DependentUpon>HistoryWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +128,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Account.datasource" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="HistoryWindow.datasource" />
     <None Include="LoginWindow.datasource" />
     <None Include="MainWindow.datasource" />
@@ -137,6 +165,9 @@
     <Content Include="Database1_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+    <Content Include="Database2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
