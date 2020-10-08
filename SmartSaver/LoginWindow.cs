@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Reflection;
 using System.IO;
+using System.Diagnostics;
 
 namespace SmartSaver
 {
     public partial class LoginWindow : Form
     {
+        LoginChecker checker = new LoginChecker();
+        SQLReader Reader = new SQLReader();
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -25,70 +22,32 @@ namespace SmartSaver
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void PasswordLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        private void UsernameTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            string workingDirectory = Environment.CurrentDirectory;
-            string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName;
-
-            
-            sourcePath = sourcePath + @"\Database2.mdf";
-            //MessageBox.Show(sourcePath);
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + UsernameTextBox.Text + "' and Password = '" + PasswordTextBox.Text + "'", con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
+            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
                 //Connecting to user data in Account table
+                Reader.ConnectionOpen();
+                string condition = "WHERE Username = '" + usernameTxtBx.Text + "'";
 
-                SqlCommand cmd = new SqlCommand("Select * From Account Where Username='" + UsernameTextBox.Text + "'", con);
-                con.Open();
-                
-                
-                try
-                {
+                string username = Reader.Read("Account", condition, "Username");
+                string password = Reader.Read("Account", condition, "Password");
+                string name = Reader.Read("Account", condition, "Name");
+                string surname = Reader.Read("Account", condition, "Surname");
 
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-
-                    string username = reader["Username"].ToString();
-                    string password = reader["Password"].ToString();
-                    string name = reader["Name"].ToString();
-                    string surname = reader["Surname"].ToString();
-
-                    this.Hide();
-                    MainWindow loggedInWindow = new MainWindow(this, sourcePath, username, name, surname, password);
-                    loggedInWindow.Show();
-
-                } 
-                catch(Exception exc)
-                {
-                    MessageBox.Show(exc + "Reader failed to open");
-                }
-                
-                con.Close();
-                
-
+                this.Hide();
+                MainWindow loggedInWindow = new MainWindow(this, username, name, surname, password);
+                loggedInWindow.Show();
             }
             else
             {
@@ -98,12 +57,7 @@ namespace SmartSaver
             
         }
 
-        public void ShowWindow()
-        {
-            this.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -113,6 +67,11 @@ namespace SmartSaver
             this.Hide();
             SignUpWindow signUpWin = new SignUpWindow(this);
             signUpWin.Show();
+        }
+
+        private void NameLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

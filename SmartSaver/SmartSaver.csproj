@@ -62,14 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="AccountCreator.cs" />
+    <Compile Include="SQLReader.cs" />
+    <Compile Include="LoginChecker.cs" />
     <Compile Include="Deposit.cs" />
     <Compile Include="DepositWindow.cs">
       <SubType>Form</SubType>
@@ -128,17 +123,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Account.datasource" />
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="HistoryWindow.datasource" />
     <None Include="LoginWindow.datasource" />
     <None Include="MainWindow.datasource" />
@@ -167,6 +151,10 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="Database2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database2_log.ldf">
+      <DependentUpon>Database2.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

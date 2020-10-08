@@ -70,7 +70,7 @@ namespace SmartSaver
             this.balanceBtn.Text = "Balance";
             this.balanceBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.balanceBtn.UseVisualStyleBackColor = false;
-            this.balanceBtn.Click += new System.EventHandler(this.balanceBtn_Click);
+            this.balanceBtn.Click += new System.EventHandler(this.BalanceButton_Click);
             // 
             // panelMenu
             // 
@@ -103,7 +103,7 @@ namespace SmartSaver
             this.exitBtn.Text = "Exit";
             this.exitBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exitBtn.UseVisualStyleBackColor = false;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            this.exitBtn.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // settingsBtn
             // 
@@ -136,7 +136,7 @@ namespace SmartSaver
             this.historyBtn.Text = "History";
             this.historyBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.historyBtn.UseVisualStyleBackColor = false;
-            this.historyBtn.Click += new System.EventHandler(this.historyBtn_Click);
+            this.historyBtn.Click += new System.EventHandler(this.HistoryButton_Click);
             // 
             // addADepositBtn
             // 
