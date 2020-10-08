@@ -30,13 +30,12 @@ public class Account
 	//Users goal
 	public float Goal { get; set; }
 
-	public Account(string newNickname, string newName, string newSurname, int newAge, string newPassword)
+	public Account(string newNickname, string newName, string newSurname, string newPassword)
 	{
 		//Tweak, when creating log in.
 		Nickname = newNickname;
 		Name = newName;
 		Surname = newSurname;
-		Age = newAge;
 		//Prehash
 		Password = newPassword;
 

@@ -13,28 +13,30 @@ namespace SmartSaver
     public partial class MainWindow : Form
     {
         Account account;
+        LoginWindow logWin = new LoginWindow();
 
-        public MainWindow()
+        public MainWindow(LoginWindow logWin, String username, String name, String surname, String password)
         {
             InitializeComponent();
-
-            account = new Account("laurynasn", "Laurynas", "Notrumas", 19, "pass123");
+            this.logWin = logWin;
+            account = new Account(username, name, surname, password);
         }
-        private void balanceBtn_Click(object sender, EventArgs e)
+        private void BalanceButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Your remaining balance is $100");
         }
 
-        private void historyBtn_Click(object sender, EventArgs e)
+        private void HistoryButton_Click(object sender, EventArgs e)
         {
             HistoryWindow hw = new HistoryWindow(account);
             hw.Show();
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
+            logWin.Show();
+            
         }
 
         private void addADepositBtn_Click(object sender, EventArgs e)

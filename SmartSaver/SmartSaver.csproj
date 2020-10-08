@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -62,12 +62,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountCreator.cs" />
+    <Compile Include="SQLReader.cs" />
+    <Compile Include="LoginChecker.cs" />
     <Compile Include="Deposit.cs" />
     <Compile Include="DepositWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DepositWindow.Designer.cs">
       <DependentUpon>DepositWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpWindow.Designer.cs">
+      <DependentUpon>SignUpWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="HistoryWindow.cs">
       <SubType>Form</SubType>
@@ -91,6 +100,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DepositWindow.resx">
       <DependentUpon>DepositWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUpWindow.resx">
+      <DependentUpon>SignUpWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryWindow.resx">
       <DependentUpon>HistoryWindow.cs</DependentUpon>
@@ -137,6 +149,13 @@
     <Content Include="Database1_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+    <Content Include="Database2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database2_log.ldf">
+      <DependentUpon>Database2.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
