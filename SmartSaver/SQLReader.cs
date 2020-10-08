@@ -45,34 +45,5 @@ namespace SmartSaver
         {
             con.Close();
         }
-/*
-        SqlCommand cmd = new SqlCommand("Select * From Account Where Username='" + usernameTxtBx.Text + "'", con);
-        con.Open();
-       
-            try
-            {
-                  SqlDataReader reader = cmd.ExecuteReader();
-        reader.Read();
-
-        string username = reader["Username"].ToString();
-        string password = reader["Password"].ToString();
-        string name = reader["Name"].ToString();
-        string surname = reader["Surname"].ToString();
-
-                    this.Hide();
-        MainWindow loggedInWindow = new MainWindow(this, sourcePath, username, name, surname, password);
-        loggedInWindow.Show();
-
-                } 
-                catch(Exception exc)
-                {
-                    MessageBox.Show(exc + "Reader failed to open");
-                }
-
-con.Close();
-*/
-
-
-
     }
 }

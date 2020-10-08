@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.IO;
-using System.Diagnostics;
 
 namespace SmartSaver
 {
@@ -45,6 +41,7 @@ namespace SmartSaver
                 string name = Reader.Read("Account", condition, "Name");
                 string surname = Reader.Read("Account", condition, "Surname");
 
+                Reader.ConnectionClose();
                 this.Hide();
                 MainWindow loggedInWindow = new MainWindow(this, username, name, surname, password);
                 loggedInWindow.Show();
