@@ -34,6 +34,7 @@ namespace SmartSaver
             this.applicationName = new System.Windows.Forms.Label();
             this.balanceBtn = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.DisplayNameLabel = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.historyBtn = new System.Windows.Forms.Button();
@@ -76,6 +77,7 @@ namespace SmartSaver
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelMenu.Controls.Add(this.DisplayNameLabel);
             this.panelMenu.Controls.Add(this.exitBtn);
             this.panelMenu.Controls.Add(this.applicationName);
             this.panelMenu.Controls.Add(this.settingsBtn);
@@ -87,6 +89,18 @@ namespace SmartSaver
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(200, 450);
             this.panelMenu.TabIndex = 6;
+            // 
+            // DisplayNameLabel
+            // 
+            this.DisplayNameLabel.AutoSize = true;
+            this.DisplayNameLabel.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.DisplayNameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DisplayNameLabel.Location = new System.Drawing.Point(3, 50);
+            this.DisplayNameLabel.MaximumSize = new System.Drawing.Size(200, 32);
+            this.DisplayNameLabel.Name = "DisplayNameLabel";
+            this.DisplayNameLabel.Size = new System.Drawing.Size(41, 19);
+            this.DisplayNameLabel.TabIndex = 7;
+            this.DisplayNameLabel.Text = "Hello";
             // 
             // exitBtn
             // 
@@ -186,6 +200,7 @@ namespace SmartSaver
         private System.Windows.Forms.Button historyBtn;
         private System.Windows.Forms.Button addADepositBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.Label DisplayNameLabel;
     }
 }
 

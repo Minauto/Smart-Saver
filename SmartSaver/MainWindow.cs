@@ -13,6 +13,8 @@ namespace SmartSaver
             InitializeComponent();
             this.logWin = logWin;
             account = new Account(username, name, surname, password);
+
+            DisplayNameLabel.Text = "Hello, " + name + "!";
         }
         private void BalanceButton_Click(object sender, EventArgs e)
         {
