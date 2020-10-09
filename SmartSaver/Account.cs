@@ -24,20 +24,23 @@ public class Account
 	//Users Balance
 	public float Balance { get; set; }
 
+	public int UserId { get; set; }
+
 
 	private List<Deposit> deposits;
 
 	//Users goal
 	public float Goal { get; set; }
 
-	public Account(string newNickname, string newName, string newSurname, string newPassword)
+	public Account(string newNickname, string newName, string newSurname, int newUserId)
 	{
 		//Tweak, when creating log in.
 		Nickname = newNickname;
 		Name = newName;
 		Surname = newSurname;
+		UserId = newUserId;
+
 		//Prehash
-		Password = newPassword;
 
 		///Preset, maybe some could be writen in
 		Balance = 0f;

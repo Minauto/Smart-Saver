@@ -22,7 +22,7 @@ namespace SmartSaver
                 reader.Read();
 
                 string value = reader[""+columnName+""].ToString();
-
+                
                 reader.Close();
 
                 return value;
@@ -33,7 +33,6 @@ namespace SmartSaver
                 MessageBox.Show(exc + "Error");
                 return "";
             }
-
         }
 
         public void ConnectionOpen ()

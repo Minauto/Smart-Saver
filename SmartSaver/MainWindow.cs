@@ -8,11 +8,11 @@ namespace SmartSaver
         Account account;
         LoginWindow logWin = new LoginWindow();
 
-        public MainWindow(LoginWindow logWin, String username, String name, String surname, String password)
+        public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
         {
             InitializeComponent();
             this.logWin = logWin;
-            account = new Account(username, name, surname, password);
+            account = new Account(username, name, surname, userId);
 
             DisplayNameLabel.Text = "Hello, " + name + "!";
         }

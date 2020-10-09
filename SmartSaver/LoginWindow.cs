@@ -31,19 +31,21 @@ namespace SmartSaver
         private void LogInButton_Click(object sender, EventArgs e)
         {
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
+
+                
             {
                 //Connecting to user data in Account table
                 Reader.ConnectionOpen();
                 string condition = "WHERE Username = '" + usernameTxtBx.Text + "'";
 
                 string username = Reader.Read("Account", condition, "Username");
-                string password = Reader.Read("Account", condition, "Password");
                 string name = Reader.Read("Account", condition, "Name");
                 string surname = Reader.Read("Account", condition, "Surname");
-
+                int userId = Int32.Parse(Reader.Read("Account", condition, "Id"));
+                
                 Reader.ConnectionClose();
                 this.Hide();
-                MainWindow loggedInWindow = new MainWindow(this, username, name, surname, password);
+                MainWindow loggedInWindow = new MainWindow(this, username, name, surname, userId);
                 loggedInWindow.Show();
             }
             else

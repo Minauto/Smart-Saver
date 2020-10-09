@@ -18,8 +18,6 @@ namespace SmartSaver
 
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-
-
             SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + username + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -29,33 +27,6 @@ namespace SmartSaver
 
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
-
-                //Creatign Table for new user
-
-
-                //var commandStr = "If not exists (select name from sysobjects where name = 'Customer') CREATE TABLE Customer(First_Name char(50),Last_Name char(50),Address char(50),City char(50),Country char(25),Birth_Date datetime)";
-
-                var commandStr = "If not exists (select name from sysobjects where name = '" + username + "') CREATE TABLE " + username + "  (Id int IDENTITY(1,1) PRIMARY KEY,Expenses float,ExpensesType nvarchar(50) ,Date datetime)";
-
-                con.Open();
-
-                try
-                {
-                    using (SqlCommand command = new SqlCommand(commandStr, con))
-                        command.ExecuteNonQuery();
-                    MessageBox.Show("Table created");
-
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc + "Failed to Create SQL Database Table");
-                    return false;
-                }
-
-                con.Close();
-
-
-                //Creating the user row in Account Table (Database2)
 
 
                 cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "')";  //SQL sentences
@@ -75,6 +46,8 @@ namespace SmartSaver
                 }
                 con.Close();
                 return true;
+
+
             }
             else
             {
