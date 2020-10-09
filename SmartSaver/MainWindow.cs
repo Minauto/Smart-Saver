@@ -18,7 +18,7 @@ namespace SmartSaver
         }
         private void BalanceButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Your remaining balance is $100");
+            MessageBox.Show("Your remaining balance is €" + account.Balance + "");
         }
 
         private void HistoryButton_Click(object sender, EventArgs e)
