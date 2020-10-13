@@ -27,8 +27,6 @@ public class Account
 	public int UserId { get; set; }
 
 
-	private List<Deposit> deposits;
-
 	//Users goal
 	public float Goal { get; set; }
 
@@ -44,7 +42,6 @@ public class Account
 
 		///Preset, maybe some could be writen in
 		Balance = 0f;
-		deposits = new List<Deposit>();
 		Goal = 0f;
 	}
 
@@ -76,21 +73,5 @@ public class Account
 		//{
 		Nickname = WantedNickname;
         //}
-    }
-
-	public void addDeposit(int amount)
-    {
-		deposits.Add(new Deposit(amount));
-		this.Balance += amount;
-    }
-
-	public List<Deposit> GetDeposits()
-    {
-		return deposits;
-    }
-
-	public void setDeposits(List<Deposit> deposits)
-    {
-		this.deposits = deposits;
     }
 }
