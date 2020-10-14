@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SmartSaver
@@ -58,19 +59,29 @@ namespace SmartSaver
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
         {
-            
-            if(AmountTextBox.Text != "" & ExpensesComboBox.Text != "")
+
+            if (AmountTextBox.Text != "" & ExpensesComboBox.Text != "")
             {
-                try
+                Regex regex = new Regex(@"^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$"); // Accepts only positive numbers, up to 2 decimal places
+
+                if (regex.IsMatch(AmountTextBox.Text))
                 {
-                    sqlIn.CreateEpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
-                    AmountTextBox.Text = "";
-                    ExpensesComboBox.Text = "";
-                    ReloadData();
+                    try
+                    {
+                        sqlIn.CreateEpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
+                        AmountTextBox.Clear();
+                        ExpensesComboBox.Text = "";
+                        ReloadData();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Incorrect Amount format");
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Incorrect Amount format");
+                    MessageBox.Show("Invalid number format. Try again");
+                    AmountTextBox.Clear();
                 }
             }
             else
