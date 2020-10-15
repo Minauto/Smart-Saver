@@ -64,15 +64,16 @@ namespace SmartSaver
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
 
-            DateTime dt = Date;
+            String dt = Date.ToString();
             try
             {
-                dt = DateTime.ParseExact("" + Date + "", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                dt.ToString("dd/MM/yyyy hh:mm:ss");
-            }catch(Exception)
+                Date = DateTime.ParseExact(dt, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                dt = Date.ToString("MM/dd/yyyy HH:mm:ss");
+            }
+            catch (Exception)
             {
             }
-            
+
             cmd.CommandText = "INSERT ExpensesData  (UserId, Expenses, ExpensesType, Date) VALUES ('" + UserId + "', '" + Expenses + "', '" + ExpensesType + "', '" + dt + "')";
             cmd.Connection = con;
 
