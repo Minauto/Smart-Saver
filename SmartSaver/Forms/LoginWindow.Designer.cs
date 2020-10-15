@@ -46,6 +46,7 @@
             this.passwdTxtBx.Size = new System.Drawing.Size(252, 26);
             this.passwdTxtBx.TabIndex = 2;
             this.passwdTxtBx.UseSystemPasswordChar = true;
+            this.passwdTxtBx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwdTxtBx_KeyDown);
             // 
             // usernameTxtBx
             // 

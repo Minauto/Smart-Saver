@@ -22,7 +22,7 @@ public class Account
 
 	/// Functional info
 	//Users Balance
-	public float Balance { get; set; }
+	public string monthlyExpenses { get; set; }
 
 	public int UserId { get; set; }
 
@@ -37,11 +37,10 @@ public class Account
 		Name = newName;
 		Surname = newSurname;
 		UserId = newUserId;
-
 		//Prehash
 
 		///Preset, maybe some could be writen in
-		Balance = 0f;
+		
 		Goal = 0f;
 	}
 

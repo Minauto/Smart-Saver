@@ -11,6 +11,7 @@ namespace SmartSaver
         LoginWindow logWin = new LoginWindow();
         SQLInput sqlIn = new SQLInput();
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
+        private String monthlyExpenses;
         
 
         public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
@@ -18,10 +19,12 @@ namespace SmartSaver
             InitializeComponent();
             this.logWin = logWin;
             account = new Account(username, name, surname, userId);
+            monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
 
-            
+
 
             DisplayNameLabel.Text = "Hello, " + name + "!";
+            monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
@@ -31,9 +34,7 @@ namespace SmartSaver
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            logWin.Show();
-            
+            Application.Exit();
         }
 
         private void AddExpensesButton_Click(object sender, EventArgs e)
@@ -106,7 +107,14 @@ namespace SmartSaver
             dataGridView1.ReadOnly = true;
             dataGridView1.Columns["Date"].Width = 120;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(account.UserId));
+            monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
         }
 
+        private void logOutLabel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            logWin.Show();
+        }
     }
 }

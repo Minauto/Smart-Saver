@@ -31,6 +31,7 @@ namespace SmartSaver
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.applicationName = new System.Windows.Forms.Label();
             this.spendingsButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -47,10 +48,14 @@ namespace SmartSaver
             this.ExitAddExpensesLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.logOutLabel = new System.Windows.Forms.Label();
+            this.monthlyExpLabel = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.AddExpensePanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // applicationName
@@ -97,7 +102,7 @@ namespace SmartSaver
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(200, 450);
+            this.panelMenu.Size = new System.Drawing.Size(200, 541);
             this.panelMenu.TabIndex = 6;
             // 
             // DisplayNameLabel
@@ -115,12 +120,13 @@ namespace SmartSaver
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.exitBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitBtn.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.exitBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exitBtn.Location = new System.Drawing.Point(0, 392);
+            this.exitBtn.Location = new System.Drawing.Point(0, 483);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(200, 58);
             this.exitBtn.TabIndex = 5;
@@ -224,6 +230,7 @@ namespace SmartSaver
             // 
             // ExpensesComboBox
             // 
+            this.ExpensesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ExpensesComboBox.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.ExpensesComboBox.FormattingEnabled = true;
             this.ExpensesComboBox.Items.AddRange(new object[] {
@@ -251,28 +258,69 @@ namespace SmartSaver
             // MainPanel
             // 
             this.MainPanel.Controls.Add(this.dataGridView1);
-            this.MainPanel.Location = new System.Drawing.Point(206, 12);
+            this.MainPanel.Controls.Add(this.panel1);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(847, 426);
+            this.MainPanel.Size = new System.Drawing.Size(1276, 541);
             this.MainPanel.TabIndex = 14;
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(479, 3);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGridView1.Location = new System.Drawing.Point(911, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(365, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(365, 483);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.logOutLabel);
+            this.panel1.Controls.Add(this.monthlyExpLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 483);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1276, 58);
+            this.panel1.TabIndex = 1;
+            // 
+            // logOutLabel
+            // 
+            this.logOutLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutLabel.AutoSize = true;
+            this.logOutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logOutLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOutLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.logOutLabel.Location = new System.Drawing.Point(1222, 36);
+            this.logOutLabel.Name = "logOutLabel";
+            this.logOutLabel.Size = new System.Drawing.Size(51, 16);
+            this.logOutLabel.TabIndex = 3;
+            this.logOutLabel.Text = "Log Out";
+            this.logOutLabel.Click += new System.EventHandler(this.logOutLabel_Click);
+            // 
+            // monthlyExpLabel
+            // 
+            this.monthlyExpLabel.AutoSize = true;
+            this.monthlyExpLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthlyExpLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.monthlyExpLabel.Location = new System.Drawing.Point(210, 36);
+            this.monthlyExpLabel.Name = "monthlyExpLabel";
+            this.monthlyExpLabel.Size = new System.Drawing.Size(41, 16);
+            this.monthlyExpLabel.TabIndex = 2;
+            this.monthlyExpLabel.Text = "label1";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.ClientSize = new System.Drawing.Size(1065, 450);
+            this.ClientSize = new System.Drawing.Size(1276, 541);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.AddExpensePanel);
             this.Controls.Add(this.MainPanel);
@@ -287,6 +335,8 @@ namespace SmartSaver
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -312,13 +362,11 @@ namespace SmartSaver
         private System.Windows.Forms.Panel AddExpensePanel;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label ExitAddExpensesLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox ExpensesComboBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label monthlyExpLabel;
+        private System.Windows.Forms.Label logOutLabel;
     }
 }
 

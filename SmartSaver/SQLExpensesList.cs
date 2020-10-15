@@ -47,5 +47,15 @@ namespace SmartSaver
             }
            
         }
+
+        public object GetSumOfExpenses(int UserId)
+        {
+            con.Open();
+            SqlCommand query = new SqlCommand("SELECT SUM(Expenses) FROM ExpensesData WHERE UserId = " + UserId + " AND DATEDIFF(month, date, CURRENT_TIMESTAMP) = 0");
+            query.Connection = con;
+            object monthlyExpenses = query.ExecuteScalar();
+            con.Close();
+            return monthlyExpenses;
+        }
     }
 }
