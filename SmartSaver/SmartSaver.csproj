@@ -62,55 +62,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="AccountCreator.cs" />
+    <Compile Include="HashSalt.cs" />
+    <Compile Include="SQLExpensesList.cs" />
+    <Compile Include="SQLInput.cs" />
     <Compile Include="SQLReader.cs" />
     <Compile Include="LoginChecker.cs" />
-    <Compile Include="Deposit.cs" />
-    <Compile Include="DepositWindow.cs">
+    <Compile Include="Forms\SignUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepositWindow.Designer.cs">
-      <DependentUpon>DepositWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SignUpWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SignUpWindow.Designer.cs">
+    <Compile Include="Forms\SignUpWindow.Designer.cs">
       <DependentUpon>SignUpWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="HistoryWindow.cs">
+    <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HistoryWindow.Designer.cs">
-      <DependentUpon>HistoryWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindow.cs">
+    <Compile Include="Forms\LoginWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginWindow.Designer.cs">
+    <Compile Include="Forms\LoginWindow.Designer.cs">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DepositWindow.resx">
-      <DependentUpon>DepositWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SignUpWindow.resx">
+    <EmbeddedResource Include="Forms\SignUpWindow.resx">
       <DependentUpon>SignUpWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HistoryWindow.resx">
-      <DependentUpon>HistoryWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginWindow.resx">
+    <EmbeddedResource Include="Forms\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -123,9 +106,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Account.datasource" />
-    <None Include="HistoryWindow.datasource" />
-    <None Include="LoginWindow.datasource" />
-    <None Include="MainWindow.datasource" />
+    <None Include="Forms\LoginWindow.datasource" />
+    <None Include="Forms\MainWindow.datasource" />
     <None Include="Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

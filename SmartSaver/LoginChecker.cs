@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SmartSaver
 {
@@ -9,23 +11,46 @@ namespace SmartSaver
     {
         static string workingDirectory = Environment.CurrentDirectory;
         static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database2.mdf";
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
         public bool Check(string usernameTextBox, string passwordTextBox)
         {
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + usernameTextBox + "' and Password = '" + passwordTextBox + "'", con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
+            string sql = string.Format("SELECT * FROM Account WHERE Username = '{0}'", usernameTextBox);
 
-            if (dt.Rows[0][0].ToString() == "1")
+            try
             {
-                return true;
-            }
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True"))
+                using (SqlCommand cm = new SqlCommand(sql, con))
+                {
+                    con.Open();
+                    using (var dr = cm.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            string storedHash = dr["Hash"].ToString();
+                            string storedSalt = dr["Salt"].ToString();
 
-            else
+
+                            if (HashSalt.VerifyPassword(passwordTextBox, storedHash, storedSalt))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect password!");
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            } catch (Exception ex)
             {
-                return false;
+                MessageBox.Show("SQL error occurred: " + ex.Message);
             }
+            return false;
         }
     }
 }
