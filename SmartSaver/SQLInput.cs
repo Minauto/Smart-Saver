@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -61,8 +62,16 @@ namespace SmartSaver
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
 
-
-            cmd.CommandText = "INSERT ExpensesData  (UserId, Expenses, ExpensesType, Date) VALUES ('" + UserId + "', '" + Expenses + "', '" + ExpensesType + "', '" + Date + "')";
+            DateTime dt = Date;
+            try
+            {
+                dt = DateTime.ParseExact("" + Date + "", "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                dt.ToString("dd/MM/yyyy hh:mm:ss");
+            }catch(Exception)
+            {
+            }
+            
+            cmd.CommandText = "INSERT ExpensesData  (UserId, Expenses, ExpensesType, Date) VALUES ('" + UserId + "', '" + Expenses + "', '" + ExpensesType + "', '" + dt + "')";
             cmd.Connection = con;
 
             con.Open();
