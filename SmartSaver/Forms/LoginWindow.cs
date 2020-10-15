@@ -30,6 +30,7 @@ namespace SmartSaver
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
+
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
 
                 
@@ -71,6 +72,16 @@ namespace SmartSaver
         private void NameLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void passwdTxtBx_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LogInButton_Click(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

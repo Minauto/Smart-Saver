@@ -47,16 +47,17 @@
             // 
             this.FirstNameLbl.AccessibleName = "";
             this.FirstNameLbl.AutoSize = true;
-            this.FirstNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FirstNameLbl.Location = new System.Drawing.Point(13, 61);
+            this.FirstNameLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.FirstNameLbl.Location = new System.Drawing.Point(16, 48);
             this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(86, 20);
+            this.FirstNameLbl.Size = new System.Drawing.Size(91, 21);
             this.FirstNameLbl.TabIndex = 9;
             this.FirstNameLbl.Text = "First Name";
             // 
             // SignUpButton
             // 
-            this.SignUpButton.Location = new System.Drawing.Point(196, 272);
+            this.SignUpButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.SignUpButton.Location = new System.Drawing.Point(196, 210);
             this.SignUpButton.Name = "SignUpButton";
             this.SignUpButton.Size = new System.Drawing.Size(75, 23);
             this.SignUpButton.TabIndex = 6;
@@ -67,17 +68,17 @@
             // LastNameLbl
             // 
             this.LastNameLbl.AutoSize = true;
-            this.LastNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LastNameLbl.Location = new System.Drawing.Point(192, 61);
+            this.LastNameLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.LastNameLbl.Location = new System.Drawing.Point(192, 48);
             this.LastNameLbl.Name = "LastNameLbl";
-            this.LastNameLbl.Size = new System.Drawing.Size(86, 20);
+            this.LastNameLbl.Size = new System.Drawing.Size(93, 21);
             this.LastNameLbl.TabIndex = 10;
             this.LastNameLbl.Text = "Last Name";
             // 
             // FirstNameTextBox
             // 
             this.FirstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FirstNameTextBox.Location = new System.Drawing.Point(17, 84);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(17, 72);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(159, 26);
             this.FirstNameTextBox.TabIndex = 1;
@@ -86,7 +87,7 @@
             // LastNameTextBox
             // 
             this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LastNameTextBox.Location = new System.Drawing.Point(196, 84);
+            this.LastNameTextBox.Location = new System.Drawing.Point(196, 72);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(159, 26);
             this.LastNameTextBox.TabIndex = 2;
@@ -95,10 +96,11 @@
             // CreateYrUserLbl
             // 
             this.CreateYrUserLbl.AutoSize = true;
-            this.CreateYrUserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.CreateYrUserLbl.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.CreateYrUserLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CreateYrUserLbl.Location = new System.Drawing.Point(12, 9);
             this.CreateYrUserLbl.Name = "CreateYrUserLbl";
-            this.CreateYrUserLbl.Size = new System.Drawing.Size(343, 26);
+            this.CreateYrUserLbl.Size = new System.Drawing.Size(353, 25);
             this.CreateYrUserLbl.TabIndex = 8;
             this.CreateYrUserLbl.Text = "Create Your Smart Saver Account";
             // 
@@ -106,17 +108,17 @@
             // 
             this.UsernameLabel.AccessibleName = "";
             this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.UsernameLabel.Location = new System.Drawing.Point(13, 139);
+            this.UsernameLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.UsernameLabel.Location = new System.Drawing.Point(16, 101);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(83, 20);
+            this.UsernameLabel.Size = new System.Drawing.Size(88, 21);
             this.UsernameLabel.TabIndex = 11;
             this.UsernameLabel.Text = "Username";
             // 
             // ConfirmTextBox
             // 
             this.ConfirmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ConfirmTextBox.Location = new System.Drawing.Point(196, 240);
+            this.ConfirmTextBox.Location = new System.Drawing.Point(196, 178);
             this.ConfirmTextBox.Name = "ConfirmTextBox";
             this.ConfirmTextBox.Size = new System.Drawing.Size(159, 26);
             this.ConfirmTextBox.TabIndex = 5;
@@ -126,7 +128,7 @@
             // UsernameTextBox
             // 
             this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.UsernameTextBox.Location = new System.Drawing.Point(17, 162);
+            this.UsernameTextBox.Location = new System.Drawing.Point(17, 125);
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(338, 26);
             this.UsernameTextBox.TabIndex = 3;
@@ -135,17 +137,17 @@
             // 
             this.PasswordLbl.AccessibleName = "";
             this.PasswordLbl.AutoSize = true;
-            this.PasswordLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PasswordLbl.Location = new System.Drawing.Point(13, 217);
+            this.PasswordLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.PasswordLbl.Location = new System.Drawing.Point(16, 154);
             this.PasswordLbl.Name = "PasswordLbl";
-            this.PasswordLbl.Size = new System.Drawing.Size(78, 20);
+            this.PasswordLbl.Size = new System.Drawing.Size(82, 21);
             this.PasswordLbl.TabIndex = 12;
             this.PasswordLbl.Text = "Password";
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PasswordTextBox.Location = new System.Drawing.Point(17, 240);
+            this.PasswordTextBox.Location = new System.Drawing.Point(17, 178);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(159, 26);
             this.PasswordTextBox.TabIndex = 4;
@@ -155,16 +157,17 @@
             // 
             this.ConfirmLbl.AccessibleName = "";
             this.ConfirmLbl.AutoSize = true;
-            this.ConfirmLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ConfirmLbl.Location = new System.Drawing.Point(192, 217);
+            this.ConfirmLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.ConfirmLbl.Location = new System.Drawing.Point(192, 154);
             this.ConfirmLbl.Name = "ConfirmLbl";
-            this.ConfirmLbl.Size = new System.Drawing.Size(64, 20);
+            this.ConfirmLbl.Size = new System.Drawing.Size(71, 21);
             this.ConfirmLbl.TabIndex = 13;
             this.ConfirmLbl.Text = "Confirm";
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(280, 272);
+            this.BackButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.BackButton.Location = new System.Drawing.Point(280, 210);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 7;
@@ -176,7 +179,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 342);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(381, 242);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ConfirmLbl);
             this.Controls.Add(this.PasswordTextBox);
