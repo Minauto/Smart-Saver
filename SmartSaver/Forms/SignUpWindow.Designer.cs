@@ -82,7 +82,6 @@
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(159, 26);
             this.FirstNameTextBox.TabIndex = 1;
-            this.FirstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
             // LastNameTextBox
             // 
@@ -91,7 +90,6 @@
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(159, 26);
             this.LastNameTextBox.TabIndex = 2;
-            this.LastNameTextBox.TextChanged += new System.EventHandler(this.PasswordTextBok_TextChanged);
             // 
             // CreateYrUserLbl
             // 
@@ -123,7 +121,6 @@
             this.ConfirmTextBox.Size = new System.Drawing.Size(159, 26);
             this.ConfirmTextBox.TabIndex = 5;
             this.ConfirmTextBox.UseSystemPasswordChar = true;
-            this.ConfirmTextBox.TextChanged += new System.EventHandler(this.ConfirmTextBox_TextChanged);
             // 
             // UsernameTextBox
             // 
@@ -196,7 +193,6 @@
             this.Controls.Add(this.FirstNameLbl);
             this.Name = "SignUpWindow";
             this.Text = "Sign Up";
-            this.Load += new System.EventHandler(this.SignUpWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

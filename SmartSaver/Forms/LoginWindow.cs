@@ -5,56 +5,30 @@ namespace SmartSaver
 {
     public partial class LoginWindow : Form
     {
+        LoginStruct LogInStr = new LoginStruct();
         LoginChecker checker = new LoginChecker();
-        SQLReader Reader = new SQLReader();
+        SQLLoginReader Reader = new SQLLoginReader();
 
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-        private void LoginWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PasswordLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UsernameTextbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LogInButton_Click(object sender, EventArgs e)
         {
 
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
-
-                
             {
-                //Connecting to user data in Account table
-                Reader.ConnectionOpen();
-                string condition = "WHERE Username = '" + usernameTxtBx.Text + "'";
+                LogInStr = Reader.Read(usernameTxtBx.Text);
 
-                string username = Reader.Read("Account", condition, "Username");
-                string name = Reader.Read("Account", condition, "Name");
-                string surname = Reader.Read("Account", condition, "Surname");
-                int userId = Int32.Parse(Reader.Read("Account", condition, "Id"));
-                
-                Reader.ConnectionClose();
                 this.Hide();
-                MainWindow loggedInWindow = new MainWindow(this, username, name, surname, userId);
+                MainWindow loggedInWindow = new MainWindow(this, LogInStr.username, LogInStr.name, LogInStr.surname, LogInStr.userId);
                 loggedInWindow.Show();
             }
             else
             {
                 MessageBox.Show("Please Check Username and Password");
             }
-            
-            
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -67,11 +41,6 @@ namespace SmartSaver
             this.Hide();
             SignUpWindow signUpWin = new SignUpWindow(this);
             signUpWin.Show();
-        }
-
-        private void NameLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void passwdTxtBx_KeyDown(object sender, KeyEventArgs e)

@@ -62,10 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="LoginStruct.cs" />
     <Compile Include="HashSalt.cs" />
     <Compile Include="SQLExpensesList.cs" />
     <Compile Include="SQLInput.cs" />
-    <Compile Include="SQLReader.cs" />
+    <Compile Include="SQLLoginReader.cs" />
     <Compile Include="LoginChecker.cs" />
     <Compile Include="Forms\SignUpWindow.cs">
       <SubType>Form</SubType>

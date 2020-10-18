@@ -55,7 +55,6 @@
             this.usernameTxtBx.Name = "usernameTxtBx";
             this.usernameTxtBx.Size = new System.Drawing.Size(252, 26);
             this.usernameTxtBx.TabIndex = 1;
-            this.usernameTxtBx.TextChanged += new System.EventHandler(this.UsernameTextbox_TextChanged);
             // 
             // nameLbl
             // 
@@ -67,7 +66,6 @@
             this.nameLbl.Size = new System.Drawing.Size(267, 49);
             this.nameLbl.TabIndex = 6;
             this.nameLbl.Text = "Smart Saver";
-            this.nameLbl.Click += new System.EventHandler(this.NameLabel_Click);
             // 
             // usernameLbl
             // 
@@ -88,7 +86,6 @@
             this.passwdLbl.Size = new System.Drawing.Size(86, 21);
             this.passwdLbl.TabIndex = 8;
             this.passwdLbl.Text = "Password:";
-            this.passwdLbl.Click += new System.EventHandler(this.PasswordLabel_Click);
             // 
             // logInBtn
             // 
@@ -140,7 +137,6 @@
             this.Controls.Add(this.passwdTxtBx);
             this.Name = "LoginWindow";
             this.Text = "Please Log In";
-            this.Load += new System.EventHandler(this.LoginWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

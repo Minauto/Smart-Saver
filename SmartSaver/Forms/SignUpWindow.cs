@@ -14,26 +14,6 @@ namespace SmartSaver
             this.logWin = logWin;
         }
 
-        private void SignUpWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PasswordTextBok_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ConfirmTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
