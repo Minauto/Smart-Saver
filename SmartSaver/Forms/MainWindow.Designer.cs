@@ -233,12 +233,6 @@ namespace SmartSaver
             this.ExpensesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ExpensesComboBox.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.ExpensesComboBox.FormattingEnabled = true;
-            this.ExpensesComboBox.Items.AddRange(new object[] {
-            "Groceries",
-            "Leisure",
-            "Fuel",
-            "CarService",
-            "New Stuff"});
             this.ExpensesComboBox.Location = new System.Drawing.Point(3, 97);
             this.ExpensesComboBox.Name = "ExpensesComboBox";
             this.ExpensesComboBox.Size = new System.Drawing.Size(124, 29);

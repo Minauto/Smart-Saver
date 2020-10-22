@@ -21,6 +21,7 @@ namespace SmartSaver
             account = new Account(username, name, surname, userId);
             monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
 
+            ExpensesComboBox.DataSource = Enum.GetValues(typeof(ExpensesType));
 
 
             DisplayNameLabel.Text = "Hello, " + name + "!";
@@ -61,7 +62,7 @@ namespace SmartSaver
         private void AddToExpensesButton_Click(object sender, EventArgs e)
         {
 
-            if (AmountTextBox.Text != "" & ExpensesComboBox.Text != "")
+            if (AmountTextBox.Text != "")
             {
                 Regex regex = new Regex(@"^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$"); // Accepts only positive numbers, up to 2 decimal places
 
