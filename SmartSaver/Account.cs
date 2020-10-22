@@ -28,7 +28,9 @@ public class Account
 
 
 	//Users goal
-	public float Goal { get; set; }
+	public int Goal { get; set; }
+
+	public bool GoalSet { get; set; }
 
 	public Account(string newNickname, string newName, string newSurname, int newUserId)
 	{
@@ -40,14 +42,21 @@ public class Account
 		//Prehash
 
 		///Preset, maybe some could be writen in
-		
-		Goal = 0f;
+
+		Goal = 0;
 	}
 
 	//Setting new goal
-	public void setGoal(float GoalAmmount)
+	public void updateGoal(int GoalAmmount)
     {
-		Goal = GoalAmmount;
+		if (Goal < GoalAmmount)
+        {
+			Goal = 0;
+        }
+		else
+        {
+			Goal -= GoalAmmount;
+        }
     }
 
 	//Function to set a new Password
