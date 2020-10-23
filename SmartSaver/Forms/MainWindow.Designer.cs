@@ -31,10 +31,11 @@ namespace SmartSaver
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.applicationName = new System.Windows.Forms.Label();
             this.spendingsButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.setAGoalButton = new System.Windows.Forms.Button();
             this.DisplayNameLabel = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
@@ -47,13 +48,20 @@ namespace SmartSaver
             this.ExpensesComboBox = new System.Windows.Forms.ComboBox();
             this.ExitAddExpensesLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.SetAGoalPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.GoalAmountTextBox = new System.Windows.Forms.TextBox();
+            this.SetGoalAmountButton = new System.Windows.Forms.Button();
+            this.AmountLabel2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MonthlyGoalLabel = new System.Windows.Forms.Label();
             this.logOutLabel = new System.Windows.Forms.Label();
             this.monthlyExpLabel = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.AddExpensePanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.SetAGoalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +101,7 @@ namespace SmartSaver
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelMenu.Controls.Add(this.setAGoalButton);
             this.panelMenu.Controls.Add(this.DisplayNameLabel);
             this.panelMenu.Controls.Add(this.exitBtn);
             this.panelMenu.Controls.Add(this.applicationName);
@@ -104,6 +113,23 @@ namespace SmartSaver
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(200, 541);
             this.panelMenu.TabIndex = 6;
+            // 
+            // setAGoalButton
+            // 
+            this.setAGoalButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.setAGoalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setAGoalButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.setAGoalButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.setAGoalButton.Image = ((System.Drawing.Image)(resources.GetObject("setAGoalButton.Image")));
+            this.setAGoalButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.setAGoalButton.Location = new System.Drawing.Point(0, 270);
+            this.setAGoalButton.Name = "setAGoalButton";
+            this.setAGoalButton.Size = new System.Drawing.Size(200, 58);
+            this.setAGoalButton.TabIndex = 8;
+            this.setAGoalButton.Text = "Set a goal";
+            this.setAGoalButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.setAGoalButton.UseVisualStyleBackColor = false;
+            this.setAGoalButton.Click += new System.EventHandler(this.setAGoalButton_Click);
             // 
             // DisplayNameLabel
             // 
@@ -143,7 +169,7 @@ namespace SmartSaver
             this.settingsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.settingsBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingsBtn.Image")));
             this.settingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.settingsBtn.Location = new System.Drawing.Point(0, 211);
+            this.settingsBtn.Location = new System.Drawing.Point(0, 419);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(200, 58);
             this.settingsBtn.TabIndex = 4;
@@ -159,7 +185,7 @@ namespace SmartSaver
             this.addExpensesButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addExpensesButton.Image = ((System.Drawing.Image)(resources.GetObject("addExpensesButton.Image")));
             this.addExpensesButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addExpensesButton.Location = new System.Drawing.Point(0, 147);
+            this.addExpensesButton.Location = new System.Drawing.Point(0, 175);
             this.addExpensesButton.Name = "addExpensesButton";
             this.addExpensesButton.Size = new System.Drawing.Size(200, 58);
             this.addExpensesButton.TabIndex = 2;
@@ -222,7 +248,7 @@ namespace SmartSaver
             this.AddExpensePanel.Controls.Add(this.AddToExpensesButton);
             this.AddExpensePanel.Controls.Add(this.AmountLabel);
             this.AddExpensePanel.Controls.Add(this.TypeLabel);
-            this.AddExpensePanel.Location = new System.Drawing.Point(206, 83);
+            this.AddExpensePanel.Location = new System.Drawing.Point(206, 78);
             this.AddExpensePanel.Name = "AddExpensePanel";
             this.AddExpensePanel.Size = new System.Drawing.Size(140, 186);
             this.AddExpensePanel.TabIndex = 13;
@@ -257,6 +283,8 @@ namespace SmartSaver
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.SetAGoalPanel);
+            this.MainPanel.Controls.Add(this.AddExpensePanel);
             this.MainPanel.Controls.Add(this.dataGridView1);
             this.MainPanel.Controls.Add(this.panel1);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -265,10 +293,68 @@ namespace SmartSaver
             this.MainPanel.Size = new System.Drawing.Size(1276, 541);
             this.MainPanel.TabIndex = 14;
             // 
+            // SetAGoalPanel
+            // 
+            this.SetAGoalPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SetAGoalPanel.Controls.Add(this.label1);
+            this.SetAGoalPanel.Controls.Add(this.GoalAmountTextBox);
+            this.SetAGoalPanel.Controls.Add(this.SetGoalAmountButton);
+            this.SetAGoalPanel.Controls.Add(this.AmountLabel2);
+            this.SetAGoalPanel.Location = new System.Drawing.Point(206, 270);
+            this.SetAGoalPanel.Name = "SetAGoalPanel";
+            this.SetAGoalPanel.Size = new System.Drawing.Size(140, 113);
+            this.SetAGoalPanel.TabIndex = 14;
+            this.SetAGoalPanel.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label1.Location = new System.Drawing.Point(122, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 19);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.ExitSetAGoalLabel_Click);
+            // 
+            // GoalAmountTextBox
+            // 
+            this.GoalAmountTextBox.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.GoalAmountTextBox.Location = new System.Drawing.Point(3, 33);
+            this.GoalAmountTextBox.Name = "GoalAmountTextBox";
+            this.GoalAmountTextBox.Size = new System.Drawing.Size(124, 27);
+            this.GoalAmountTextBox.TabIndex = 1;
+            // 
+            // SetGoalAmountButton
+            // 
+            this.SetGoalAmountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.SetGoalAmountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetGoalAmountButton.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.SetGoalAmountButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SetGoalAmountButton.Location = new System.Drawing.Point(3, 66);
+            this.SetGoalAmountButton.Name = "SetGoalAmountButton";
+            this.SetGoalAmountButton.Size = new System.Drawing.Size(124, 29);
+            this.SetGoalAmountButton.TabIndex = 8;
+            this.SetGoalAmountButton.Text = "Set";
+            this.SetGoalAmountButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SetGoalAmountButton.UseVisualStyleBackColor = false;
+            this.SetGoalAmountButton.Click += new System.EventHandler(this.SetGoalAmountButton_Click);
+            // 
+            // AmountLabel2
+            // 
+            this.AmountLabel2.AutoSize = true;
+            this.AmountLabel2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AmountLabel2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AmountLabel2.Location = new System.Drawing.Point(3, 9);
+            this.AmountLabel2.Name = "AmountLabel2";
+            this.AmountLabel2.Size = new System.Drawing.Size(79, 21);
+            this.AmountLabel2.TabIndex = 8;
+            this.AmountLabel2.Text = "Amount:";
+            // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -282,6 +368,7 @@ namespace SmartSaver
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.MonthlyGoalLabel);
             this.panel1.Controls.Add(this.logOutLabel);
             this.panel1.Controls.Add(this.monthlyExpLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -289,6 +376,17 @@ namespace SmartSaver
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1276, 58);
             this.panel1.TabIndex = 1;
+            // 
+            // MonthlyGoalLabel
+            // 
+            this.MonthlyGoalLabel.AutoSize = true;
+            this.MonthlyGoalLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyGoalLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MonthlyGoalLabel.Location = new System.Drawing.Point(210, 20);
+            this.MonthlyGoalLabel.Name = "MonthlyGoalLabel";
+            this.MonthlyGoalLabel.Size = new System.Drawing.Size(41, 16);
+            this.MonthlyGoalLabel.TabIndex = 4;
+            this.MonthlyGoalLabel.Text = "label2";
             // 
             // logOutLabel
             // 
@@ -322,7 +420,6 @@ namespace SmartSaver
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1276, 541);
             this.Controls.Add(this.panelMenu);
-            this.Controls.Add(this.AddExpensePanel);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -334,6 +431,8 @@ namespace SmartSaver
             this.AddExpensePanel.ResumeLayout(false);
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
+            this.SetAGoalPanel.ResumeLayout(false);
+            this.SetAGoalPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -367,6 +466,13 @@ namespace SmartSaver
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label monthlyExpLabel;
         private System.Windows.Forms.Label logOutLabel;
+        private System.Windows.Forms.Button setAGoalButton;
+        private System.Windows.Forms.Panel SetAGoalPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox GoalAmountTextBox;
+        private System.Windows.Forms.Button SetGoalAmountButton;
+        private System.Windows.Forms.Label AmountLabel2;
+        private System.Windows.Forms.Label MonthlyGoalLabel;
     }
 }
 
