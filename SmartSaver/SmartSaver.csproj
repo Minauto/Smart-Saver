@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="ExpensesType.cs" />
     <Compile Include="LoginStruct.cs" />
     <Compile Include="HashSalt.cs" />
     <Compile Include="SQLExpensesList.cs" />
