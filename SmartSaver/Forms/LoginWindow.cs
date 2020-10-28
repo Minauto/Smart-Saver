@@ -8,6 +8,9 @@ namespace SmartSaver
         LoginStruct LogInStr = new LoginStruct();
         LoginChecker checker = new LoginChecker();
         SQLLoginReader Reader = new SQLLoginReader();
+        SQLInput sqlIn = new SQLInput();
+        SQLExpensesTypesList sqlExTypeList = new SQLExpensesTypesList();
+
 
         public LoginWindow()
         {
@@ -20,10 +23,16 @@ namespace SmartSaver
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
                 LogInStr = Reader.Read(usernameTxtBx.Text);
+                //checks if table empty, if so adds basic values
+                if (sqlExTypeList.CheckIfEmpty(LogInStr.userId)) 
+                {
+                    sqlIn.CreateBaseExpensesTypes(LogInStr.userId);
+                }
 
                 this.Hide();
                 MainWindow loggedInWindow = new MainWindow(this, LogInStr.username, LogInStr.name, LogInStr.surname, LogInStr.userId);
                 loggedInWindow.Show();
+
             }
             else
             {

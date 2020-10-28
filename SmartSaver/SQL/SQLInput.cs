@@ -1,0 +1,171 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
+
+namespace SmartSaver
+{
+    class SQLInput
+    {
+
+        static string workingDirectory = Environment.CurrentDirectory;
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database2.mdf";
+
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
+
+        public bool CreateAccount (string username, string password, string name, string surname)
+        {
+            
+
+            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + username + "'", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows[0][0].ToString() == "0")
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+
+                HashSalt hashSalt = HashSalt.GenerateSaltedHash(16, password);
+                //Console.WriteLine(hashSalt.Hash + " " + hashSalt.Salt);
+
+                cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname, Hash, Salt) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "')";  //SQL sentences
+                cmd.Connection = con;
+
+                con.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Account created");
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc + "Failed to connect to SQL server");
+                    return false;
+                }
+                con.Close();
+                return true;
+
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void CreateExpenses(int UserId, float Expenses, String ExpensesType, DateTime Date)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+
+            String dt = Date.ToString();
+            try
+            {
+                Date = DateTime.ParseExact(dt, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                dt = Date.ToString("MM/dd/yyyy HH:mm:ss");
+            }
+            catch (Exception)
+            {
+            }
+
+            cmd.CommandText = "INSERT ExpensesData  (UserId, Expenses, ExpensesType, Date) VALUES ('" + UserId + "', '" + Expenses + "', '" + ExpensesType + "', '" + dt + "')";
+            cmd.Connection = con;
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Expenses Registered");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc + "Failed to connect to SQL server");
+            }
+            con.Close();
+
+        }
+
+        public void CreateBaseExpensesTypes(int UserId)
+        {
+
+            string[] typesArr = new string[] {"Groceries", "Eating Out", "Bills", "Leisure", "Fuel", "Gifts", "New Stuff", "Other" };
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Connection = con;
+            con.Open();
+
+            for (int i = 0; i < typesArr.Length; i++)
+            {
+                cmd.CommandText = "INSERT ExpensesTypes  (UserId, ExpensesType) VALUES ('" + UserId + "', '" + typesArr[i] + "')";
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc + "Could not add BaseExpensesTypes");
+                }
+            }
+            con.Close();
+        }
+
+        public void AddExpensesType (int userId, string NewExpenseType)
+        {
+            
+
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("Select Count(*) From ExpensesTypes WHERE UserId = '" + userId + "' and ExpensesType = '" + NewExpenseType + "'", con);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                con.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                con.Close();
+                da.Dispose();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            if (dt.Rows[0][0].ToString() == "0")
+            {
+                cmd.CommandText = "INSERT ExpensesTypes  (UserId, ExpensesType) VALUES ('" + userId + "', '" + NewExpenseType + "')";
+                con.Open();
+
+                try
+                {
+                    
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                }
+                con.Close();
+            }
+            else
+            {
+                MessageBox.Show("Type already exists!");
+            }
+
+
+                
+        }
+        
+    }
+}

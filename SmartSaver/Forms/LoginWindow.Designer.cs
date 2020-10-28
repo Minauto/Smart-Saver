@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWindow));
             this.passwdTxtBx = new System.Windows.Forms.TextBox();
             this.usernameTxtBx = new System.Windows.Forms.TextBox();
             this.nameLbl = new System.Windows.Forms.Label();
@@ -135,8 +136,9 @@
             this.Controls.Add(this.nameLbl);
             this.Controls.Add(this.usernameTxtBx);
             this.Controls.Add(this.passwdTxtBx);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginWindow";
-            this.Text = "Please Log In";
+            this.Text = "Smart Saver";
             this.ResumeLayout(false);
             this.PerformLayout();
 
