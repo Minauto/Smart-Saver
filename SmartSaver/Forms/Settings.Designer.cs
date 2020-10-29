@@ -32,6 +32,10 @@
             this.AddNewChoiceButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.CustomizeLabel = new System.Windows.Forms.Label();
+            this.saveToFileButton = new System.Windows.Forms.Button();
+            this.openFromFile = new System.Windows.Forms.Button();
+            this.expensesDataTable = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.expensesDataTable)).BeginInit();
             this.SuspendLayout();
             // 
             // CustomizeComboBox
@@ -83,18 +87,57 @@
             this.CustomizeLabel.TabIndex = 3;
             this.CustomizeLabel.Text = "Customize:";
             // 
+            // saveToFileButton
+            // 
+            this.saveToFileButton.BackColor = System.Drawing.Color.White;
+            this.saveToFileButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.saveToFileButton.Location = new System.Drawing.Point(12, 211);
+            this.saveToFileButton.Name = "saveToFileButton";
+            this.saveToFileButton.Size = new System.Drawing.Size(124, 40);
+            this.saveToFileButton.TabIndex = 4;
+            this.saveToFileButton.Text = "Save expenses to file";
+            this.saveToFileButton.UseVisualStyleBackColor = false;
+            this.saveToFileButton.Click += new System.EventHandler(this.saveToFileButton_Click);
+            // 
+            // openFromFile
+            // 
+            this.openFromFile.BackColor = System.Drawing.Color.White;
+            this.openFromFile.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.openFromFile.Location = new System.Drawing.Point(12, 297);
+            this.openFromFile.Name = "openFromFile";
+            this.openFromFile.Size = new System.Drawing.Size(124, 40);
+            this.openFromFile.TabIndex = 5;
+            this.openFromFile.Text = "Show expenses data from file";
+            this.openFromFile.UseVisualStyleBackColor = false;
+            this.openFromFile.Click += new System.EventHandler(this.openFromFile_Click);
+            // 
+            // expensesDataTable
+            // 
+            this.expensesDataTable.AllowUserToAddRows = false;
+            this.expensesDataTable.AllowUserToDeleteRows = false;
+            this.expensesDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.expensesDataTable.Location = new System.Drawing.Point(308, 34);
+            this.expensesDataTable.Name = "expensesDataTable";
+            this.expensesDataTable.Size = new System.Drawing.Size(279, 396);
+            this.expensesDataTable.TabIndex = 6;
+            this.expensesDataTable.Visible = false;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1076, 483);
+            this.Controls.Add(this.expensesDataTable);
+            this.Controls.Add(this.openFromFile);
+            this.Controls.Add(this.saveToFileButton);
             this.Controls.Add(this.CustomizeLabel);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddNewChoiceButton);
             this.Controls.Add(this.CustomizeComboBox);
             this.Name = "Settings";
             this.Text = "Settings";
+            ((System.ComponentModel.ISupportInitialize)(this.expensesDataTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +149,8 @@
         private System.Windows.Forms.Button AddNewChoiceButton;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Label CustomizeLabel;
+        private System.Windows.Forms.Button saveToFileButton;
+        private System.Windows.Forms.Button openFromFile;
+        private System.Windows.Forms.DataGridView expensesDataTable;
     }
 }
