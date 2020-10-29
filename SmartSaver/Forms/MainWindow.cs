@@ -36,7 +36,7 @@ namespace SmartSaver
             ReloadData();
 
             //SpendingsChart initialization
-            
+
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
@@ -46,7 +46,7 @@ namespace SmartSaver
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
         }
 
-        private void MonthlyGoalText ()
+        private void MonthlyGoalText()
         {
             if (account.GoalSet)
             {
@@ -95,7 +95,7 @@ namespace SmartSaver
         private void ShowAddExpenses()
         {
             AddExpensePanel.Visible = true;
-            
+
         }
 
         private void HideAll()
@@ -145,7 +145,7 @@ namespace SmartSaver
             {
                 MessageBox.Show("Fill In Empty Fields");
             }
-            
+
 
         }
 
@@ -169,7 +169,7 @@ namespace SmartSaver
 
             RefreshTypesList(account.UserId);
             loadChart();
-            
+
         }
 
         private void logOutLabel_Click(object sender, EventArgs e)
@@ -184,7 +184,7 @@ namespace SmartSaver
             ShowSetAGoal();
         }
 
-        private void ShowSetAGoal ()
+        private void ShowSetAGoal()
         {
             SetAGoalPanel.Visible = true;
         }
@@ -242,7 +242,7 @@ namespace SmartSaver
         private void openChildForm(Form childForm)
         {
             HideAll();
-            
+
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -253,7 +253,7 @@ namespace SmartSaver
             childForm.Show();
         }
 
-        
+
         private void settingsBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new Settings(account));
@@ -273,4 +273,4 @@ namespace SmartSaver
         }
 
     }
-    }
+}
