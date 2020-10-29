@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Linq;
 
 namespace SmartSaver
 {
@@ -20,20 +19,17 @@ namespace SmartSaver
         private String monthlyExpenses;
         List<String> typesList = new List<string>();
 
-        //Used for chart
-        Series SpendingsSeries;
 
         public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
         {
             InitializeComponent();
-
-            SpendingsChart.Visible = true;
-            SpendingsSeries = new Series();
             this.logWin = logWin;
             account = new Account(username, name, surname, userId);
             monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
+            LimitProgressBar.Value = account.Limit;
 
             ReloadData();
+
 
             //SpendingsChart initialization
 
@@ -41,38 +37,35 @@ namespace SmartSaver
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
             loadChart();
-
+            
             DisplayNameLabel.Text = "Hello, " + name + "!";
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
+            MonthlyGoalText();
         }
 
         private void MonthlyGoalText()
         {
-            if (account.GoalSet)
+            if (account.LimitSet)
             {
-                if (account.Goal > 0)
+                if (account.Limit > 0)
                 {
-                    MonthlyGoalLabel.Text = "Remaining money to spend this month: €" + account.Goal;
+                    MonthlyGoalLabel.Text = "Remaining money to spend this month: €" + account.Limit;
+                    UpdateProgressBar();
                 }
                 else
                 {
-                    MonthlyGoalLabel.Text = "Goal reached";
+                    MonthlyGoalLabel.Text = "Limit reached";
                 }
             }
             else
             {
-                MonthlyGoalLabel.Text = "No goal set yet.";
+                MonthlyGoalLabel.Text = "No limit set yet.";
             }
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
             HideAll();
             dataGridView1.Show();
-
-            //SpendingsChart visible after Spendings button click
-            SpendingsChart.Visible = true;
-
-            Console.WriteLine("ASD AS GYVAS");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -107,9 +100,6 @@ namespace SmartSaver
             AddExpensePanel.Visible = false;
             SetAGoalPanel.Visible = false;
             dataGridView1.Hide();
-
-            //SpendingsChart hidden with others
-            SpendingsChart.Visible = false;
         }
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
@@ -124,7 +114,8 @@ namespace SmartSaver
                     try
                     {
                         sqlIn.CreateExpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
-                        account.updateGoal(int.Parse(AmountTextBox.Text));
+                        account.updateLimit(int.Parse(AmountTextBox.Text));
+                        UpdateProgressBar();
                         MonthlyGoalText();
                         AmountTextBox.Clear();
                         ExpensesComboBox.Text = "";
@@ -168,7 +159,9 @@ namespace SmartSaver
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
             RefreshTypesList(account.UserId);
+
             loadChart();
+
 
         }
 
@@ -194,21 +187,22 @@ namespace SmartSaver
             SetAGoalPanel.Visible = false;
         }
 
-        private void SetGoalAmountButton_Click(object sender, EventArgs e)
+        private void SetLimitAmountButton_Click(object sender, EventArgs e)
         {
-            if (GoalAmountTextBox.Text != "")
+            if (LimitAmountTextBox.Text != "")
             {
                 Regex regex = new Regex(@"^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$"); // Accepts only positive numbers, up to 2 decimal places
 
-                if (regex.IsMatch(GoalAmountTextBox.Text))
+                if (regex.IsMatch(LimitAmountTextBox.Text))
                 {
                     try
                     {
-                        account.Goal = int.Parse(GoalAmountTextBox.Text);
-                        account.GoalSet = true;
-                        MessageBox.Show("Goal set");
+                        account.Limit = int.Parse(LimitAmountTextBox.Text);
+                        SetLimitProgressBar();
+                        account.LimitSet = true;
+                        MessageBox.Show("Limit set");
                         MonthlyGoalText();
-                        GoalAmountTextBox.Clear();
+                        LimitAmountTextBox.Clear();
                     }
                     catch (Exception)
                     {
@@ -218,7 +212,7 @@ namespace SmartSaver
                 else
                 {
                     MessageBox.Show("Invalid number format. Try again");
-                    GoalAmountTextBox.Clear();
+                    LimitAmountTextBox.Clear();
                 }
             }
             else
@@ -258,19 +252,25 @@ namespace SmartSaver
         {
             openChildForm(new Settings(account));
         }
-        private void loadChart()
-        {
-            SpendingsSeries.Points.Clear();
-            DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
 
-            int x = SpendingsSeries.Points.Count;
-            x++;
-            foreach (DataRow row in ExpencesTable.Rows)
-            {
-                SpendingsSeries.Points.AddXY(x, row["Expenses"]);
-                x++;
-            }
+        private void SetLimitProgressBar()
+        {
+            int maximumLimit = account.Limit;
+            LimitProgressBar.Maximum = maximumLimit;
+            LimitProgressBar.Value = account.Limit;
         }
 
+        private void UpdateProgressBar()
+        {
+            LimitProgressBar.Value = account.Limit;
+            if (LimitProgressBar.Value == 0)
+            {
+                LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
+            }
+        }
     }
+
 }
+=======
+    }
+
