@@ -258,28 +258,10 @@ namespace SmartSaver
         {
             openChildForm(new Settings(account));
         }
-
-        //Function that loads SpendingsChart data when the program is started
         private void loadChart()
         {
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
-            //dataGridView1.DataSource = sTable;
-
-            //List<String> TypeList = sqlExpTypesList.GetExpensesTypes(account.UserId);
-
-           /* int x = SpendingsSeries.Points.Count;
-            x++;
-            foreach (String type in TypeList)
-            {
-                int sumOfType = ExpencesTable.Sum(x => x.Expences);
-
-
-                SpendingsSeries.Points.AddXY(x, row["Expenses"]);
-                x++;
-            }*/
-
-
 
             int x = SpendingsSeries.Points.Count;
             x++;
