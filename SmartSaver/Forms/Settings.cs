@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace SmartSaver.Forms
         SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
         List<String> typesList = new List<string>();
         SQLInput sqlIn = new SQLInput();
+        SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
 
         public Settings(Account account)
@@ -57,5 +59,56 @@ namespace SmartSaver.Forms
                 CustomizeComboBox.Text = "";
                 RefreshTypesList(account.UserId);
         }
+
+        private void saveToFileButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                InitialDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\res",
+
+                DefaultExt = "json",
+                Filter = "json files (*.json)|*.json",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+            };
+
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                JSONUtils.saveData(sqlExpensesList.GetExpenses(account.UserId), saveFileDialog.FileName);
+            }
+        }
+
+        private void openFromFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                InitialDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\res",
+                Title = "Browse json files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "json",
+                Filter = "json files (*.xml)|*.json",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                DataTable newDataTable = JSONUtils.openData(openFileDialog.FileName);
+
+                expensesDataTable.DataSource = newDataTable;
+                expensesDataTable.ReadOnly = true;
+                expensesDataTable.Columns["Date"].Width = 120;
+                expensesDataTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                expensesDataTable.Visible = true;
+            }
+        }
     }
+    
 }
