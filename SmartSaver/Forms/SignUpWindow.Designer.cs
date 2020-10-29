@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpWindow));
             this.FirstNameLbl = new System.Windows.Forms.Label();
             this.SignUpButton = new System.Windows.Forms.Button();
             this.LastNameLbl = new System.Windows.Forms.Label();
@@ -191,8 +192,9 @@
             this.Controls.Add(this.LastNameLbl);
             this.Controls.Add(this.SignUpButton);
             this.Controls.Add(this.FirstNameLbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignUpWindow";
-            this.Text = "Sign Up";
+            this.Text = "Smart Saver";
             this.ResumeLayout(false);
             this.PerformLayout();
 

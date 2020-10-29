@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartSaver.Forms;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -12,8 +14,10 @@ namespace SmartSaver
         LoginWindow logWin = new LoginWindow();
         SQLInput sqlIn = new SQLInput();
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
+        SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
         private String monthlyExpenses;
-        
+        List<String> typesList = new List<string>();
+
 
         public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
         {
@@ -22,8 +26,7 @@ namespace SmartSaver
             account = new Account(username, name, surname, userId);
             monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
 
-            ExpensesComboBox.DataSource = Enum.GetValues(typeof(ExpensesType));
-
+            ReloadData();
 
             DisplayNameLabel.Text = "Hello, " + name + "!";
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
@@ -50,6 +53,7 @@ namespace SmartSaver
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
             HideAll();
+            dataGridView1.Show();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -60,6 +64,7 @@ namespace SmartSaver
         private void AddExpensesButton_Click(object sender, EventArgs e)
         {
             HideAll();
+            RefreshTypesList(account.UserId);
             ShowAddExpenses();
         }
         private void ExitAddExpensesLabel_Click(object sender, EventArgs e)
@@ -75,14 +80,19 @@ namespace SmartSaver
 
         private void HideAll()
         {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
             AddExpensePanel.Visible = false;
             SetAGoalPanel.Visible = false;
+            dataGridView1.Hide();
         }
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
         {
 
-            if (AmountTextBox.Text != "")
+            if (AmountTextBox.Text != "" & ExpensesComboBox.Text != "")
             {
                 Regex regex = new Regex(@"^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$"); // Accepts only positive numbers, up to 2 decimal places
 
@@ -90,7 +100,7 @@ namespace SmartSaver
                 {
                     try
                     {
-                        sqlIn.CreateEpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
+                        sqlIn.CreateExpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
                         account.updateGoal(int.Parse(AmountTextBox.Text));
                         MonthlyGoalText();
                         AmountTextBox.Clear();
@@ -118,7 +128,7 @@ namespace SmartSaver
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            ReloadData();
+
         }
 
         private void ReloadData()
@@ -130,8 +140,11 @@ namespace SmartSaver
             dataGridView1.ReadOnly = true;
             dataGridView1.Columns["Date"].Width = 120;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(account.UserId));
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
+
+            RefreshTypesList(account.UserId);
         }
 
         private void logOutLabel_Click(object sender, EventArgs e)
@@ -187,6 +200,38 @@ namespace SmartSaver
             {
                 MessageBox.Show("Fill In Empty Fields");
             }
+        }
+
+        private void RefreshTypesList(int userId)
+        {
+            ExpensesComboBox.Items.Clear();
+            typesList = sqlExpTypesList.GetExpensesTypes(userId);
+            for (int i = 0; i < typesList.Count; i++)
+            {
+                ExpensesComboBox.Items.Add(typesList[i]);
+            }
+        }
+
+
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            HideAll();
+            
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            MainPanel.Controls.Add(childForm);
+            MainPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Settings(account));
         }
     }
     }

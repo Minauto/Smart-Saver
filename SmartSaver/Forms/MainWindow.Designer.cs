@@ -31,7 +31,7 @@ namespace SmartSaver
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.applicationName = new System.Windows.Forms.Label();
             this.spendingsButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -176,6 +176,7 @@ namespace SmartSaver
             this.settingsBtn.Text = "Settings";
             this.settingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settingsBtn.UseVisualStyleBackColor = false;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // addExpensesButton
             // 
@@ -248,7 +249,7 @@ namespace SmartSaver
             this.AddExpensePanel.Controls.Add(this.AddToExpensesButton);
             this.AddExpensePanel.Controls.Add(this.AmountLabel);
             this.AddExpensePanel.Controls.Add(this.TypeLabel);
-            this.AddExpensePanel.Location = new System.Drawing.Point(206, 78);
+            this.AddExpensePanel.Location = new System.Drawing.Point(6, 83);
             this.AddExpensePanel.Name = "AddExpensePanel";
             this.AddExpensePanel.Size = new System.Drawing.Size(140, 186);
             this.AddExpensePanel.TabIndex = 13;
@@ -280,11 +281,10 @@ namespace SmartSaver
             this.MainPanel.Controls.Add(this.SetAGoalPanel);
             this.MainPanel.Controls.Add(this.AddExpensePanel);
             this.MainPanel.Controls.Add(this.dataGridView1);
-            this.MainPanel.Controls.Add(this.panel1);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Location = new System.Drawing.Point(200, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1276, 541);
+            this.MainPanel.Size = new System.Drawing.Size(1076, 483);
             this.MainPanel.TabIndex = 14;
             // 
             // SetAGoalPanel
@@ -294,7 +294,7 @@ namespace SmartSaver
             this.SetAGoalPanel.Controls.Add(this.GoalAmountTextBox);
             this.SetAGoalPanel.Controls.Add(this.SetGoalAmountButton);
             this.SetAGoalPanel.Controls.Add(this.AmountLabel2);
-            this.SetAGoalPanel.Location = new System.Drawing.Point(206, 270);
+            this.SetAGoalPanel.Location = new System.Drawing.Point(6, 275);
             this.SetAGoalPanel.Name = "SetAGoalPanel";
             this.SetAGoalPanel.Size = new System.Drawing.Size(140, 113);
             this.SetAGoalPanel.TabIndex = 14;
@@ -347,16 +347,16 @@ namespace SmartSaver
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView1.Location = new System.Drawing.Point(911, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(696, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(365, 483);
+            this.dataGridView1.Size = new System.Drawing.Size(380, 483);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel1
@@ -366,9 +366,9 @@ namespace SmartSaver
             this.panel1.Controls.Add(this.logOutLabel);
             this.panel1.Controls.Add(this.monthlyExpLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 483);
+            this.panel1.Location = new System.Drawing.Point(200, 483);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1276, 58);
+            this.panel1.Size = new System.Drawing.Size(1076, 58);
             this.panel1.TabIndex = 1;
             // 
             // MonthlyGoalLabel
@@ -376,7 +376,7 @@ namespace SmartSaver
             this.MonthlyGoalLabel.AutoSize = true;
             this.MonthlyGoalLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyGoalLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MonthlyGoalLabel.Location = new System.Drawing.Point(210, 20);
+            this.MonthlyGoalLabel.Location = new System.Drawing.Point(6, 20);
             this.MonthlyGoalLabel.Name = "MonthlyGoalLabel";
             this.MonthlyGoalLabel.Size = new System.Drawing.Size(41, 16);
             this.MonthlyGoalLabel.TabIndex = 4;
@@ -389,7 +389,7 @@ namespace SmartSaver
             this.logOutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.logOutLabel.Location = new System.Drawing.Point(1222, 36);
+            this.logOutLabel.Location = new System.Drawing.Point(1022, 36);
             this.logOutLabel.Name = "logOutLabel";
             this.logOutLabel.Size = new System.Drawing.Size(51, 16);
             this.logOutLabel.TabIndex = 3;
@@ -401,7 +401,7 @@ namespace SmartSaver
             this.monthlyExpLabel.AutoSize = true;
             this.monthlyExpLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthlyExpLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.monthlyExpLabel.Location = new System.Drawing.Point(210, 36);
+            this.monthlyExpLabel.Location = new System.Drawing.Point(6, 36);
             this.monthlyExpLabel.Name = "monthlyExpLabel";
             this.monthlyExpLabel.Size = new System.Drawing.Size(41, 16);
             this.monthlyExpLabel.TabIndex = 2;
@@ -413,12 +413,14 @@ namespace SmartSaver
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1276, 541);
-            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Smart Saver";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
