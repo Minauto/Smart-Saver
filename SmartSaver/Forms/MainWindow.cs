@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Linq;
 
 namespace SmartSaver
 {
@@ -20,15 +22,30 @@ namespace SmartSaver
         List<String> typesList = new List<string>();
 
 
+        //Used for chart
+        Series SpendingsSeries;
+
+
         public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
         {
             InitializeComponent();
+
+            SpendingsChart.Visible = true;
+            SpendingsSeries = new Series();
             this.logWin = logWin;
             account = new Account(username, name, surname, userId);
             monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
             LimitProgressBar.Value = account.Limit;
 
             ReloadData();
+
+            //SpendingsChart initialization
+
+            SpendingsSeries.Name = @"Spendings";
+            SpendingsChart.Series.Add(SpendingsSeries);
+            SpendingsSeries.ChartType = SeriesChartType.Column;
+            loadChart();
+
 
             DisplayNameLabel.Text = "Hello, " + name + "!";
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
@@ -58,6 +75,12 @@ namespace SmartSaver
         {
             HideAll();
             dataGridView1.Show();
+
+
+            //SpendingsChart visible after Spendings button click
+            SpendingsChart.Visible = true;
+
+            Console.WriteLine("ASD AS GYVAS");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -91,6 +114,10 @@ namespace SmartSaver
             AddExpensePanel.Visible = false;
             SetAGoalPanel.Visible = false;
             dataGridView1.Hide();
+
+
+            //SpendingsChart hidden with others
+            SpendingsChart.Visible = false;
         }
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
@@ -150,6 +177,9 @@ namespace SmartSaver
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
             RefreshTypesList(account.UserId);
+
+            loadChart();
+
         }
 
         private void logOutLabel_Click(object sender, EventArgs e)
@@ -255,6 +285,38 @@ namespace SmartSaver
                 LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
             }
         }
+
+
+        //Function that loads SpendingsChart data when the program is started
+        private void loadChart()
+        {
+            SpendingsSeries.Points.Clear();
+            DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
+            //dataGridView1.DataSource = sTable;
+
+            //List<String> TypeList = sqlExpTypesList.GetExpensesTypes(account.UserId);
+
+            /* int x = SpendingsSeries.Points.Count;
+             x++;
+             foreach (String type in TypeList)
+             {
+                 int sumOfType = ExpencesTable.Sum(x => x.Expences);
+
+
+                 SpendingsSeries.Points.AddXY(x, row["Expenses"]);
+                 x++;
+             }*/
+
+
+
+            int x = SpendingsSeries.Points.Count;
+            x++;
+            foreach (DataRow row in ExpencesTable.Rows)
+            {
+                SpendingsSeries.Points.AddXY(x, row["Expenses"]);
+                x++;
+            }
     }
     }
+}
 

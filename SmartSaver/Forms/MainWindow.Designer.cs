@@ -31,7 +31,11 @@ namespace SmartSaver
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.applicationName = new System.Windows.Forms.Label();
             this.spendingsButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -48,6 +52,7 @@ namespace SmartSaver
             this.ExpensesComboBox = new System.Windows.Forms.ComboBox();
             this.ExitAddExpensesLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.SetAGoalPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.LimitAmountTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +68,7 @@ namespace SmartSaver
             this.panelMenu.SuspendLayout();
             this.AddExpensePanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).BeginInit();
             this.SetAGoalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -280,6 +286,7 @@ namespace SmartSaver
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.SpendingsChart);
             this.MainPanel.Controls.Add(this.SetAGoalPanel);
             this.MainPanel.Controls.Add(this.AddExpensePanel);
             this.MainPanel.Controls.Add(this.dataGridView1);
@@ -290,6 +297,19 @@ namespace SmartSaver
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1076, 483);
             this.MainPanel.TabIndex = 14;
+            // 
+            // SpendingsChart
+            // 
+            this.SpendingsChart.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            chartArea1.Name = "ChartArea1";
+            this.SpendingsChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SpendingsChart.Legends.Add(legend1);
+            this.SpendingsChart.Location = new System.Drawing.Point(6, 9);
+            this.SpendingsChart.Name = "SpendingsChart";
+            this.SpendingsChart.Size = new System.Drawing.Size(431, 470);
+            this.SpendingsChart.TabIndex = 15;
+            this.SpendingsChart.Text = "chart1";
             // 
             // SetAGoalPanel
             // 
@@ -356,7 +376,23 @@ namespace SmartSaver
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridView1.Location = new System.Drawing.Point(696, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -477,6 +513,7 @@ namespace SmartSaver
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).EndInit();
             this.SetAGoalPanel.ResumeLayout(false);
             this.SetAGoalPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -521,6 +558,7 @@ namespace SmartSaver
         private System.Windows.Forms.Label MonthlyGoalLabel;
         private CircularProgressBar.CircularProgressBar LimitProgressBar;
         private System.Windows.Forms.Label DollarLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart SpendingsChart;
     }
 }
 
