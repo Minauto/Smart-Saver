@@ -28,9 +28,11 @@ public class Account
 
 
 	//Users goal
-	public int Goal { get; set; }
+	public int Limit { get; set; }
 
-	public bool GoalSet { get; set; }
+	public int Progress { get; set; }
+
+	public bool LimitSet { get; set; }
 
 	public Account(string newNickname, string newName, string newSurname, int newUserId)
 	{
@@ -43,19 +45,19 @@ public class Account
 
 		///Preset, maybe some could be writen in
 
-		Goal = 0;
+		Limit = 0;
 	}
 
 	//Setting new goal
-	public void updateGoal(int GoalAmmount)
+	public void updateLimit(int GoalAmmount)
     {
-		if (Goal < GoalAmmount)
+		if (Limit < GoalAmmount)
         {
-			Goal = 0;
+			Limit = 0;
         }
 		else
         {
-			Goal -= GoalAmmount;
+			Limit -= GoalAmmount;
         }
     }
 

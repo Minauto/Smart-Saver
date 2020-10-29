@@ -35,7 +35,7 @@ namespace SmartSaver
             this.applicationName = new System.Windows.Forms.Label();
             this.spendingsButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.setAGoalButton = new System.Windows.Forms.Button();
+            this.setALimitButton = new System.Windows.Forms.Button();
             this.DisplayNameLabel = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
@@ -50,10 +50,12 @@ namespace SmartSaver
             this.MainPanel = new System.Windows.Forms.Panel();
             this.SetAGoalPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.GoalAmountTextBox = new System.Windows.Forms.TextBox();
-            this.SetGoalAmountButton = new System.Windows.Forms.Button();
+            this.LimitAmountTextBox = new System.Windows.Forms.TextBox();
+            this.SetLimitAmountButton = new System.Windows.Forms.Button();
             this.AmountLabel2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DollarLabel = new System.Windows.Forms.Label();
+            this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.MonthlyGoalLabel = new System.Windows.Forms.Label();
             this.logOutLabel = new System.Windows.Forms.Label();
@@ -101,7 +103,7 @@ namespace SmartSaver
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelMenu.Controls.Add(this.setAGoalButton);
+            this.panelMenu.Controls.Add(this.setALimitButton);
             this.panelMenu.Controls.Add(this.DisplayNameLabel);
             this.panelMenu.Controls.Add(this.exitBtn);
             this.panelMenu.Controls.Add(this.applicationName);
@@ -114,22 +116,22 @@ namespace SmartSaver
             this.panelMenu.Size = new System.Drawing.Size(200, 541);
             this.panelMenu.TabIndex = 6;
             // 
-            // setAGoalButton
+            // setALimitButton
             // 
-            this.setAGoalButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.setAGoalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.setAGoalButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.setAGoalButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.setAGoalButton.Image = ((System.Drawing.Image)(resources.GetObject("setAGoalButton.Image")));
-            this.setAGoalButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.setAGoalButton.Location = new System.Drawing.Point(0, 270);
-            this.setAGoalButton.Name = "setAGoalButton";
-            this.setAGoalButton.Size = new System.Drawing.Size(200, 58);
-            this.setAGoalButton.TabIndex = 8;
-            this.setAGoalButton.Text = "Set a goal";
-            this.setAGoalButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.setAGoalButton.UseVisualStyleBackColor = false;
-            this.setAGoalButton.Click += new System.EventHandler(this.setAGoalButton_Click);
+            this.setALimitButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.setALimitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setALimitButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.setALimitButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.setALimitButton.Image = ((System.Drawing.Image)(resources.GetObject("setALimitButton.Image")));
+            this.setALimitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.setALimitButton.Location = new System.Drawing.Point(0, 270);
+            this.setALimitButton.Name = "setALimitButton";
+            this.setALimitButton.Size = new System.Drawing.Size(200, 58);
+            this.setALimitButton.TabIndex = 8;
+            this.setALimitButton.Text = "Set a limit";
+            this.setALimitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.setALimitButton.UseVisualStyleBackColor = false;
+            this.setALimitButton.Click += new System.EventHandler(this.setAGoalButton_Click);
             // 
             // DisplayNameLabel
             // 
@@ -281,6 +283,8 @@ namespace SmartSaver
             this.MainPanel.Controls.Add(this.SetAGoalPanel);
             this.MainPanel.Controls.Add(this.AddExpensePanel);
             this.MainPanel.Controls.Add(this.dataGridView1);
+            this.MainPanel.Controls.Add(this.DollarLabel);
+            this.MainPanel.Controls.Add(this.LimitProgressBar);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(200, 0);
             this.MainPanel.Name = "MainPanel";
@@ -291,8 +295,8 @@ namespace SmartSaver
             // 
             this.SetAGoalPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.SetAGoalPanel.Controls.Add(this.label1);
-            this.SetAGoalPanel.Controls.Add(this.GoalAmountTextBox);
-            this.SetAGoalPanel.Controls.Add(this.SetGoalAmountButton);
+            this.SetAGoalPanel.Controls.Add(this.LimitAmountTextBox);
+            this.SetAGoalPanel.Controls.Add(this.SetLimitAmountButton);
             this.SetAGoalPanel.Controls.Add(this.AmountLabel2);
             this.SetAGoalPanel.Location = new System.Drawing.Point(6, 275);
             this.SetAGoalPanel.Name = "SetAGoalPanel";
@@ -311,28 +315,28 @@ namespace SmartSaver
             this.label1.Text = "X";
             this.label1.Click += new System.EventHandler(this.ExitSetAGoalLabel_Click);
             // 
-            // GoalAmountTextBox
+            // LimitAmountTextBox
             // 
-            this.GoalAmountTextBox.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.GoalAmountTextBox.Location = new System.Drawing.Point(3, 33);
-            this.GoalAmountTextBox.Name = "GoalAmountTextBox";
-            this.GoalAmountTextBox.Size = new System.Drawing.Size(124, 27);
-            this.GoalAmountTextBox.TabIndex = 1;
+            this.LimitAmountTextBox.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.LimitAmountTextBox.Location = new System.Drawing.Point(3, 33);
+            this.LimitAmountTextBox.Name = "LimitAmountTextBox";
+            this.LimitAmountTextBox.Size = new System.Drawing.Size(124, 27);
+            this.LimitAmountTextBox.TabIndex = 1;
             // 
-            // SetGoalAmountButton
+            // SetLimitAmountButton
             // 
-            this.SetGoalAmountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.SetGoalAmountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SetGoalAmountButton.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.SetGoalAmountButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SetGoalAmountButton.Location = new System.Drawing.Point(3, 66);
-            this.SetGoalAmountButton.Name = "SetGoalAmountButton";
-            this.SetGoalAmountButton.Size = new System.Drawing.Size(124, 29);
-            this.SetGoalAmountButton.TabIndex = 8;
-            this.SetGoalAmountButton.Text = "Set";
-            this.SetGoalAmountButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.SetGoalAmountButton.UseVisualStyleBackColor = false;
-            this.SetGoalAmountButton.Click += new System.EventHandler(this.SetGoalAmountButton_Click);
+            this.SetLimitAmountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.SetLimitAmountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetLimitAmountButton.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.SetLimitAmountButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SetLimitAmountButton.Location = new System.Drawing.Point(3, 66);
+            this.SetLimitAmountButton.Name = "SetLimitAmountButton";
+            this.SetLimitAmountButton.Size = new System.Drawing.Size(124, 29);
+            this.SetLimitAmountButton.TabIndex = 8;
+            this.SetLimitAmountButton.Text = "Set";
+            this.SetLimitAmountButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SetLimitAmountButton.UseVisualStyleBackColor = false;
+            this.SetLimitAmountButton.Click += new System.EventHandler(this.SetLimitAmountButton_Click);
             // 
             // AmountLabel2
             // 
@@ -358,6 +362,51 @@ namespace SmartSaver
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(380, 483);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // DollarLabel
+            // 
+            this.DollarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DollarLabel.AutoSize = true;
+            this.DollarLabel.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.DollarLabel.ForeColor = System.Drawing.Color.Green;
+            this.DollarLabel.Location = new System.Drawing.Point(53, 382);
+            this.DollarLabel.Name = "DollarLabel";
+            this.DollarLabel.Size = new System.Drawing.Size(51, 56);
+            this.DollarLabel.TabIndex = 16;
+            this.DollarLabel.Text = "€";
+            // 
+            // LimitProgressBar
+            // 
+            this.LimitProgressBar.AccessibleName = "";
+            this.LimitProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LimitProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.LimitProgressBar.AnimationSpeed = 500;
+            this.LimitProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.LimitProgressBar.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.LimitProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.LimitProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.LimitProgressBar.InnerMargin = 2;
+            this.LimitProgressBar.InnerWidth = -1;
+            this.LimitProgressBar.Location = new System.Drawing.Point(9, 341);
+            this.LimitProgressBar.MarqueeAnimationSpeed = 2000;
+            this.LimitProgressBar.Name = "LimitProgressBar";
+            this.LimitProgressBar.OuterColor = System.Drawing.Color.Gray;
+            this.LimitProgressBar.OuterMargin = -25;
+            this.LimitProgressBar.OuterWidth = 26;
+            this.LimitProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.LimitProgressBar.ProgressWidth = 25;
+            this.LimitProgressBar.SecondaryFont = new System.Drawing.Font("Century Gothic", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.LimitProgressBar.Size = new System.Drawing.Size(140, 136);
+            this.LimitProgressBar.StartAngle = 270;
+            this.LimitProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.LimitProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.LimitProgressBar.SubscriptText = "";
+            this.LimitProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.LimitProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.LimitProgressBar.SuperscriptText = "";
+            this.LimitProgressBar.TabIndex = 15;
+            this.LimitProgressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.LimitProgressBar.Value = 68;
             // 
             // panel1
             // 
@@ -427,6 +476,7 @@ namespace SmartSaver
             this.AddExpensePanel.ResumeLayout(false);
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.SetAGoalPanel.ResumeLayout(false);
             this.SetAGoalPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -462,13 +512,15 @@ namespace SmartSaver
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label monthlyExpLabel;
         private System.Windows.Forms.Label logOutLabel;
-        private System.Windows.Forms.Button setAGoalButton;
+        private System.Windows.Forms.Button setALimitButton;
         private System.Windows.Forms.Panel SetAGoalPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox GoalAmountTextBox;
-        private System.Windows.Forms.Button SetGoalAmountButton;
+        private System.Windows.Forms.TextBox LimitAmountTextBox;
+        private System.Windows.Forms.Button SetLimitAmountButton;
         private System.Windows.Forms.Label AmountLabel2;
         private System.Windows.Forms.Label MonthlyGoalLabel;
+        private CircularProgressBar.CircularProgressBar LimitProgressBar;
+        private System.Windows.Forms.Label DollarLabel;
     }
 }
 
