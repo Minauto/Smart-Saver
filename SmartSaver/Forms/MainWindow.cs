@@ -133,7 +133,10 @@ namespace SmartSaver
                     {
                         sqlIn.CreateExpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
                         account.updateLimit(int.Parse(AmountTextBox.Text));
-                        UpdateProgressBar();
+                        if (account.LimitSet)
+                        {
+                            UpdateProgressBar();
+                        }
                         MonthlyGoalText();
                         AmountTextBox.Clear();
                         ExpensesComboBox.Text = "";
