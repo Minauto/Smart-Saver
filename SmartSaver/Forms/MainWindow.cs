@@ -80,7 +80,6 @@ namespace SmartSaver
             //SpendingsChart visible after Spendings button click
             SpendingsChart.Visible = true;
 
-            Console.WriteLine("ASD AS GYVAS");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
