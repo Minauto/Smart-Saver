@@ -12,6 +12,7 @@ namespace SmartSaver
         {
             InitializeComponent();
             this.logWin = logWin;
+            GenderComboBox.DataSource = Enum.GetValues(typeof(Gender));
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -27,8 +28,9 @@ namespace SmartSaver
             {
                 if (PasswordTextBox.Text == ConfirmTextBox.Text)
                 {
-
-                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text))
+                    Gender gender;
+                    Enum.TryParse<Gender>(GenderComboBox.SelectedValue.ToString(), out gender);
+                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, gender))
                     {
                         this.Close();
                         logWin.Show();

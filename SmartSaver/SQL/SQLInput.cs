@@ -16,10 +16,10 @@ namespace SmartSaver
 
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-        public bool CreateAccount (string username, string password, string name, string surname)
+        public bool CreateAccount (string username, string password, string name, string surname, Gender gender)
         {
-            
 
+            string genderStr = gender.ToString();
             SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From Account where Username='" + username + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -33,7 +33,7 @@ namespace SmartSaver
                 HashSalt hashSalt = HashSalt.GenerateSaltedHash(16, password);
                 //Console.WriteLine(hashSalt.Hash + " " + hashSalt.Salt);
 
-                cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname, Hash, Salt) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "')";  //SQL sentences
+                cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname, Hash, Salt, Gender) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "', '" + genderStr + "')";  //SQL sentences
                 cmd.Connection = con;
 
                 con.Open();
@@ -58,7 +58,6 @@ namespace SmartSaver
                 return false;
             }
         }
-
         public void CreateExpenses(int UserId, float Expenses, String ExpensesType, DateTime Date)
         {
             SqlCommand cmd = new SqlCommand();
@@ -119,7 +118,7 @@ namespace SmartSaver
             con.Close();
         }
 
-        public void AddExpensesType (int userId, string NewExpenseType)
+        public bool AddExpensesType (int userId, string NewExpenseType)
         {
             
 
@@ -157,14 +156,38 @@ namespace SmartSaver
 
                 }
                 con.Close();
+                return true;
             }
             else
             {
                 MessageBox.Show("Type already exists!");
+                return false;
             }
+            
+        }
 
+        public void AddLimit(int userId, int Limit)
+        {
 
-                
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "UPDATE Account SET Limit = '" + Limit + "' WHERE Id = '" + userId + "'";
+            cmd.Connection = con;
+
+            
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Limit Set");
+            }
+            catch (Exception)
+            {
+
+            }
+            con.Close();
         }
         
     }

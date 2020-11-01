@@ -32,34 +32,17 @@ public class Account
 
 	public int Progress { get; set; }
 
-	public bool LimitSet { get; set; }
+	public Gender gender { get; set; }
 
-	public Account(string newNickname, string newName, string newSurname, int newUserId)
+	public Account(string newNickname, string newName, string newSurname, int newUserId, Gender newGender, int newLimit)
 	{
-		//Tweak, when creating log in.
 		Nickname = newNickname;
 		Name = newName;
 		Surname = newSurname;
 		UserId = newUserId;
-		//Prehash
-
-		///Preset, maybe some could be writen in
-
-		Limit = 0;
+		gender = newGender;
+		Limit = newLimit;
 	}
-
-	//Setting new goal
-	public void updateLimit(int GoalAmmount)
-    {
-		if (Limit < GoalAmmount)
-        {
-			Limit = 0;
-        }
-		else
-        {
-			Limit -= GoalAmmount;
-        }
-    }
 
 	//Function to set a new Password
 	public void changePassword(string FirstNewPassword, string SecondNewPassword)
