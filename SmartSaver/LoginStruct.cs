@@ -12,5 +12,7 @@ namespace SmartSaver
         public String name;
         public String surname;
         public int userId;
+        public Gender gender;
+        public int limit;
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gender.cs" />
     <Compile Include="JSONUtils.cs" />
     <Compile Include="SQL\SQLExpensesTypesList.cs" />
     <Compile Include="LoginStruct.cs" />

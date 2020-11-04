@@ -42,7 +42,10 @@ namespace SmartSaver.Forms
         {
             if(CustomizeComboBox.Text != "")
             {
-                sqlIn.AddExpensesType(account.UserId, CustomizeComboBox.Text);
+                if (sqlIn.AddExpensesType(account.UserId, CustomizeComboBox.Text))
+                {
+                    MessageBox.Show("Category added");
+                }
                 CustomizeComboBox.Text = "";
                 RefreshTypesList(account.UserId);
             }
@@ -55,9 +58,19 @@ namespace SmartSaver.Forms
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-                sqlRemove.Remove(account.UserId, CustomizeComboBox.Text);
+            if (CustomizeComboBox.Text != "")
+            {
+                if(sqlRemove.Remove(account.UserId, CustomizeComboBox.Text))
+                {
+                    MessageBox.Show("Category removed");
+                }
                 CustomizeComboBox.Text = "";
                 RefreshTypesList(account.UserId);
+            }
+            else
+            {
+                MessageBox.Show("Box Is Empty!");
+            }
         }
 
         private void saveToFileButton_Click(object sender, EventArgs e)

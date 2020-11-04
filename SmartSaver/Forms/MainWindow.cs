@@ -18,7 +18,7 @@ namespace SmartSaver
         SQLInput sqlIn = new SQLInput();
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
-        private String monthlyExpenses;
+        private float monthlyExpenses;
         List<String> typesList = new List<string>();
 
 
@@ -26,40 +26,43 @@ namespace SmartSaver
         Series SpendingsSeries;
 
 
-        public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId)
+        public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId, Gender gender, int limit)
         {
             InitializeComponent();
 
             SpendingsChart.Visible = true;
             SpendingsSeries = new Series();
             this.logWin = logWin;
-            account = new Account(username, name, surname, userId);
-            monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(userId));
-            LimitProgressBar.Value = account.Limit;
+            account = new Account(username, name, surname, userId, gender, limit);
 
-            ReloadData();
+            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(userId);
+            LimitProgressBar.Maximum = (int) account.Limit;
+            monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
-            //SpendingsChart initialization
 
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
             loadChart();
 
+            String prefix = "";
+            if (gender == Gender.Male)
+                prefix = "Mr. ";
+            if (gender == Gender.Female)
+                prefix = "Mrs. ";
+            DisplayNameLabel.Text = "Hello, " + prefix + name + "!";
 
-            DisplayNameLabel.Text = "Hello, " + name + "!";
-            monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
-            MonthlyGoalText();
+            ReloadData();
         }
 
         private void MonthlyGoalText ()
         {
-            if (account.LimitSet)
+            //////////////////////////////////////
+            if (account.Limit > 0)
             {
-                if (account.Limit > 0)
+                if (account.Limit - monthlyExpenses > 0)
                 {
-                    MonthlyGoalLabel.Text = "Remaining money to spend this month: €" + account.Limit;
-                    UpdateProgressBar();
+                    MonthlyGoalLabel.Text = "Remaining money to spend this month: €" + (account.Limit - monthlyExpenses);
                 }
                 else
                 {
@@ -68,16 +71,14 @@ namespace SmartSaver
             }
             else
             {
-                MonthlyGoalLabel.Text = "No limit set yet.";
+                MonthlyGoalLabel.Text = "Limit not set";
             }
+            UpdateProgressBar();
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
             HideAll();
             dataGridView1.Show();
-
-
-            //SpendingsChart visible after Spendings button click
             SpendingsChart.Visible = true;
 
         }
@@ -131,12 +132,6 @@ namespace SmartSaver
                     try
                     {
                         sqlIn.CreateExpenses(account.UserId, float.Parse(AmountTextBox.Text), ExpensesComboBox.Text, DateTime.Now);
-                        account.updateLimit(int.Parse(AmountTextBox.Text));
-                        if (account.LimitSet)
-                        {
-                            UpdateProgressBar();
-                        }
-                        MonthlyGoalText();
                         AmountTextBox.Clear();
                         ExpensesComboBox.Text = "";
                         ReloadData();
@@ -175,13 +170,14 @@ namespace SmartSaver
             dataGridView1.Columns["Date"].Width = 120;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            monthlyExpenses = Convert.ToString(sqlExpensesList.GetSumOfExpenses(account.UserId));
+            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
             RefreshTypesList(account.UserId);
 
             loadChart();
 
+            MonthlyGoalText();
         }
 
         private void logOutLabel_Click(object sender, EventArgs e)
@@ -217,9 +213,10 @@ namespace SmartSaver
                     try
                     {
                         account.Limit = int.Parse(LimitAmountTextBox.Text);
-                        SetLimitProgressBar();
-                        account.LimitSet = true;
-                        MessageBox.Show("Limit set");
+                        sqlIn.AddLimit(account.UserId, account.Limit);
+
+                        LimitProgressBar.Maximum = account.Limit;
+
                         MonthlyGoalText();
                         LimitAmountTextBox.Clear();
                     }
@@ -272,18 +269,16 @@ namespace SmartSaver
             openChildForm(new Settings(account));
         }
 
-        private void SetLimitProgressBar()
-        {
-            int maximumLimit = account.Limit;
-            LimitProgressBar.Maximum = maximumLimit;
-            LimitProgressBar.Value = account.Limit;
-        }
-
         private void UpdateProgressBar()
         {
-            LimitProgressBar.Value = account.Limit;
-            if (LimitProgressBar.Value == 0)
+            if (account.Limit >= (int)monthlyExpenses)
             {
+                LimitProgressBar.Value = (int)monthlyExpenses;
+                LimitProgressBar.OuterColor = Color.Gray;
+            }
+            else
+            {
+                LimitProgressBar.Value = LimitProgressBar.Maximum;
                 LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
             }
         }
@@ -294,21 +289,6 @@ namespace SmartSaver
         {
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
-            //dataGridView1.DataSource = sTable;
-
-            //List<String> TypeList = sqlExpTypesList.GetExpensesTypes(account.UserId);
-
-            /* int x = SpendingsSeries.Points.Count;
-             x++;
-             foreach (String type in TypeList)
-             {
-                 int sumOfType = ExpencesTable.Sum(x => x.Expences);
-
-
-                 SpendingsSeries.Points.AddXY(x, row["Expenses"]);
-                 x++;
-             }*/
-
 
 
             int x = SpendingsSeries.Points.Count;

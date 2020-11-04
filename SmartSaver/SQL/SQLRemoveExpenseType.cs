@@ -17,7 +17,7 @@ namespace SmartSaver.SQL
 
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-        public void Remove(int userId, string expenseType)
+        public bool Remove(int userId, string expenseType)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -29,13 +29,15 @@ namespace SmartSaver.SQL
             try
             {
                 cmd.ExecuteNonQuery();
-
+                con.Close();
+                return true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Failed To Delete");
+                return false;
             }
-            con.Close();
+
 
         }
     }

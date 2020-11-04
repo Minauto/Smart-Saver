@@ -42,6 +42,8 @@
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.ConfirmLbl = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
+            this.GenderComboBox = new System.Windows.Forms.ComboBox();
+            this.GenderLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FirstNameLbl
@@ -128,7 +130,7 @@
             this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.UsernameTextBox.Location = new System.Drawing.Point(17, 125);
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(338, 26);
+            this.UsernameTextBox.Size = new System.Drawing.Size(159, 26);
             this.UsernameTextBox.TabIndex = 3;
             // 
             // PasswordLbl
@@ -173,12 +175,34 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // GenderComboBox
+            // 
+            this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
+            this.GenderComboBox.FormattingEnabled = true;
+            this.GenderComboBox.Location = new System.Drawing.Point(196, 125);
+            this.GenderComboBox.Name = "GenderComboBox";
+            this.GenderComboBox.Size = new System.Drawing.Size(159, 26);
+            this.GenderComboBox.TabIndex = 14;
+            // 
+            // GenderLabel
+            // 
+            this.GenderLabel.AutoSize = true;
+            this.GenderLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.GenderLabel.Location = new System.Drawing.Point(192, 101);
+            this.GenderLabel.Name = "GenderLabel";
+            this.GenderLabel.Size = new System.Drawing.Size(74, 21);
+            this.GenderLabel.TabIndex = 15;
+            this.GenderLabel.Text = "Gender:";
+            // 
             // SignUpWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(381, 242);
+            this.Controls.Add(this.GenderLabel);
+            this.Controls.Add(this.GenderComboBox);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ConfirmLbl);
             this.Controls.Add(this.PasswordTextBox);
@@ -215,5 +239,7 @@
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label ConfirmLbl;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label GenderLabel;
+        private System.Windows.Forms.ComboBox GenderComboBox;
     }
 }
