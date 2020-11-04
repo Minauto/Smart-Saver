@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Linq;
+using CustomExtensions; 
 
 namespace SmartSaver
 {
@@ -241,10 +242,7 @@ namespace SmartSaver
         {
             ExpensesComboBox.Items.Clear();
             typesList = sqlExpTypesList.GetExpensesTypes(userId);
-            for (int i = 0; i < typesList.Count; i++)
-            {
-                ExpensesComboBox.Items.Add(typesList[i]);
-            }
+            ExpensesComboBox = typesList.ToComboBox();
         }
 
 

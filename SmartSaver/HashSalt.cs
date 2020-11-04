@@ -13,7 +13,7 @@ namespace SmartSaver
         public string Salt { get; set; }
 
 
-        public static HashSalt GenerateSaltedHash(int size, string password)
+        public static HashSalt GenerateSaltedHash(string password, int size = 16)
         {
             var saltBytes = new byte[size];
             var provider = new RNGCryptoServiceProvider();

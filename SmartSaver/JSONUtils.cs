@@ -11,10 +11,10 @@ namespace SmartSaver
 {
     public class JSONUtils
     {
-        public static void saveData (DataTable dt, string fileName)
+        public static void saveData (DataTable dataTable, string fileName)
         {
             string JSONString = string.Empty;
-            JSONString = JsonConvert.SerializeObject(dt);
+            JSONString = JsonConvert.SerializeObject(dataTable);
 
             var wfile = new StreamWriter(fileName);
             wfile.Write(JSONString);
