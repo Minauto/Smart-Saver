@@ -88,7 +88,7 @@ namespace SmartSaver.Forms
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                JSONUtils.saveData(sqlExpensesList.GetExpenses(account.UserId), saveFileDialog.FileName);
+                JSONUtils.saveData(dataTable : sqlExpensesList.GetExpenses(account.UserId), fileName : saveFileDialog.FileName);
             }
         }
 

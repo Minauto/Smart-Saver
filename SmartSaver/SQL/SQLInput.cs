@@ -30,8 +30,7 @@ namespace SmartSaver
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
 
-                HashSalt hashSalt = HashSalt.GenerateSaltedHash(16, password);
-                //Console.WriteLine(hashSalt.Hash + " " + hashSalt.Salt);
+                HashSalt hashSalt = HashSalt.GenerateSaltedHash(password);
 
                 cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname, Hash, Salt, Gender) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "', '" + genderStr + "')";  //SQL sentences
                 cmd.Connection = con;
