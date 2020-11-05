@@ -1,18 +1,29 @@
 using SmartSaver;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 /// <summary>
 /// WORK IN PROGRESS
 /// </summary>
 
-public class Account
+public class Account : INotifyPropertyChanged
 {
 	//Nick of the account
 	public string Nickname { get; set; }
 	//Name of the person
-	public string Name { get; set; }
+	private string name;
+	public string Name
+	{ 
+		get { return name; }
+        set
+        {
+			if (value == name) return;
+			name = value;
+			OnPropertyChanged("Name");
+        }
+	}
 	//Surname of the person
 	public string Surname { get; set; }
 	//(Optional) Users Age
@@ -44,8 +55,8 @@ public class Account
 		Limit = newLimit;
 	}
 
-	//Function to set a new Password
-	public void changePassword(string FirstNewPassword, string SecondNewPassword)
+    //Function to set a new Password
+    public void changePassword(string FirstNewPassword, string SecondNewPassword)
     {
 		if(FirstNewPassword == SecondNewPassword)
         {
@@ -66,5 +77,15 @@ public class Account
 		//{
 		Nickname = WantedNickname;
         //}
+    }
+
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected virtual void OnPropertyChanged(string propertyName)
+    {
+		if (PropertyChanged != null)
+        {
+			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

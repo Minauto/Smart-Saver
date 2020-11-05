@@ -26,8 +26,8 @@ namespace SmartSaver.Forms
             InitializeComponent();
             this.account = account;
             RefreshTypesList(this.account.UserId);
+            usernameLabel.Text = account.Name;
         }
-
         private void RefreshTypesList(int userId)
         {
             CustomizeComboBox.Items.Clear();
@@ -122,6 +122,21 @@ namespace SmartSaver.Forms
                 expensesDataTable.Visible = true;
             }
         }
+
+        private void changeNameButton_Click(object sender, EventArgs e)
+        {
+            ShowChangeNickname();
+        }
+
+        private void ShowChangeNickname()
+        {
+            ChangeNamePanel.Visible = true;
+        }
+
+        private void ExitChangeNamePanel_Click(object sender, EventArgs e)
+        {
+            ChangeNamePanel.Visible = false;
+            ChangeNameTextBox.Text = "";
+        }
     }
-    
 }

@@ -35,7 +35,15 @@
             this.saveToFileButton = new System.Windows.Forms.Button();
             this.openFromFile = new System.Windows.Forms.Button();
             this.expensesDataTable = new System.Windows.Forms.DataGridView();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.changeNameButton = new System.Windows.Forms.Button();
+            this.ChangeNamePanel = new System.Windows.Forms.Panel();
+            this.ExitChangeNamePanel = new System.Windows.Forms.Label();
+            this.ChangeNameTextBox = new System.Windows.Forms.TextBox();
+            this.SetNewNameButton = new System.Windows.Forms.Button();
+            this.DesiredNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.expensesDataTable)).BeginInit();
+            this.ChangeNamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CustomizeComboBox
@@ -91,7 +99,7 @@
             // 
             this.saveToFileButton.BackColor = System.Drawing.Color.White;
             this.saveToFileButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.saveToFileButton.Location = new System.Drawing.Point(12, 211);
+            this.saveToFileButton.Location = new System.Drawing.Point(12, 166);
             this.saveToFileButton.Name = "saveToFileButton";
             this.saveToFileButton.Size = new System.Drawing.Size(124, 40);
             this.saveToFileButton.TabIndex = 4;
@@ -103,7 +111,7 @@
             // 
             this.openFromFile.BackColor = System.Drawing.Color.White;
             this.openFromFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openFromFile.Location = new System.Drawing.Point(12, 297);
+            this.openFromFile.Location = new System.Drawing.Point(12, 212);
             this.openFromFile.Name = "openFromFile";
             this.openFromFile.Size = new System.Drawing.Size(124, 40);
             this.openFromFile.TabIndex = 5;
@@ -122,12 +130,99 @@
             this.expensesDataTable.TabIndex = 6;
             this.expensesDataTable.Visible = false;
             // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.usernameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.usernameLabel.Location = new System.Drawing.Point(9, 461);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(61, 16);
+            this.usernameLabel.TabIndex = 7;
+            this.usernameLabel.Text = "username";
+            // 
+            // changeNameButton
+            // 
+            this.changeNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.changeNameButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.changeNameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeNameButton.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.changeNameButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.changeNameButton.Location = new System.Drawing.Point(12, 429);
+            this.changeNameButton.Name = "changeNameButton";
+            this.changeNameButton.Size = new System.Drawing.Size(124, 29);
+            this.changeNameButton.TabIndex = 8;
+            this.changeNameButton.Text = "Change name";
+            this.changeNameButton.UseVisualStyleBackColor = false;
+            this.changeNameButton.Click += new System.EventHandler(this.changeNameButton_Click);
+            // 
+            // ChangeNamePanel
+            // 
+            this.ChangeNamePanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ChangeNamePanel.Controls.Add(this.ExitChangeNamePanel);
+            this.ChangeNamePanel.Controls.Add(this.ChangeNameTextBox);
+            this.ChangeNamePanel.Controls.Add(this.SetNewNameButton);
+            this.ChangeNamePanel.Controls.Add(this.DesiredNameLabel);
+            this.ChangeNamePanel.Location = new System.Drawing.Point(12, 320);
+            this.ChangeNamePanel.Name = "ChangeNamePanel";
+            this.ChangeNamePanel.Size = new System.Drawing.Size(203, 103);
+            this.ChangeNamePanel.TabIndex = 15;
+            this.ChangeNamePanel.Visible = false;
+            // 
+            // ExitChangeNamePanel
+            // 
+            this.ExitChangeNamePanel.AutoSize = true;
+            this.ExitChangeNamePanel.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.ExitChangeNamePanel.Location = new System.Drawing.Point(182, 0);
+            this.ExitChangeNamePanel.Name = "ExitChangeNamePanel";
+            this.ExitChangeNamePanel.Size = new System.Drawing.Size(18, 19);
+            this.ExitChangeNamePanel.TabIndex = 13;
+            this.ExitChangeNamePanel.Text = "X";
+            this.ExitChangeNamePanel.Click += new System.EventHandler(this.ExitChangeNamePanel_Click);
+            // 
+            // ChangeNameTextBox
+            // 
+            this.ChangeNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.ChangeNameTextBox.Location = new System.Drawing.Point(3, 33);
+            this.ChangeNameTextBox.Name = "ChangeNameTextBox";
+            this.ChangeNameTextBox.Size = new System.Drawing.Size(197, 27);
+            this.ChangeNameTextBox.TabIndex = 1;
+            // 
+            // SetNewNameButton
+            // 
+            this.SetNewNameButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.SetNewNameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetNewNameButton.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.SetNewNameButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SetNewNameButton.Location = new System.Drawing.Point(3, 66);
+            this.SetNewNameButton.Name = "SetNewNameButton";
+            this.SetNewNameButton.Size = new System.Drawing.Size(197, 29);
+            this.SetNewNameButton.TabIndex = 8;
+            this.SetNewNameButton.Text = "Set";
+            this.SetNewNameButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SetNewNameButton.UseVisualStyleBackColor = false;
+            // 
+            // DesiredNameLabel
+            // 
+            this.DesiredNameLabel.AutoSize = true;
+            this.DesiredNameLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DesiredNameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DesiredNameLabel.Location = new System.Drawing.Point(3, 9);
+            this.DesiredNameLabel.Name = "DesiredNameLabel";
+            this.DesiredNameLabel.Size = new System.Drawing.Size(121, 21);
+            this.DesiredNameLabel.TabIndex = 8;
+            this.DesiredNameLabel.Text = "Desired name:";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1076, 483);
+            this.Controls.Add(this.ChangeNamePanel);
+            this.Controls.Add(this.changeNameButton);
+            this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.expensesDataTable);
             this.Controls.Add(this.openFromFile);
             this.Controls.Add(this.saveToFileButton);
@@ -138,6 +233,8 @@
             this.Name = "Settings";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.expensesDataTable)).EndInit();
+            this.ChangeNamePanel.ResumeLayout(false);
+            this.ChangeNamePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +249,12 @@
         private System.Windows.Forms.Button saveToFileButton;
         private System.Windows.Forms.Button openFromFile;
         private System.Windows.Forms.DataGridView expensesDataTable;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Button changeNameButton;
+        private System.Windows.Forms.Panel ChangeNamePanel;
+        private System.Windows.Forms.Label ExitChangeNamePanel;
+        private System.Windows.Forms.TextBox ChangeNameTextBox;
+        private System.Windows.Forms.Button SetNewNameButton;
+        private System.Windows.Forms.Label DesiredNameLabel;
     }
 }
