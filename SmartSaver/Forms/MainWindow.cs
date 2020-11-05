@@ -242,7 +242,7 @@ namespace SmartSaver
         {
             ExpensesComboBox.Items.Clear();
             typesList = sqlExpTypesList.GetExpensesTypes(userId);
-            ExpensesComboBox = typesList.ToComboBox();
+            ExpensesComboBox = typesList.ToComboBox(ExpensesComboBox);
         }
 
 

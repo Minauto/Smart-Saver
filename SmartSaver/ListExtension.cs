@@ -9,9 +9,8 @@ namespace CustomExtensions
 {
     public static class ListExtension
     {
-        public static ComboBox ToComboBox<T> (this List<T> list)
+        public static ComboBox ToComboBox<T> (this List<T> list, ComboBox comboBox)
         {
-            ComboBox comboBox = new ComboBox();
 
             foreach (T item in list)
             {
