@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpWindow));
             this.FirstNameLbl = new System.Windows.Forms.Label();
             this.SignUpButton = new System.Windows.Forms.Button();
-            this.LastNameLbl = new System.Windows.Forms.Label();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
-            this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.CreateYrUserLbl = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.ConfirmTextBox = new System.Windows.Forms.TextBox();
@@ -53,9 +51,9 @@
             this.FirstNameLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.FirstNameLbl.Location = new System.Drawing.Point(16, 48);
             this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(91, 21);
+            this.FirstNameLbl.Size = new System.Drawing.Size(93, 21);
             this.FirstNameLbl.TabIndex = 9;
-            this.FirstNameLbl.Text = "First Name";
+            this.FirstNameLbl.Text = "Nickname:";
             // 
             // SignUpButton
             // 
@@ -68,16 +66,6 @@
             this.SignUpButton.UseVisualStyleBackColor = true;
             this.SignUpButton.Click += new System.EventHandler(this.SignUpButton_Click);
             // 
-            // LastNameLbl
-            // 
-            this.LastNameLbl.AutoSize = true;
-            this.LastNameLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.LastNameLbl.Location = new System.Drawing.Point(192, 48);
-            this.LastNameLbl.Name = "LastNameLbl";
-            this.LastNameLbl.Size = new System.Drawing.Size(93, 21);
-            this.LastNameLbl.TabIndex = 10;
-            this.LastNameLbl.Text = "Last Name";
-            // 
             // FirstNameTextBox
             // 
             this.FirstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -85,14 +73,6 @@
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(159, 26);
             this.FirstNameTextBox.TabIndex = 1;
-            // 
-            // LastNameTextBox
-            // 
-            this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LastNameTextBox.Location = new System.Drawing.Point(196, 72);
-            this.LastNameTextBox.Name = "LastNameTextBox";
-            this.LastNameTextBox.Size = new System.Drawing.Size(159, 26);
-            this.LastNameTextBox.TabIndex = 2;
             // 
             // CreateYrUserLbl
             // 
@@ -130,7 +110,7 @@
             this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.UsernameTextBox.Location = new System.Drawing.Point(17, 125);
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(159, 26);
+            this.UsernameTextBox.Size = new System.Drawing.Size(338, 26);
             this.UsernameTextBox.TabIndex = 3;
             // 
             // PasswordLbl
@@ -180,7 +160,7 @@
             this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
             this.GenderComboBox.FormattingEnabled = true;
-            this.GenderComboBox.Location = new System.Drawing.Point(196, 125);
+            this.GenderComboBox.Location = new System.Drawing.Point(196, 72);
             this.GenderComboBox.Name = "GenderComboBox";
             this.GenderComboBox.Size = new System.Drawing.Size(159, 26);
             this.GenderComboBox.TabIndex = 14;
@@ -189,7 +169,7 @@
             // 
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.GenderLabel.Location = new System.Drawing.Point(192, 101);
+            this.GenderLabel.Location = new System.Drawing.Point(192, 48);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(74, 21);
             this.GenderLabel.TabIndex = 15;
@@ -211,9 +191,7 @@
             this.Controls.Add(this.ConfirmTextBox);
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.CreateYrUserLbl);
-            this.Controls.Add(this.LastNameTextBox);
             this.Controls.Add(this.FirstNameTextBox);
-            this.Controls.Add(this.LastNameLbl);
             this.Controls.Add(this.SignUpButton);
             this.Controls.Add(this.FirstNameLbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -228,9 +206,7 @@
 
         private System.Windows.Forms.Label FirstNameLbl;
         private System.Windows.Forms.Button SignUpButton;
-        private System.Windows.Forms.Label LastNameLbl;
         private System.Windows.Forms.TextBox FirstNameTextBox;
-        private System.Windows.Forms.TextBox LastNameTextBox;
         private System.Windows.Forms.Label CreateYrUserLbl;
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.TextBox ConfirmTextBox;

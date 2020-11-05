@@ -23,8 +23,7 @@ namespace SmartSaver
                 reader.Read();
 
                 String userRead = reader["Username"].ToString();
-                String nameRead = reader["Name"].ToString();
-                String surNameRead = reader["Surname"].ToString();
+                String nameRead = reader["Nickname"].ToString();
                 int IdRead = Int32.Parse(reader["Id"].ToString());
                 Gender genderRead;
                 Enum.TryParse<Gender>(reader["Gender"].ToString(), out genderRead);
@@ -35,7 +34,6 @@ namespace SmartSaver
 
                 logInStr.username = userRead;
                 logInStr.name = nameRead;
-                logInStr.surname = surNameRead;
                 logInStr.userId = IdRead;
                 logInStr.gender = genderRead;
                 logInStr.limit = limitRead;

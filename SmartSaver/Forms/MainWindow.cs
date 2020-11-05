@@ -27,17 +27,17 @@ namespace SmartSaver
         Series SpendingsSeries;
 
 
-        public MainWindow(LoginWindow logWin, String username, String name, String surname, int userId, Gender gender, int limit)
+        public MainWindow(LoginWindow logWin, String username, String name, int userId, Gender gender, int limit)
         {
             InitializeComponent();
 
             SpendingsChart.Visible = true;
             SpendingsSeries = new Series();
             this.logWin = logWin;
-            account = new Account(username, name, surname, userId, gender, limit);
+            account = new Account(username, name, userId, gender, limit);
 
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(userId);
-            LimitProgressBar.Maximum = (int) account.Limit;
+            LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
 
@@ -46,17 +46,17 @@ namespace SmartSaver
             SpendingsSeries.ChartType = SeriesChartType.Column;
             loadChart();
 
-            String prefix = "";
+            /*String prefix = "";
             if (gender == Gender.Male)
                 prefix = "Mr. ";
             if (gender == Gender.Female)
                 prefix = "Mrs. ";
             DisplayNameLabel.Text = "Hello, " + prefix + name + "!";
-
+            */
             ReloadData();
         }
 
-        private void MonthlyGoalText ()
+        private void MonthlyGoalText()
         {
             //////////////////////////////////////
             if (account.Limit > 0)
@@ -152,7 +152,7 @@ namespace SmartSaver
             {
                 MessageBox.Show("Fill In Empty Fields");
             }
-            
+
 
         }
 
@@ -161,7 +161,7 @@ namespace SmartSaver
 
         }
 
-        private void ReloadData()
+        public void ReloadData()
         {
 
             DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
@@ -179,6 +179,8 @@ namespace SmartSaver
             loadChart();
 
             MonthlyGoalText();
+
+            loadGreetings();
         }
 
         private void logOutLabel_Click(object sender, EventArgs e)
@@ -193,7 +195,7 @@ namespace SmartSaver
             ShowSetAGoal();
         }
 
-        private void ShowSetAGoal ()
+        private void ShowSetAGoal()
         {
             SetAGoalPanel.Visible = true;
         }
@@ -250,7 +252,7 @@ namespace SmartSaver
         private void openChildForm(Form childForm)
         {
             HideAll();
-            
+
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -261,10 +263,10 @@ namespace SmartSaver
             childForm.Show();
         }
 
-        
+
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new Settings(account));
+            openChildForm(new Settings(account,this));
         }
 
         private void UpdateProgressBar()
@@ -296,7 +298,18 @@ namespace SmartSaver
                 SpendingsSeries.Points.AddXY(x, row["Expenses"]);
                 x++;
             }
-    }
+        }
+
+        private void loadGreetings()
+        {
+            String prefix = "";
+            if (account.gender == Gender.Male)
+                prefix = "Mr. ";
+            if (account.gender == Gender.Female)
+                prefix = "Mrs. ";
+            DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
+        }
+
     }
 }
 

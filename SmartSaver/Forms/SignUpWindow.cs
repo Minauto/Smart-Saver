@@ -24,13 +24,13 @@ namespace SmartSaver
         private void SignUpButton_Click(object sender, EventArgs e)
         {
 
-            if (UsernameTextBox.Text != "" && PasswordTextBox.Text != "" && FirstNameTextBox.Text != "" && LastNameTextBox.Text != "" && ConfirmTextBox.Text != "")
+            if (UsernameTextBox.Text != "" && PasswordTextBox.Text != "" && FirstNameTextBox.Text != "" && ConfirmTextBox.Text != "")
             {
                 if (PasswordTextBox.Text == ConfirmTextBox.Text)
                 {
                     Gender gender;
                     Enum.TryParse<Gender>(GenderComboBox.SelectedValue.ToString(), out gender);
-                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text, LastNameTextBox.Text, gender))
+                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text,  gender))
                     {
                         this.Close();
                         logWin.Show();

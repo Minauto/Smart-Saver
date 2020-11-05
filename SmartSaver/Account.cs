@@ -2,6 +2,7 @@ using SmartSaver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 /// <summary>
@@ -24,8 +25,6 @@ public class Account : INotifyPropertyChanged
 			OnPropertyChanged("Name");
         }
 	}
-	//Surname of the person
-	public string Surname { get; set; }
 	//(Optional) Users Age
 	public int Age { get; set; }
 	//(Temporary) Users Password *Untill we do hashing*
@@ -45,11 +44,10 @@ public class Account : INotifyPropertyChanged
 
 	public Gender gender { get; set; }
 
-	public Account(string newNickname, string newName, string newSurname, int newUserId, Gender newGender, int newLimit)
+	public Account(string newNickname, string newName, int newUserId, Gender newGender, int newLimit)
 	{
 		Nickname = newNickname;
 		Name = newName;
-		Surname = newSurname;
 		UserId = newUserId;
 		gender = newGender;
 		Limit = newLimit;
@@ -86,6 +84,6 @@ public class Account : INotifyPropertyChanged
 		if (PropertyChanged != null)
         {
 			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+		}
     }
 }

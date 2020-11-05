@@ -30,7 +30,7 @@ namespace SmartSaver
                 }
 
                 this.Hide();
-                MainWindow loggedInWindow = new MainWindow(this, LogInStr.username, LogInStr.name, LogInStr.surname, LogInStr.userId, LogInStr.gender, LogInStr.limit);
+                MainWindow loggedInWindow = new MainWindow(this, LogInStr.username, LogInStr.name, LogInStr.userId, LogInStr.gender, LogInStr.limit);
                 loggedInWindow.Show();
 
             }

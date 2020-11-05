@@ -8,11 +8,11 @@ namespace SmartSaver
 {
     public struct LoginStruct
     {
-        public String username;
-        public String name;
-        public String surname;
-        public int userId;
-        public Gender gender;
-        public int limit;
+        public String username { get; set; }
+        public String name { get; set; }
+        public String surname { get; set; }
+        public int userId { get; set; }
+        public Gender gender { get; set; }
+        public int limit { get; set; }
     }
 }

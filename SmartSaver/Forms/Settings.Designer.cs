@@ -202,6 +202,7 @@
             this.SetNewNameButton.Text = "Set";
             this.SetNewNameButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.SetNewNameButton.UseVisualStyleBackColor = false;
+            this.SetNewNameButton.Click += new System.EventHandler(this.SetNewNameButton_Click);
             // 
             // DesiredNameLabel
             // 

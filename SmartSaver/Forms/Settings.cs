@@ -20,13 +20,15 @@ namespace SmartSaver.Forms
         SQLInput sqlIn = new SQLInput();
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
+        MainWindow mainWindow;
 
-        public Settings(Account account)
+        public Settings(Account account, MainWindow mainWindow)
         {
             InitializeComponent();
             this.account = account;
             RefreshTypesList(this.account.UserId);
             usernameLabel.Text = account.Name;
+            this.mainWindow = mainWindow;
         }
         private void RefreshTypesList(int userId)
         {
@@ -137,6 +139,14 @@ namespace SmartSaver.Forms
         {
             ChangeNamePanel.Visible = false;
             ChangeNameTextBox.Text = "";
+        }
+
+        private void SetNewNameButton_Click(object sender, EventArgs e)
+        {
+            account.Name = ChangeNameTextBox.Text;
+            mainWindow.ReloadData();
+            usernameLabel.Text = account.Name;
+            sqlIn.updateName(account.UserId,account.Name);
         }
     }
 }

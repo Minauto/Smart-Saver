@@ -16,7 +16,7 @@ namespace SmartSaver
 
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-        public bool CreateAccount (string username, string password, string name, string surname, Gender gender)
+        public bool CreateAccount (string username, string password, string name, Gender gender)
         {
 
             string genderStr = gender.ToString();
@@ -32,7 +32,7 @@ namespace SmartSaver
 
                 HashSalt hashSalt = HashSalt.GenerateSaltedHash(password);
 
-                cmd.CommandText = "INSERT Account  (Username, Password, Name, Surname, Hash, Salt, Gender) VALUES ('" + username + "', '" + password + "', '" + name + "', '" + surname + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "', '" + genderStr + "')";  //SQL sentences
+                cmd.CommandText = "INSERT Account  (Username, Nickname, Hash, Salt, Gender) VALUES ('" + username + "', '" + name + "', '" + hashSalt.Hash + "', '" + hashSalt.Salt + "', '" + genderStr + "')";  //SQL sentences
                 cmd.Connection = con;
 
                 con.Open();
@@ -189,5 +189,26 @@ namespace SmartSaver
             con.Close();
         }
         
+        public void updateName(int userId, string name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "UPDATE Account SET Name = '" + name + "' WHERE Id = '" + userId + "'";
+            cmd.Connection = con;
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Name Changed");
+            }
+            catch (Exception)
+            {
+
+            }
+            con.Close();
+        }
     }
 }
