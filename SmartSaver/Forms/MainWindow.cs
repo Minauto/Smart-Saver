@@ -293,8 +293,6 @@ namespace SmartSaver
 
             int x = 0;
 
-            Console.WriteLine(x);
-
             SpendingsChart.Series.Clear();
 
             foreach (var Expence in ExpencesTypes)
@@ -302,7 +300,6 @@ namespace SmartSaver
                 SpendingsChart.Series.Add(Expence);
 
                 var SumOfExpence = ExpencesList.Where(e => e.ExpencesType == Expence).Sum(e => e.ExpencesF);
-                Console.WriteLine(x);
                 SpendingsChart.Series[Expence].Points.AddXY(ExpencesTypes[x], SumOfExpence);
 
                 x++;
