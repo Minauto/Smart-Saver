@@ -40,11 +40,9 @@ namespace SmartSaver
             LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
-
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
-            loadChart();
 
             /*String prefix = "";
             if (gender == Gender.Male)
@@ -264,6 +262,7 @@ namespace SmartSaver
         }
 
 
+        
         private void settingsBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new Settings(account,this));
@@ -283,21 +282,43 @@ namespace SmartSaver
             }
         }
 
-
         //Function that loads SpendingsChart data when the program is started
         private void loadChart()
         {
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
+            
+            List<Expences> ExpencesList = new List<Expences>();
+            ExpencesList = (from DataRow dr in ExpencesTable.Rows
+                            select new Expences()
+                            {
+                                ExpencesF = Convert.ToDecimal(dr["Expenses"]),
+                                ExpencesType = dr["ExpensesType"].ToString(),
+                                Date = Convert.ToDateTime(dr["Date"]),
+                            }).ToList();
 
+            var ExpencesTypes = ExpencesList.Select(e => e.ExpencesType).Distinct().ToList();
 
-            int x = SpendingsSeries.Points.Count;
-            x++;
-            foreach (DataRow row in ExpencesTable.Rows)
+            int x = 0;
+
+            Console.WriteLine(x);
+
+            SpendingsChart.Series.Clear();
+
+            foreach (var Expence in ExpencesTypes)
             {
-                SpendingsSeries.Points.AddXY(x, row["Expenses"]);
+                SpendingsChart.Series.Add(Expence);
+
+                var SumOfExpence = ExpencesList.Where(e => e.ExpencesType == Expence).Sum(e => e.ExpencesF);
+                Console.WriteLine(x);
+                SpendingsChart.Series[Expence].Points.AddXY(ExpencesTypes[x], SumOfExpence);
+
                 x++;
             }
+            SpendingsChart.AlignDataPointsByAxisLabel();
+            SpendingsChart.ChartAreas[0].AxisX.LabelStyle.Angle = 90;
+            SpendingsChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+
         }
 
         private void loadGreetings()
@@ -312,4 +333,3 @@ namespace SmartSaver
 
     }
 }
-

@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="ListExtension.cs" />
+    <Compile Include="Forms\Expences.cs" />
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
