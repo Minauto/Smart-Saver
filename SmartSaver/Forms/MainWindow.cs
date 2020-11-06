@@ -43,14 +43,6 @@ namespace SmartSaver
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
-
-            /*String prefix = "";
-            if (gender == Gender.Male)
-                prefix = "Mr. ";
-            if (gender == Gender.Female)
-                prefix = "Mrs. ";
-            DisplayNameLabel.Text = "Hello, " + prefix + name + "!";
-            */
             ReloadData();
         }
 
