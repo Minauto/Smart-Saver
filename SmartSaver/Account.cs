@@ -25,22 +25,14 @@ public class Account : INotifyPropertyChanged
 			OnPropertyChanged("Name");
         }
 	}
-	//(Optional) Users Age
-	public int Age { get; set; }
 	//(Temporary) Users Password *Untill we do hashing*
 	public string Password { get; set; }
-
-	/// Functional info
-	//Users Balance
-	public string monthlyExpenses { get; set; }
 
 	public int UserId { get; set; }
 
 
 	//Users goal
 	public int Limit { get; set; }
-
-	public int Progress { get; set; }
 
 	public Gender gender { get; set; }
 
