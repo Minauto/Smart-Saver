@@ -63,10 +63,13 @@ namespace SmartSaver
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
+            /*
             HideAll();
             dataGridView1.Show();
             SpendingsChart.Visible = true;
+            */
 
+            openChildForm(new Spendings(account, this));
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -155,7 +158,7 @@ namespace SmartSaver
 
             RefreshTypesList(account.UserId);
 
-            loadChart();
+            loadChart(); 
 
             MonthlyGoalText();
 
@@ -304,6 +307,5 @@ namespace SmartSaver
                 prefix = "Mrs. ";
             DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
         }
-
     }
 }
