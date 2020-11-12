@@ -21,16 +21,13 @@ namespace SmartSaver
         private float monthlyExpenses;
         List<String> typesList = new List<string>();
 
-
         //Used for chart
         Series SpendingsSeries;
-
 
         public MainWindow(LoginWindow logWin, String username, String name, int userId, Gender gender, int limit)
         {
             InitializeComponent();
 
-            SpendingsChart.Visible = true;
             SpendingsSeries = new Series();
             this.logWin = logWin;
             account = new Account(username, name, userId, gender, limit);
@@ -47,7 +44,6 @@ namespace SmartSaver
 
         private void MonthlyGoalText()
         {
-            //////////////////////////////////////
             if (account.Limit > 0)
             {
                 if (account.Limit - monthlyExpenses > 0)
@@ -89,7 +85,6 @@ namespace SmartSaver
             AddExpensePanel.Visible = false;
         }
 
-
         private void ShowAddExpenses()
         {
             AddExpensePanel.Visible = true;
@@ -105,18 +100,15 @@ namespace SmartSaver
             SetAGoalPanel.Visible = false;
             dataGridView1.Hide();
 
-
             //SpendingsChart hidden with others
             SpendingsChart.Visible = false;
         }
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
         {
-
             if (AmountTextBox.Text != "" & ExpensesComboBox.Text != "")
             {
                 Regex regex = new Regex(@"^(?!(?:0|0\.0|0\.00)$)[+]?\d+(\.\d|\.\d[0-9])?$"); // Accepts only positive numbers, up to 2 decimal places
-
                 if (regex.IsMatch(AmountTextBox.Text))
                 {
                     try
@@ -141,8 +133,6 @@ namespace SmartSaver
             {
                 MessageBox.Show("Fill In Empty Fields");
             }
-
-
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -236,7 +226,6 @@ namespace SmartSaver
             ExpensesComboBox = typesList.ToComboBox(ExpensesComboBox);
         }
 
-
         private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
@@ -251,8 +240,6 @@ namespace SmartSaver
             childForm.BringToFront();
             childForm.Show();
         }
-
-
 
         private void settingsBtn_Click(object sender, EventArgs e)
         {
@@ -273,7 +260,6 @@ namespace SmartSaver
             }
         }
 
-        //Function that loads SpendingsChart data when the program is started
         private void loadChart()
         {
             SpendingsSeries.Points.Clear();

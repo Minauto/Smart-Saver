@@ -1,8 +1,6 @@
 ﻿using SmartSaver.SQL;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
 using System.Windows.Forms;
 
 namespace SmartSaver.Forms
@@ -67,56 +65,6 @@ namespace SmartSaver.Forms
             else
             {
                 MessageBox.Show("Box Is Empty!");
-            }
-        }
-
-        private void saveToFileButton_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                InitialDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\res",
-
-                DefaultExt = "json",
-                Filter = "json files (*.json)|*.json",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-            };
-
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                JSONUtils.saveData(dataTable: sqlExpensesList.GetExpenses(account.UserId), fileName: saveFileDialog.FileName);
-            }
-        }
-
-        private void openFromFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                InitialDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\res",
-                Title = "Browse json files",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-
-                DefaultExt = "json",
-                Filter = "json files (*.xml)|*.json",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                DataTable newDataTable = JSONUtils.openData(openFileDialog.FileName);
-
-                expensesDataTable.DataSource = newDataTable;
-                expensesDataTable.ReadOnly = true;
-                expensesDataTable.Columns["Date"].Width = 120;
-                expensesDataTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                expensesDataTable.Visible = true;
             }
         }
 

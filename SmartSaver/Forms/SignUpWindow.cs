@@ -23,7 +23,6 @@ namespace SmartSaver
 
         private void SignUpButton_Click(object sender, EventArgs e)
         {
-
             if (UsernameTextBox.Text != "" && PasswordTextBox.Text != "" && FirstNameTextBox.Text != "" && ConfirmTextBox.Text != "")
             {
                 if (PasswordTextBox.Text == ConfirmTextBox.Text)
@@ -35,12 +34,10 @@ namespace SmartSaver
                         this.Close();
                         logWin.Show();
                     }
-
                     else
                     {
                         MessageBox.Show("Username taken, try another one");
                     }
-
                 }
                 else
                 {
@@ -51,11 +48,6 @@ namespace SmartSaver
             {
                 MessageBox.Show("Fill out missing fields");
             }
-        }
-
-        private void PasswordLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

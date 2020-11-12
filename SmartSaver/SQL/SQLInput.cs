@@ -193,7 +193,7 @@ namespace SmartSaver
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "UPDATE Account SET Name = '" + name + "' WHERE Id = '" + userId + "'";
+            cmd.CommandText = "UPDATE Account SET Nickname = '" + name + "' WHERE Id = '" + userId + "'";
             cmd.Connection = con;
 
             con.Open();
