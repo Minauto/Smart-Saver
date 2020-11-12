@@ -1,6 +1,4 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
-using System.Data;
+﻿using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
