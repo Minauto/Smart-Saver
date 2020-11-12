@@ -1,14 +1,13 @@
-﻿using SmartSaver.Forms;
+﻿using CustomExtensions;
+using SmartSaver.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Linq;
-using CustomExtensions; 
 
 namespace SmartSaver
 {
@@ -254,10 +253,10 @@ namespace SmartSaver
         }
 
 
-        
+
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new Settings(account,this));
+            openChildForm(new Settings(account, this));
         }
 
         private void UpdateProgressBar()
@@ -279,7 +278,7 @@ namespace SmartSaver
         {
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
-            
+
             List<Expences> ExpencesList = new List<Expences>();
             ExpencesList = (from DataRow dr in ExpencesTable.Rows
                             select new Expences()

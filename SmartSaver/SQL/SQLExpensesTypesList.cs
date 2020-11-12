@@ -12,7 +12,7 @@ namespace SmartSaver
         static string workingDirectory = Environment.CurrentDirectory;
         static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database2.mdf";
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
-        
+
         private DataTable dataTable = new DataTable();
 
         private void FillDataTable(int userId)
@@ -29,7 +29,7 @@ namespace SmartSaver
                 con.Close();
                 da.Dispose();
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -42,7 +42,7 @@ namespace SmartSaver
 
             foreach (DataRow row in dataTable.Rows)
             {
-                typesList.Add( row["ExpensesType"].ToString());
+                typesList.Add(row["ExpensesType"].ToString());
             }
 
 
@@ -68,7 +68,7 @@ namespace SmartSaver
 
             }
 
-            if (dt.Rows[0][0].ToString() != "0" )
+            if (dt.Rows[0][0].ToString() != "0")
             {
                 return false;
             }
@@ -76,7 +76,7 @@ namespace SmartSaver
             {
                 return true;
             }
-            
+
         }
 
     }

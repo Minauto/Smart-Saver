@@ -16,7 +16,7 @@ namespace SmartSaver
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginWindow());
-        }   
-        
+        }
+
     }
 }

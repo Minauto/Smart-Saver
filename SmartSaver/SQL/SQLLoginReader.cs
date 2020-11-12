@@ -14,7 +14,7 @@ namespace SmartSaver
 
         public LoginStruct Read(string username)
         {
-  
+
             try
             {
                 con.Open();

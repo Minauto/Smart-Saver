@@ -1,13 +1,8 @@
 ﻿using SmartSaver.SQL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartSaver.Forms
@@ -42,7 +37,7 @@ namespace SmartSaver.Forms
 
         private void AddNewChoiceButton_Click(object sender, EventArgs e)
         {
-            if(CustomizeComboBox.Text != "")
+            if (CustomizeComboBox.Text != "")
             {
                 if (sqlIn.AddExpensesType(account.UserId, CustomizeComboBox.Text))
                 {
@@ -55,14 +50,14 @@ namespace SmartSaver.Forms
             {
                 MessageBox.Show("Box Is Empty!");
             }
-            
+
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             if (CustomizeComboBox.Text != "")
             {
-                if(sqlRemove.Remove(account.UserId, CustomizeComboBox.Text))
+                if (sqlRemove.Remove(account.UserId, CustomizeComboBox.Text))
                 {
                     MessageBox.Show("Category removed");
                 }
@@ -90,7 +85,7 @@ namespace SmartSaver.Forms
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                JSONUtils.saveData(dataTable : sqlExpensesList.GetExpenses(account.UserId), fileName : saveFileDialog.FileName);
+                JSONUtils.saveData(dataTable: sqlExpensesList.GetExpenses(account.UserId), fileName: saveFileDialog.FileName);
             }
         }
 
@@ -146,7 +141,7 @@ namespace SmartSaver.Forms
             account.Name = ChangeNameTextBox.Text;
             mainWindow.ReloadData();
             usernameLabel.Text = account.Name;
-            sqlIn.updateName(account.UserId,account.Name);
+            sqlIn.updateName(account.UserId, account.Name);
         }
     }
 }

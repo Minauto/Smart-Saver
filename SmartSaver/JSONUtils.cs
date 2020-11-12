@@ -6,7 +6,7 @@ namespace SmartSaver
 {
     public class JSONUtils
     {
-        public static void saveData (DataTable dataTable, string fileName)
+        public static void saveData(DataTable dataTable, string fileName)
         {
             string JSONString = string.Empty;
             JSONString = JsonConvert.SerializeObject(dataTable);
@@ -16,7 +16,7 @@ namespace SmartSaver
             wfile.Close();
         }
 
-        public static DataTable openData (string fileName)
+        public static DataTable openData(string fileName)
         {
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(File.ReadAllText(fileName));
             return dt;

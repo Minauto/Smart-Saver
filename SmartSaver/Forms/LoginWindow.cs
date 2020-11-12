@@ -24,7 +24,7 @@ namespace SmartSaver
             {
                 LogInStr = Reader.Read(usernameTxtBx.Text);
                 //checks if table empty, if so adds basic values
-                if (sqlExTypeList.CheckIfEmpty(LogInStr.userId)) 
+                if (sqlExTypeList.CheckIfEmpty(LogInStr.userId))
                 {
                     sqlIn.CreateBaseExpensesTypes(LogInStr.userId);
                 }

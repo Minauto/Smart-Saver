@@ -30,7 +30,7 @@ namespace SmartSaver
                 {
                     Gender gender;
                     Enum.TryParse<Gender>(GenderComboBox.SelectedValue.ToString(), out gender);
-                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text,  gender))
+                    if (accCreator.CreateAccount(UsernameTextBox.Text, PasswordTextBox.Text, FirstNameTextBox.Text, gender))
                     {
                         this.Close();
                         logWin.Show();
@@ -40,7 +40,7 @@ namespace SmartSaver
                     {
                         MessageBox.Show("Username taken, try another one");
                     }
-                    
+
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace SmartSaver
             else
             {
                 MessageBox.Show("Fill out missing fields");
-            } 
+            }
         }
 
         private void PasswordLabel_Click(object sender, EventArgs e)

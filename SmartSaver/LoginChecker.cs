@@ -44,7 +44,8 @@ namespace SmartSaver
                         }
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("SQL error occurred: " + ex.Message);
             }

@@ -41,7 +41,7 @@ namespace SmartSaver
                 DataTable dt = new DataTable();
                 return dt;
             }
-           
+
         }
 
         public float GetSumOfExpenses(int UserId)

@@ -18,7 +18,7 @@ namespace SmartSaver.SQL
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "DELETE FROM ExpensesTypes WHERE UserId = '"+userId+"' and ExpensesType = '"+expenseType+"'";
+            cmd.CommandText = "DELETE FROM ExpensesTypes WHERE UserId = '" + userId + "' and ExpensesType = '" + expenseType + "'";
             cmd.Connection = con;
 
             con.Open();

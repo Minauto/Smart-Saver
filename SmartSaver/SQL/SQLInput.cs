@@ -15,7 +15,7 @@ namespace SmartSaver
 
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-        public bool CreateAccount (string username, string password, string name, Gender gender)
+        public bool CreateAccount(string username, string password, string name, Gender gender)
         {
 
             string genderStr = gender.ToString();
@@ -92,7 +92,7 @@ namespace SmartSaver
         public void CreateBaseExpensesTypes(int UserId)
         {
 
-            string[] typesArr = new string[] {"Groceries", "Eating Out", "Bills", "Leisure", "Fuel", "Gifts", "New Stuff", "Other" };
+            string[] typesArr = new string[] { "Groceries", "Eating Out", "Bills", "Leisure", "Fuel", "Gifts", "New Stuff", "Other" };
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -116,9 +116,9 @@ namespace SmartSaver
             con.Close();
         }
 
-        public bool AddExpensesType (int userId, string NewExpenseType)
+        public bool AddExpensesType(int userId, string NewExpenseType)
         {
-            
+
 
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("Select Count(*) From ExpensesTypes WHERE UserId = '" + userId + "' and ExpensesType = '" + NewExpenseType + "'", con);
@@ -146,7 +146,7 @@ namespace SmartSaver
 
                 try
                 {
-                    
+
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception)
@@ -161,7 +161,7 @@ namespace SmartSaver
                 MessageBox.Show("Type already exists!");
                 return false;
             }
-            
+
         }
 
         public void AddLimit(int userId, int Limit)
@@ -173,7 +173,7 @@ namespace SmartSaver
             cmd.CommandText = "UPDATE Account SET Limit = '" + Limit + "' WHERE Id = '" + userId + "'";
             cmd.Connection = con;
 
-            
+
             con.Open();
 
             try
@@ -187,7 +187,7 @@ namespace SmartSaver
             }
             con.Close();
         }
-        
+
         public void updateName(int userId, string name)
         {
             SqlCommand cmd = new SqlCommand();
