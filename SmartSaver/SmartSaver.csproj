@@ -71,29 +71,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
+    <Compile Include="Classes\Account.cs" />
     <Compile Include="Forms\Spendings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Spendings.Designer.cs">
       <DependentUpon>Spendings.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListExtension.cs" />
-    <Compile Include="Forms\Expences.cs" />
+    <Compile Include="Utility\ListExtension.cs" />
+    <Compile Include="Classes\Expences.cs" />
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gender.cs" />
+    <Compile Include="Classes\Gender.cs" />
     <Compile Include="SQL\SQLExpensesTypesList.cs" />
-    <Compile Include="LoginStruct.cs" />
-    <Compile Include="HashSalt.cs" />
+    <Compile Include="Classes\LoginStruct.cs" />
+    <Compile Include="Utility\HashSalt.cs" />
     <Compile Include="SQL\SQLExpensesList.cs" />
     <Compile Include="SQL\SQLInput.cs" />
     <Compile Include="SQL\SQLLoginReader.cs" />
-    <Compile Include="LoginChecker.cs" />
+    <Compile Include="Utility\LoginChecker.cs" />
     <Compile Include="Forms\SignUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +139,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Account.datasource" />
-    <None Include="Forms\LoginWindow.datasource" />
-    <None Include="Forms\MainWindow.datasource" />
     <None Include="packages.config" />
-    <None Include="Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,8 +149,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SmartSaver.Properties.Resources.datasource" />
-    <None Include="SmartSaver.Properties.Settings.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -180,8 +174,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="res\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

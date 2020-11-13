@@ -34,6 +34,7 @@ namespace SmartSaver
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.applicationName = new System.Windows.Forms.Label();
@@ -57,21 +58,21 @@ namespace SmartSaver
             this.LimitAmountTextBox = new System.Windows.Forms.TextBox();
             this.SetLimitAmountButton = new System.Windows.Forms.Button();
             this.AmountLabel2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.DollarLabel = new System.Windows.Forms.Label();
             this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.MonthlyGoalLabel = new System.Windows.Forms.Label();
             this.logOutLabel = new System.Windows.Forms.Label();
             this.monthlyExpLabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelMenu.SuspendLayout();
             this.AddExpensePanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SetAGoalPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // applicationName
@@ -356,52 +357,6 @@ namespace SmartSaver
             this.AmountLabel2.TabIndex = 8;
             this.AmountLabel2.Text = "Amount:";
             // 
-            // dataGridView1
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView1.Location = new System.Drawing.Point(696, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(380, 483);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Visible = false;
-            // 
-            // SpendingsChart
-            // 
-            this.SpendingsChart.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.Name = "ChartArea1";
-            this.SpendingsChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.SpendingsChart.Legends.Add(legend1);
-            this.SpendingsChart.Location = new System.Drawing.Point(259, 7);
-            this.SpendingsChart.Name = "SpendingsChart";
-            this.SpendingsChart.Size = new System.Drawing.Size(431, 470);
-            this.SpendingsChart.TabIndex = 15;
-            this.SpendingsChart.Text = "chart1";
-            this.SpendingsChart.Visible = false;
-            // 
             // DollarLabel
             // 
             this.DollarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -495,6 +450,60 @@ namespace SmartSaver
             this.monthlyExpLabel.TabIndex = 2;
             this.monthlyExpLabel.Text = "label1";
             // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGridView1.Location = new System.Drawing.Point(696, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.Size = new System.Drawing.Size(380, 483);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Visible = false;
+            // 
+            // SpendingsChart
+            // 
+            this.SpendingsChart.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.Name = "ChartArea1";
+            this.SpendingsChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SpendingsChart.Legends.Add(legend1);
+            this.SpendingsChart.Location = new System.Drawing.Point(259, 7);
+            this.SpendingsChart.Name = "SpendingsChart";
+            this.SpendingsChart.Size = new System.Drawing.Size(431, 470);
+            this.SpendingsChart.TabIndex = 15;
+            this.SpendingsChart.Text = "chart1";
+            this.SpendingsChart.Visible = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,10 +527,10 @@ namespace SmartSaver
             this.MainPanel.PerformLayout();
             this.SetAGoalPanel.ResumeLayout(false);
             this.SetAGoalPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -547,7 +556,6 @@ namespace SmartSaver
         private System.Windows.Forms.Panel AddExpensePanel;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label ExitAddExpensesLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox ExpensesComboBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label monthlyExpLabel;
@@ -561,6 +569,7 @@ namespace SmartSaver
         private System.Windows.Forms.Label MonthlyGoalLabel;
         private CircularProgressBar.CircularProgressBar LimitProgressBar;
         private System.Windows.Forms.Label DollarLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart SpendingsChart;
     }
 }
