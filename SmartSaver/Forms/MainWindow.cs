@@ -57,12 +57,6 @@ namespace SmartSaver
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
-            /*
-            HideAll();
-            dataGridView1.Show();
-            SpendingsChart.Visible = true;
-            */
-
             openChildForm(new Spendings(account, this));
         }
 
