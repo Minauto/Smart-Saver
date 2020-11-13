@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfDeposit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Deposit>
-    <time>2020-10-02T20:26:02.3538271+03:00</time>
-    <amount>1234354</amount>
-  </Deposit>
-</ArrayOfDeposit>
