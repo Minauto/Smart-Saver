@@ -21,14 +21,11 @@ namespace SmartSaver
         private float monthlyExpenses;
         List<String> typesList = new List<string>();
 
-        //Used for chart
-        Series SpendingsSeries;
 
         public MainWindow(LoginWindow logWin, String username, String name, int userId, Gender gender, int limit)
         {
             InitializeComponent();
 
-            SpendingsSeries = new Series();
             this.logWin = logWin;
             account = new Account(username, name, userId, gender, limit);
 
@@ -36,9 +33,6 @@ namespace SmartSaver
             LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
-            SpendingsSeries.Name = @"Spendings";
-            SpendingsChart.Series.Add(SpendingsSeries);
-            SpendingsSeries.ChartType = SeriesChartType.Column;
             ReloadData();
         }
 
@@ -101,10 +95,7 @@ namespace SmartSaver
             }
             AddExpensePanel.Visible = false;
             SetAGoalPanel.Visible = false;
-            dataGridView1.Hide();
 
-            //SpendingsChart hidden with others
-            SpendingsChart.Visible = false;
         }
 
         private void AddToExpensesButton_Click(object sender, EventArgs e)
@@ -148,17 +139,10 @@ namespace SmartSaver
 
             DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
 
-            dataGridView1.DataSource = sTable;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Columns["Date"].Width = 120;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
 
             RefreshTypesList(account.UserId);
-
-            loadChart(); 
 
             MonthlyGoalText();
 
@@ -261,41 +245,6 @@ namespace SmartSaver
                 LimitProgressBar.Value = LimitProgressBar.Maximum;
                 LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
             }
-        }
-
-        private void loadChart()
-        {
-            SpendingsSeries.Points.Clear();
-            DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
-
-            List<Expences> ExpencesList = new List<Expences>();
-            ExpencesList = (from DataRow dr in ExpencesTable.Rows
-                            select new Expences()
-                            {
-                                ExpencesF = Convert.ToDecimal(dr["Expenses"]),
-                                ExpencesType = dr["ExpensesType"].ToString(),
-                                Date = Convert.ToDateTime(dr["Date"]),
-                            }).ToList();
-
-            var ExpencesTypes = ExpencesList.Select(e => e.ExpencesType).Distinct().ToList();
-
-            int x = 0;
-
-            SpendingsChart.Series.Clear();
-
-            foreach (var Expence in ExpencesTypes)
-            {
-                SpendingsChart.Series.Add(Expence);
-
-                var SumOfExpence = ExpencesList.Where(e => e.ExpencesType == Expence).Sum(e => e.ExpencesF);
-                SpendingsChart.Series[Expence].Points.AddXY(ExpencesTypes[x], SumOfExpence);
-
-                x++;
-            }
-            SpendingsChart.AlignDataPointsByAxisLabel();
-            SpendingsChart.ChartAreas[0].AxisX.LabelStyle.Angle = 90;
-            SpendingsChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
-
         }
 
         private void loadGreetings()
