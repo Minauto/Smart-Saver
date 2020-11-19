@@ -18,6 +18,7 @@ namespace SmartSaver.Forms
         Series SpendingsSeries;
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         Account account;
+        private float monthlyExpenses;
         DataTable spSumByType;
 
         public Spendings(Account account, MainWindow mainWindow)
@@ -32,6 +33,7 @@ namespace SmartSaver.Forms
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
+            LimitProgressBar.Maximum = (int)account.Limit;
 
             ReloadData();
         }
@@ -45,7 +47,23 @@ namespace SmartSaver.Forms
             dataGridView1.Columns["Date"].Width = 120;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
+            UpdateProgressBar();
             loadChart();
+        }
+
+        private void UpdateProgressBar()
+        {
+            if (account.Limit >= (int)monthlyExpenses)
+            {
+                LimitProgressBar.Value = (int)monthlyExpenses;
+                LimitProgressBar.OuterColor = Color.Gray;
+            }
+            else
+            {
+                LimitProgressBar.Value = LimitProgressBar.Maximum;
+                LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
+            }
         }
 
         private void loadChart()
