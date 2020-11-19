@@ -18,18 +18,21 @@ namespace SmartSaver.Forms
         Series SpendingsSeries;
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         Account account;
+        DataTable spSumByType;
 
         public Spendings(Account account, MainWindow mainWindow)
         {
             InitializeComponent();
 
             this.account = account;
+            spSumByType = sqlExpensesList.GetExpensesSumByType(account.UserId);
 
             SpendingsSeries = new Series();
 
             SpendingsSeries.Name = @"Spendings";
             SpendingsChart.Series.Add(SpendingsSeries);
             SpendingsSeries.ChartType = SeriesChartType.Column;
+
             ReloadData();
         }
 
@@ -37,7 +40,6 @@ namespace SmartSaver.Forms
         {
 
             DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
-
             dataGridView1.DataSource = sTable;
             dataGridView1.ReadOnly = true;
             dataGridView1.Columns["Date"].Width = 120;
@@ -50,8 +52,7 @@ namespace SmartSaver.Forms
         {
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
-
-            List<Expences> ExpencesList = new List<Expences>();
+            List <Expences> ExpencesList = new List<Expences>();
             ExpencesList = (from DataRow dr in ExpencesTable.Rows
                             select new Expences()
                             {

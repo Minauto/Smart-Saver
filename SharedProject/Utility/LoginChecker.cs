@@ -8,7 +8,7 @@ namespace SmartSaver
     class LoginChecker
     {
         static string workingDirectory = Environment.CurrentDirectory;
-        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database2.mdf";
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
 
         public bool Check(string usernameTextBox, string passwordTextBox)
         {

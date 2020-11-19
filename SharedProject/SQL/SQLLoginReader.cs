@@ -9,7 +9,7 @@ namespace SmartSaver
     {
         LoginStruct logInStr = new LoginStruct();
         static string workingDirectory = Environment.CurrentDirectory;
-        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database2.mdf";
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
         public LoginStruct Read(string username)
