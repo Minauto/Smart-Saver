@@ -71,29 +71,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Account.cs" />
     <Compile Include="Forms\Spendings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Spendings.Designer.cs">
       <DependentUpon>Spendings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\ListExtension.cs" />
-    <Compile Include="Classes\Expences.cs" />
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Gender.cs" />
-    <Compile Include="SQL\SQLExpensesTypesList.cs" />
-    <Compile Include="Classes\LoginStruct.cs" />
-    <Compile Include="Utility\HashSalt.cs" />
-    <Compile Include="SQL\SQLExpensesList.cs" />
-    <Compile Include="SQL\SQLInput.cs" />
-    <Compile Include="SQL\SQLLoginReader.cs" />
-    <Compile Include="Utility\LoginChecker.cs" />
     <Compile Include="Forms\SignUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +103,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQL\SQLRemoveExpenseType.cs" />
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,11 +142,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database2.mdf">
+    <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database2_log.ldf">
-      <DependentUpon>Database2.mdf</DependentUpon>
+    <Content Include="Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -175,5 +163,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <Import Project="..\SharedProject\SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
