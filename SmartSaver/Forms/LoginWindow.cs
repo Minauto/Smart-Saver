@@ -5,7 +5,7 @@ namespace SmartSaver
 {
     public partial class LoginWindow : Form
     {
-        LoginStruct LogInStr = new LoginStruct();
+        Account account;
         LoginChecker checker = new LoginChecker();
         SQLLoginReader Reader = new SQLLoginReader();
         SQLInput sqlIn = new SQLInput();
@@ -21,13 +21,13 @@ namespace SmartSaver
 
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
-                LogInStr = Reader.Read(usernameTxtBx.Text);
-                if (sqlExTypeList.CheckIfEmpty(LogInStr.userId))
+                account = Reader.Read(usernameTxtBx.Text);
+                if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
-                    sqlIn.CreateBaseExpensesTypes(LogInStr.userId);
+                    sqlIn.CreateBaseExpensesTypes(account.UserId);
                 }
                 this.Hide();
-                MainWindow loggedInWindow = new MainWindow(this, LogInStr.username, LogInStr.name, LogInStr.userId, LogInStr.gender, LogInStr.limit);
+                MainWindow loggedInWindow = new MainWindow(this, account);
                 loggedInWindow.Show();
             }
             else

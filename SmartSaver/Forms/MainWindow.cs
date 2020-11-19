@@ -22,22 +22,24 @@ namespace SmartSaver
         SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
         private float monthlyExpenses;
         List<String> typesList = new List<string>();
-        bool darkMode;
+        Theme theme;
 
-
-        public MainWindow(LoginWindow logWin, String username, String name, int userId, Gender gender, int limit)
+        public MainWindow(LoginWindow logWin, Account account)
         {
             InitializeComponent();
 
             this.logWin = logWin;
-            account = new Account(username, name, userId, gender, limit);
+            this.account = account;
+
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
-            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(userId);
+            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
-            this.darkMode = true;
             ReloadData();
+
+            theme = new Theme(account.themes);
+            changeTheme(theme);
         }
 
         private void MonthlyGoalText()
@@ -89,7 +91,7 @@ namespace SmartSaver
         {
             if (activeForm != null)
             {
-                activeForm.Close();
+                activeForm.Hide();
             }
             AddExpensePanel.Visible = false;
             SetALimitPanel.Visible = false;
@@ -255,70 +257,35 @@ namespace SmartSaver
             DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
         }
 
-        public void changeTheme()
+        public void changeTheme(Theme theme)
         {
-            if (this.darkMode)
-            {
-                settings.BackColor = Color.FromArgb(192, 192, 192);
-                settings.usernameLabel.ForeColor = Color.FromArgb(0, 0, 0);
-                settings.CustomizeLabel.BackColor = Color.FromArgb(192, 192, 192);
-                settings.ChangeNamePanel.BackColor = Color.FromArgb(100, 100, 100);
-                settings.ChangeThemeButton.BackColor = Color.FromArgb(100, 100, 100);
-                settings.changeNameButton.BackColor = Color.FromArgb(100, 100, 100);
-                settings.RemoveButton.BackColor = Color.FromArgb(100, 100, 100);
-                settings.AddNewChoiceButton.BackColor = Color.FromArgb(100, 100, 100);
-                spendings.BackColor = Color.FromArgb(192, 192, 192);
-                spendings.dataGridView.BackgroundColor = Color.FromArgb(192, 192, 192);
-                spendings.SpendingsChart.BackColor = Color.FromArgb(192, 192, 192);
-                this.BackColor = Color.FromArgb(192, 192, 192);
-                this.lowerPanel.BackColor = Color.FromArgb(255, 255, 255);
-                this.MonthlyGoalLabel.ForeColor = Color.FromArgb(0, 0, 0);
-                this.monthlyExpLabel.ForeColor = Color.FromArgb(0, 0, 0);
-                this.LimitProgressBar.InnerColor = Color.FromArgb(192, 192, 192);
-                this.panelMenu.BackColor = Color.FromArgb(134, 134, 134);
-                this.logOutLabel.ForeColor = Color.FromArgb(0, 0, 0);
-                this.spendingsButton.BackColor = Color.FromArgb(192, 192, 192);
-                this.addExpensesButton.BackColor = Color.FromArgb(192, 192, 192);
-                this.settingsBtn.BackColor = Color.FromArgb(192, 192, 192);
-                this.exitBtn.BackColor = Color.FromArgb(192, 192, 192);
-                this.setALimitButton.BackColor = Color.FromArgb(192, 192, 192);
-                this.AddExpensePanel.BackColor = Color.FromArgb(100, 100, 100);
-                this.SetALimitPanel.BackColor = Color.FromArgb(100, 100, 100);
-                this.AddToExpensesButton.BackColor = Color.FromArgb(100, 100, 100);
-                this.SetLimitAmountButton.BackColor = Color.FromArgb(100, 100, 100);
-                darkMode = false;
-            }
-            else
-            {
-                settings.BackColor = Color.FromArgb(51, 51, 76);
-                settings.usernameLabel.ForeColor = Color.FromArgb(240, 240, 240);
-                settings.CustomizeLabel.BackColor = Color.FromArgb(51, 51, 76);
-                settings.ChangeNamePanel.BackColor = Color.FromArgb(153, 180, 209);
-                settings.ChangeThemeButton.BackColor = Color.FromArgb(153, 180, 209);
-                settings.changeNameButton.BackColor = Color.FromArgb(153, 180, 209);
-                settings.RemoveButton.BackColor = Color.FromArgb(153, 180, 209);
-                settings.AddNewChoiceButton.BackColor = Color.FromArgb(153, 180, 209);
-                spendings.BackColor = Color.FromArgb(51, 51, 76);
-                spendings.dataGridView.BackgroundColor = Color.FromArgb(51, 51, 76);
-                spendings.SpendingsChart.BackColor = Color.FromArgb(153, 180, 209);
-                this.BackColor = Color.FromArgb(51, 51, 76);
-                this.lowerPanel.BackColor = Color.FromArgb(51, 51, 60);
-                this.MonthlyGoalLabel.ForeColor = Color.FromArgb(240, 240, 240);
-                this.monthlyExpLabel.ForeColor = Color.FromArgb(240, 240, 240);
-                this.LimitProgressBar.InnerColor = Color.FromArgb(51, 51, 76);
-                this.panelMenu.BackColor = Color.FromArgb(153, 180, 209);
-                this.logOutLabel.ForeColor = Color.FromArgb(240, 240, 240);
-                this.spendingsButton.BackColor = Color.FromArgb(153, 180, 209);
-                this.addExpensesButton.BackColor = Color.FromArgb(153, 180, 209);
-                this.settingsBtn.BackColor = Color.FromArgb(153, 180, 209);
-                this.exitBtn.BackColor = Color.FromArgb(153, 180, 209);
-                this.setALimitButton.BackColor = Color.FromArgb(153, 180, 209);
-                this.AddExpensePanel.BackColor = Color.FromArgb(153, 180, 209);
-                this.SetALimitPanel.BackColor = Color.FromArgb(153, 180, 209);
-                this.AddToExpensesButton.BackColor = Color.FromArgb(51, 51, 76);
-                this.SetLimitAmountButton.BackColor = Color.FromArgb(51, 51, 76);
-                darkMode = true;
-            }
+            settings.BackColor = theme.BackColorFirst; // first51, 51, 76
+            settings.usernameLabel.ForeColor = theme.ForeColor; //fore 240, 240, 240
+            settings.CustomizeLabel.BackColor = theme.BackColorFirst;
+            settings.ChangeNamePanel.BackColor = theme.BackColorSecond; // second153, 180, 209
+            settings.ChangeThemeButton.BackColor = theme.BackColorSecond;
+            settings.changeNameButton.BackColor = theme.BackColorSecond;
+            settings.RemoveButton.BackColor = theme.BackColorSecond;
+            settings.AddNewChoiceButton.BackColor = theme.BackColorSecond;
+            spendings.BackColor =theme.BackColorFirst;
+            spendings.dataGridView.BackgroundColor = theme.BackColorFirst;
+            spendings.SpendingsChart.BackColor = theme.BackColorSecond;
+            this.BackColor = theme.BackColorFirst;
+            this.lowerPanel.BackColor = theme.BackColorThree;  // third51, 51, 60
+            this.MonthlyGoalLabel.ForeColor = theme.ForeColor;
+            this.monthlyExpLabel.ForeColor = theme.ForeColor;
+            this.LimitProgressBar.InnerColor = theme.BackColorFirst;
+            this.panelMenu.BackColor = theme.BackColorSecond;
+            this.logOutLabel.ForeColor = theme.ForeColor;
+            this.spendingsButton.BackColor = theme.BackColorSecond;
+            this.addExpensesButton.BackColor = theme.BackColorSecond;
+            this.settingsBtn.BackColor = theme.BackColorSecond;
+            this.exitBtn.BackColor = theme.BackColorSecond;
+            this.setALimitButton.BackColor = theme.BackColorSecond;
+            this.AddExpensePanel.BackColor = theme.BackColorSecond;
+            this.SetALimitPanel.BackColor = theme.BackColorSecond;
+            this.AddToExpensesButton.BackColor = theme.BackColorFirst;
+            this.SetLimitAmountButton.BackColor = theme.BackColorFirst;
         }
     }
 }

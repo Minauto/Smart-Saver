@@ -15,6 +15,8 @@ namespace SmartSaver.Forms
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
         MainWindow mainWindow;
+        Themes themes;
+        Theme theme;
 
         public Settings(Account account, MainWindow mainWindow)
         {
@@ -95,7 +97,19 @@ namespace SmartSaver.Forms
 
         private void ChangeThemeButton_Click(object sender, EventArgs e)
         {
-            mainWindow.changeTheme();
+            if (account.themes == Themes.Dark)
+            {
+                sqlIn.updateTheme(account.UserId, Themes.Light);
+                account.themes = Themes.Light;
+            }
+            else
+            {
+                sqlIn.updateTheme(account.UserId, Themes.Dark);
+                account.themes = Themes.Dark;
+            }
+            theme = new Theme(account.themes);
+
+            mainWindow.changeTheme(theme);
         }
     }
 }

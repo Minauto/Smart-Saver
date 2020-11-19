@@ -209,5 +209,30 @@ namespace SmartSaver
             }
             con.Close();
         }
+
+        public bool updateTheme(int userId, Themes themes)
+        {
+            string themesStr = themes.ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "UPDATE Account SET Theme = '" + themesStr + "' WHERE Id = '"+ userId +"'";
+            cmd.Connection = con;
+
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Theme changed");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc + "Failed to connect to SQL server");
+                return false;
+            }
+            con.Close();
+            return true;
+
+        }
     }
 }
