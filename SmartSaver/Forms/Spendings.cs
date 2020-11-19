@@ -40,10 +40,10 @@ namespace SmartSaver.Forms
         {
 
             DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
-            dataGridView1.DataSource = sTable;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Columns["Date"].Width = 120;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.DataSource = sTable;
+            dataGridView.ReadOnly = true;
+            dataGridView.Columns["Date"].Width = 120;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             loadChart();
         }

@@ -1,6 +1,7 @@
 ﻿using SmartSaver.SQL;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SmartSaver.Forms
@@ -90,6 +91,11 @@ namespace SmartSaver.Forms
             mainWindow.ReloadData();
             usernameLabel.Text = account.Name;
             sqlIn.updateName(account.UserId, account.Name);
+        }
+
+        private void ChangeThemeButton_Click(object sender, EventArgs e)
+        {
+            mainWindow.changeTheme();
         }
     }
 }

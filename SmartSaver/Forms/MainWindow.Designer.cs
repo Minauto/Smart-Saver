@@ -47,22 +47,21 @@ namespace SmartSaver
             this.ExpensesComboBox = new System.Windows.Forms.ComboBox();
             this.ExitAddExpensesLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.SetAGoalPanel = new System.Windows.Forms.Panel();
+            this.SetALimitPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.LimitAmountTextBox = new System.Windows.Forms.TextBox();
             this.SetLimitAmountButton = new System.Windows.Forms.Button();
             this.AmountLabel2 = new System.Windows.Forms.Label();
-            this.DollarLabel = new System.Windows.Forms.Label();
             this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.lowerPanel = new System.Windows.Forms.Panel();
             this.MonthlyGoalLabel = new System.Windows.Forms.Label();
             this.logOutLabel = new System.Windows.Forms.Label();
             this.monthlyExpLabel = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.AddExpensePanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            this.SetAGoalPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.SetALimitPanel.SuspendLayout();
+            this.lowerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // applicationName
@@ -277,9 +276,8 @@ namespace SmartSaver
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.SetAGoalPanel);
+            this.MainPanel.Controls.Add(this.SetALimitPanel);
             this.MainPanel.Controls.Add(this.AddExpensePanel);
-            this.MainPanel.Controls.Add(this.DollarLabel);
             this.MainPanel.Controls.Add(this.LimitProgressBar);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(200, 0);
@@ -287,18 +285,18 @@ namespace SmartSaver
             this.MainPanel.Size = new System.Drawing.Size(1076, 483);
             this.MainPanel.TabIndex = 14;
             // 
-            // SetAGoalPanel
+            // SetALimitPanel
             // 
-            this.SetAGoalPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SetAGoalPanel.Controls.Add(this.label1);
-            this.SetAGoalPanel.Controls.Add(this.LimitAmountTextBox);
-            this.SetAGoalPanel.Controls.Add(this.SetLimitAmountButton);
-            this.SetAGoalPanel.Controls.Add(this.AmountLabel2);
-            this.SetAGoalPanel.Location = new System.Drawing.Point(6, 275);
-            this.SetAGoalPanel.Name = "SetAGoalPanel";
-            this.SetAGoalPanel.Size = new System.Drawing.Size(140, 113);
-            this.SetAGoalPanel.TabIndex = 14;
-            this.SetAGoalPanel.Visible = false;
+            this.SetALimitPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SetALimitPanel.Controls.Add(this.label1);
+            this.SetALimitPanel.Controls.Add(this.LimitAmountTextBox);
+            this.SetALimitPanel.Controls.Add(this.SetLimitAmountButton);
+            this.SetALimitPanel.Controls.Add(this.AmountLabel2);
+            this.SetALimitPanel.Location = new System.Drawing.Point(6, 275);
+            this.SetALimitPanel.Name = "SetALimitPanel";
+            this.SetALimitPanel.Size = new System.Drawing.Size(140, 113);
+            this.SetALimitPanel.TabIndex = 14;
+            this.SetALimitPanel.Visible = false;
             // 
             // label1
             // 
@@ -345,18 +343,6 @@ namespace SmartSaver
             this.AmountLabel2.TabIndex = 8;
             this.AmountLabel2.Text = "Amount:";
             // 
-            // DollarLabel
-            // 
-            this.DollarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DollarLabel.AutoSize = true;
-            this.DollarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.DollarLabel.ForeColor = System.Drawing.Color.Green;
-            this.DollarLabel.Location = new System.Drawing.Point(53, 382);
-            this.DollarLabel.Name = "DollarLabel";
-            this.DollarLabel.Size = new System.Drawing.Size(52, 55);
-            this.DollarLabel.TabIndex = 16;
-            this.DollarLabel.Text = "€";
-            // 
             // LimitProgressBar
             // 
             this.LimitProgressBar.AccessibleName = "";
@@ -390,17 +376,17 @@ namespace SmartSaver
             this.LimitProgressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.LimitProgressBar.Value = 68;
             // 
-            // panel1
+            // lowerPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(60)))));
-            this.panel1.Controls.Add(this.MonthlyGoalLabel);
-            this.panel1.Controls.Add(this.logOutLabel);
-            this.panel1.Controls.Add(this.monthlyExpLabel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(200, 483);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1076, 58);
-            this.panel1.TabIndex = 1;
+            this.lowerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(60)))));
+            this.lowerPanel.Controls.Add(this.MonthlyGoalLabel);
+            this.lowerPanel.Controls.Add(this.logOutLabel);
+            this.lowerPanel.Controls.Add(this.monthlyExpLabel);
+            this.lowerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lowerPanel.Location = new System.Drawing.Point(200, 483);
+            this.lowerPanel.Name = "lowerPanel";
+            this.lowerPanel.Size = new System.Drawing.Size(1076, 58);
+            this.lowerPanel.TabIndex = 1;
             // 
             // MonthlyGoalLabel
             // 
@@ -445,7 +431,7 @@ namespace SmartSaver
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1276, 541);
             this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lowerPanel);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -458,11 +444,10 @@ namespace SmartSaver
             this.AddExpensePanel.ResumeLayout(false);
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
-            this.MainPanel.PerformLayout();
-            this.SetAGoalPanel.ResumeLayout(false);
-            this.SetAGoalPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.SetALimitPanel.ResumeLayout(false);
+            this.SetALimitPanel.PerformLayout();
+            this.lowerPanel.ResumeLayout(false);
+            this.lowerPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -475,32 +460,31 @@ namespace SmartSaver
         #endregion
 
         private System.Windows.Forms.Label applicationName;
-        private System.Windows.Forms.Button spendingsButton;
-        private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button settingsBtn;
-        private System.Windows.Forms.Button addExpensesButton;
-        private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Label DisplayNameLabel;
         private System.Windows.Forms.Label AmountLabel;
         private System.Windows.Forms.TextBox AmountTextBox;
         private System.Windows.Forms.Label TypeLabel;
         private System.Windows.Forms.Button AddToExpensesButton;
         private System.Windows.Forms.Panel AddExpensePanel;
-        private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label ExitAddExpensesLabel;
         private System.Windows.Forms.ComboBox ExpensesComboBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label monthlyExpLabel;
-        private System.Windows.Forms.Label logOutLabel;
-        private System.Windows.Forms.Button setALimitButton;
-        private System.Windows.Forms.Panel SetAGoalPanel;
+        private System.Windows.Forms.Panel SetALimitPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox LimitAmountTextBox;
         private System.Windows.Forms.Button SetLimitAmountButton;
         private System.Windows.Forms.Label AmountLabel2;
-        private System.Windows.Forms.Label MonthlyGoalLabel;
-        private CircularProgressBar.CircularProgressBar LimitProgressBar;
-        private System.Windows.Forms.Label DollarLabel;
+        public System.Windows.Forms.Panel MainPanel;
+        public System.Windows.Forms.Panel lowerPanel;
+        public System.Windows.Forms.Label monthlyExpLabel;
+        public System.Windows.Forms.Label MonthlyGoalLabel;
+        public CircularProgressBar.CircularProgressBar LimitProgressBar;
+        public System.Windows.Forms.Panel panelMenu;
+        public System.Windows.Forms.Button spendingsButton;
+        public System.Windows.Forms.Button settingsBtn;
+        public System.Windows.Forms.Button addExpensesButton;
+        public System.Windows.Forms.Button exitBtn;
+        public System.Windows.Forms.Label logOutLabel;
+        public System.Windows.Forms.Button setALimitButton;
     }
 }
 
