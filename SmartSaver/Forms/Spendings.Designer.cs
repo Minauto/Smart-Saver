@@ -37,9 +37,8 @@
             this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
             this.DollarLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.TipOfTheDay1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +130,7 @@
             this.DollarLabel.Size = new System.Drawing.Size(52, 55);
             this.DollarLabel.TabIndex = 20;
             this.DollarLabel.Text = "€";
+            // 
             // TipOfTheDay1
             // 
             this.TipOfTheDay1.AutoSize = true;
@@ -166,6 +166,6 @@
         public System.Windows.Forms.DataVisualization.Charting.Chart SpendingsChart;
         private System.Windows.Forms.Label DollarLabel;
         public CircularProgressBar.CircularProgressBar LimitProgressBar;
-        private System.Windows.Forms.Label TipOfTheDay1;
+        public System.Windows.Forms.Label TipOfTheDay1;
     }
 }

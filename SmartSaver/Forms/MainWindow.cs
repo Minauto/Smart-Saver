@@ -277,6 +277,7 @@ namespace SmartSaver
             spendings.dataGridView.BackgroundColor = theme.BackColorFirst;
             spendings.SpendingsChart.BackColor = theme.BackColorSecond;
             spendings.LimitProgressBar.InnerColor = theme.BackColorFirst;
+            spendings.TipOfTheDay1.ForeColor = theme.ForeColor;
             this.BackColor = theme.BackColorFirst;
             this.lowerPanel.BackColor = theme.BackColorThree;  // third51, 51, 60
             this.MonthlyGoalLabel.ForeColor = theme.ForeColor;
