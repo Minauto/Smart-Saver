@@ -15,6 +15,7 @@ namespace SmartSaver
     {
         Account account;
         LoginWindow logWin = new LoginWindow();
+        TitleWindow titleWindow;
         Settings settings;
         Spendings spendings;
         SQLInput sqlIn = new SQLInput();
@@ -32,8 +33,8 @@ namespace SmartSaver
             this.account = account;
 
 
-            openChildForm(new TitleWindow());
 
+            titleWindow = new TitleWindow();
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
@@ -42,6 +43,7 @@ namespace SmartSaver
 
             theme = new Theme(account.themes);
             changeTheme(theme);
+            openChildForm(titleWindow);
         }
 
         private void MonthlyGoalText()
@@ -75,9 +77,17 @@ namespace SmartSaver
 
         private void AddExpensesButton_Click(object sender, EventArgs e)
         {
-            AddExpensePanel.BringToFront();
-            RefreshTypesList(account.UserId);
-            ShowAddExpenses();
+            if(AddExpensePanel.Visible == true)
+            {
+                AddExpensePanel.Visible = false;
+            }
+            else
+            {
+                AddExpensePanel.BringToFront();
+                RefreshTypesList(account.UserId);
+                ShowAddExpenses();
+            }
+            
         }
         private void ExitAddExpensesLabel_Click(object sender, EventArgs e)
         {
@@ -159,8 +169,15 @@ namespace SmartSaver
 
         private void setAGoalButton_Click(object sender, EventArgs e)
         {
-            SetAGoalPanel.BringToFront();
-            ShowSetAGoal();
+            if(SetALimitPanel.Visible == true)
+            {
+                SetALimitPanel.Visible = false;
+            }
+            else
+            {
+                SetALimitPanel.BringToFront();
+                ShowSetAGoal();
+            }
         }
 
         private void ShowSetAGoal()
@@ -247,6 +264,7 @@ namespace SmartSaver
 
         public void changeTheme(Theme theme)
         {
+            titleWindow.BackColor = theme.BackColorFirst;
             settings.BackColor = theme.BackColorFirst; // first51, 51, 76
             settings.usernameLabel.ForeColor = theme.ForeColor; //fore 240, 240, 240
             settings.CustomizeLabel.BackColor = theme.BackColorFirst;
@@ -255,14 +273,14 @@ namespace SmartSaver
             settings.changeNameButton.BackColor = theme.BackColorSecond;
             settings.RemoveButton.BackColor = theme.BackColorSecond;
             settings.AddNewChoiceButton.BackColor = theme.BackColorSecond;
-            spendings.BackColor =theme.BackColorFirst;
+            spendings.BackColor = theme.BackColorFirst;
             spendings.dataGridView.BackgroundColor = theme.BackColorFirst;
             spendings.SpendingsChart.BackColor = theme.BackColorSecond;
+            spendings.LimitProgressBar.InnerColor = theme.BackColorFirst;
             this.BackColor = theme.BackColorFirst;
             this.lowerPanel.BackColor = theme.BackColorThree;  // third51, 51, 60
             this.MonthlyGoalLabel.ForeColor = theme.ForeColor;
             this.monthlyExpLabel.ForeColor = theme.ForeColor;
-            this.LimitProgressBar.InnerColor = theme.BackColorFirst;
             this.panelMenu.BackColor = theme.BackColorSecond;
             this.logOutLabel.ForeColor = theme.ForeColor;
             this.spendingsButton.BackColor = theme.BackColorSecond;
@@ -278,6 +296,7 @@ namespace SmartSaver
 
         private void applicationName_Click(object sender, EventArgs e)
         {
-            openChildForm(new TitleWindow());
+            openChildForm(titleWindow);
         }
+    }
 }

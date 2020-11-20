@@ -409,8 +409,8 @@ namespace SmartSaver
             this.AddExpensePanel.ResumeLayout(false);
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
-            this.SetAGoalPanel.ResumeLayout(false);
-            this.SetAGoalPanel.PerformLayout();
+            this.SetALimitPanel.ResumeLayout(false);
+            this.SetALimitPanel.PerformLayout();
             this.lowerPanel.ResumeLayout(false);
             this.lowerPanel.PerformLayout();
             this.ResumeLayout(false);

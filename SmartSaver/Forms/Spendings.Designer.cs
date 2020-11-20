@@ -37,7 +37,7 @@
             this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
             this.DollarLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +74,11 @@
             // SpendingsChart
             // 
             this.SpendingsChart.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea4.AxisX.IsLabelAutoFit = false;
-            chartArea4.Name = "ChartArea1";
-            this.SpendingsChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.SpendingsChart.Legends.Add(legend4);
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.Name = "ChartArea1";
+            this.SpendingsChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SpendingsChart.Legends.Add(legend1);
             this.SpendingsChart.Location = new System.Drawing.Point(259, 12);
             this.SpendingsChart.Name = "SpendingsChart";
             this.SpendingsChart.Size = new System.Drawing.Size(431, 470);
@@ -152,7 +152,7 @@
         #endregion
         public System.Windows.Forms.DataGridView dataGridView;
         public System.Windows.Forms.DataVisualization.Charting.Chart SpendingsChart;
-        private CircularProgressBar.CircularProgressBar LimitProgressBar;
         private System.Windows.Forms.Label DollarLabel;
+        public CircularProgressBar.CircularProgressBar LimitProgressBar;
     }
 }
