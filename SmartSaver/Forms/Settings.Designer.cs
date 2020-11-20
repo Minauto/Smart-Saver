@@ -39,6 +39,7 @@
             this.ChangeNameTextBox = new System.Windows.Forms.TextBox();
             this.SetNewNameButton = new System.Windows.Forms.Button();
             this.DesiredNameLabel = new System.Windows.Forms.Label();
+            this.ChangeThemeButton = new System.Windows.Forms.Button();
             this.ChangeNamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,12 +177,27 @@
             this.DesiredNameLabel.TabIndex = 8;
             this.DesiredNameLabel.Text = "Desired name:";
             // 
+            // ChangeThemeButton
+            // 
+            this.ChangeThemeButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ChangeThemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangeThemeButton.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.ChangeThemeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ChangeThemeButton.Location = new System.Drawing.Point(908, 442);
+            this.ChangeThemeButton.Name = "ChangeThemeButton";
+            this.ChangeThemeButton.Size = new System.Drawing.Size(156, 29);
+            this.ChangeThemeButton.TabIndex = 16;
+            this.ChangeThemeButton.Text = "Change theme";
+            this.ChangeThemeButton.UseVisualStyleBackColor = false;
+            this.ChangeThemeButton.Click += new System.EventHandler(this.ChangeThemeButton_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1076, 483);
+            this.Controls.Add(this.ChangeThemeButton);
             this.Controls.Add(this.ChangeNamePanel);
             this.Controls.Add(this.changeNameButton);
             this.Controls.Add(this.usernameLabel);
@@ -201,15 +217,16 @@
         #endregion
 
         private System.Windows.Forms.ComboBox CustomizeComboBox;
-        private System.Windows.Forms.Button AddNewChoiceButton;
-        private System.Windows.Forms.Button RemoveButton;
-        private System.Windows.Forms.Label CustomizeLabel;
-        private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.Button changeNameButton;
-        private System.Windows.Forms.Panel ChangeNamePanel;
         private System.Windows.Forms.Label ExitChangeNamePanel;
         private System.Windows.Forms.TextBox ChangeNameTextBox;
         private System.Windows.Forms.Button SetNewNameButton;
         private System.Windows.Forms.Label DesiredNameLabel;
+        public System.Windows.Forms.Label usernameLabel;
+        public System.Windows.Forms.Label CustomizeLabel;
+        public System.Windows.Forms.Button AddNewChoiceButton;
+        public System.Windows.Forms.Button RemoveButton;
+        public System.Windows.Forms.Button changeNameButton;
+        public System.Windows.Forms.Panel ChangeNamePanel;
+        public System.Windows.Forms.Button ChangeThemeButton;
     }
 }

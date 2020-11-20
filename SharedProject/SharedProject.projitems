@@ -6,13 +6,14 @@
     <SharedGUID>8c8e165b-d06b-42c2-8d80-62be33c68e2d</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>SharedProject</Import_RootNamespace>
+    <Import_RootNamespace>SmartSaver</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Account.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Expences.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Gender.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\LoginStruct.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Themes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLExpensesList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLExpensesTypesList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLInput.cs" />

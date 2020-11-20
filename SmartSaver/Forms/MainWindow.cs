@@ -15,25 +15,31 @@ namespace SmartSaver
     {
         Account account;
         LoginWindow logWin = new LoginWindow();
+        Settings settings;
+        Spendings spendings;
         SQLInput sqlIn = new SQLInput();
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
         private float monthlyExpenses;
         List<String> typesList = new List<string>();
+        Theme theme;
 
-
-        public MainWindow(LoginWindow logWin, String username, String name, int userId, Gender gender, int limit)
+        public MainWindow(LoginWindow logWin, Account account)
         {
             InitializeComponent();
 
             this.logWin = logWin;
-            account = new Account(username, name, userId, gender, limit);
+            this.account = account;
 
-            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(userId);
+            settings = new Settings(account, this);
+            spendings = new Spendings(account, this);
+            monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
-
             ReloadData();
+
+            theme = new Theme(account.themes);
+            changeTheme(theme);
         }
 
         private void MonthlyGoalText()
@@ -57,7 +63,7 @@ namespace SmartSaver
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
-            openChildForm(new Spendings(account, this));
+            openChildForm(spendings);
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -85,10 +91,10 @@ namespace SmartSaver
         {
             if (activeForm != null)
             {
-                activeForm.Close();
+                activeForm.Hide();
             }
             AddExpensePanel.Visible = false;
-            SetAGoalPanel.Visible = false;
+            SetALimitPanel.Visible = false;
 
         }
 
@@ -157,12 +163,12 @@ namespace SmartSaver
 
         private void ShowSetAGoal()
         {
-            SetAGoalPanel.Visible = true;
+            SetALimitPanel.Visible = true;
         }
 
         private void ExitSetAGoalLabel_Click(object sender, EventArgs e)
         {
-            SetAGoalPanel.Visible = false;
+            SetALimitPanel.Visible = false;
         }
 
         private void SetLimitAmountButton_Click(object sender, EventArgs e)
@@ -224,7 +230,7 @@ namespace SmartSaver
 
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            openChildForm(new Settings(account, this));
+            openChildForm(settings);
         }
 
         private void UpdateProgressBar()
@@ -249,6 +255,37 @@ namespace SmartSaver
             if (account.gender == Gender.Female)
                 prefix = "Mrs. ";
             DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
+        }
+
+        public void changeTheme(Theme theme)
+        {
+            settings.BackColor = theme.BackColorFirst; // first51, 51, 76
+            settings.usernameLabel.ForeColor = theme.ForeColor; //fore 240, 240, 240
+            settings.CustomizeLabel.BackColor = theme.BackColorFirst;
+            settings.ChangeNamePanel.BackColor = theme.BackColorSecond; // second153, 180, 209
+            settings.ChangeThemeButton.BackColor = theme.BackColorSecond;
+            settings.changeNameButton.BackColor = theme.BackColorSecond;
+            settings.RemoveButton.BackColor = theme.BackColorSecond;
+            settings.AddNewChoiceButton.BackColor = theme.BackColorSecond;
+            spendings.BackColor =theme.BackColorFirst;
+            spendings.dataGridView.BackgroundColor = theme.BackColorFirst;
+            spendings.SpendingsChart.BackColor = theme.BackColorSecond;
+            this.BackColor = theme.BackColorFirst;
+            this.lowerPanel.BackColor = theme.BackColorThree;  // third51, 51, 60
+            this.MonthlyGoalLabel.ForeColor = theme.ForeColor;
+            this.monthlyExpLabel.ForeColor = theme.ForeColor;
+            this.LimitProgressBar.InnerColor = theme.BackColorFirst;
+            this.panelMenu.BackColor = theme.BackColorSecond;
+            this.logOutLabel.ForeColor = theme.ForeColor;
+            this.spendingsButton.BackColor = theme.BackColorSecond;
+            this.addExpensesButton.BackColor = theme.BackColorSecond;
+            this.settingsBtn.BackColor = theme.BackColorSecond;
+            this.exitBtn.BackColor = theme.BackColorSecond;
+            this.setALimitButton.BackColor = theme.BackColorSecond;
+            this.AddExpensePanel.BackColor = theme.BackColorSecond;
+            this.SetALimitPanel.BackColor = theme.BackColorSecond;
+            this.AddToExpensesButton.BackColor = theme.BackColorFirst;
+            this.SetLimitAmountButton.BackColor = theme.BackColorFirst;
         }
     }
 }

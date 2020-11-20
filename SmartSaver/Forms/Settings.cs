@@ -1,6 +1,7 @@
 ﻿using SmartSaver.SQL;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SmartSaver.Forms
@@ -14,6 +15,8 @@ namespace SmartSaver.Forms
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
         MainWindow mainWindow;
+        Themes themes;
+        Theme theme;
 
         public Settings(Account account, MainWindow mainWindow)
         {
@@ -90,6 +93,23 @@ namespace SmartSaver.Forms
             mainWindow.ReloadData();
             usernameLabel.Text = account.Name;
             sqlIn.updateName(account.UserId, account.Name);
+        }
+
+        private void ChangeThemeButton_Click(object sender, EventArgs e)
+        {
+            if (account.themes == Themes.Dark)
+            {
+                sqlIn.updateTheme(account.UserId, Themes.Light);
+                account.themes = Themes.Light;
+            }
+            else
+            {
+                sqlIn.updateTheme(account.UserId, Themes.Dark);
+                account.themes = Themes.Dark;
+            }
+            theme = new Theme(account.themes);
+
+            mainWindow.changeTheme(theme);
         }
     }
 }

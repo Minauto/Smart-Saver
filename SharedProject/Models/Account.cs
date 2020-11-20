@@ -13,6 +13,8 @@ public class Account
 
     public Gender gender { get; set; }
 
+    public Themes themes { get; set; }
+
     public Account(string newNickname, string newName, int newUserId, Gender newGender, int newLimit)
     {
         Nickname = newNickname;
@@ -20,5 +22,8 @@ public class Account
         UserId = newUserId;
         gender = newGender;
         Limit = newLimit;
+    }
+    public Account()
+    {
     }
 }

@@ -7,12 +7,12 @@ namespace SmartSaver
 {
     class SQLLoginReader
     {
-        LoginStruct logInStr = new LoginStruct();
+        Account account = new Account();
         static string workingDirectory = Environment.CurrentDirectory;
         static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
-        public LoginStruct Read(string username)
+        public Account Read(string username)
         {
 
             try
@@ -28,23 +28,26 @@ namespace SmartSaver
                 Gender genderRead;
                 Enum.TryParse<Gender>(reader["Gender"].ToString(), out genderRead);
                 int limitRead = Int32.Parse(reader["Limit"].ToString());
+                Themes themesRead;
+                Enum.TryParse<Themes>(reader["Theme"].ToString(), out themesRead);
 
                 reader.Close();
                 con.Close();
 
-                logInStr.username = userRead;
-                logInStr.name = nameRead;
-                logInStr.userId = IdRead;
-                logInStr.gender = genderRead;
-                logInStr.limit = limitRead;
+                account.Nickname = userRead;
+                account.Name = nameRead;
+                account.UserId = IdRead;
+                account.gender = genderRead;
+                account.Limit = limitRead;
+                account.themes = themesRead;
 
-                return logInStr;
+                return account;
             }
             catch (Exception exc)
             {
                 con.Close();
                 MessageBox.Show(exc + "Error");
-                return logInStr;
+                return account;
             }
         }
     }
