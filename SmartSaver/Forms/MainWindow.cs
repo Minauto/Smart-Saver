@@ -31,10 +31,12 @@ namespace SmartSaver
             this.logWin = logWin;
             this.account = account;
 
+
+            openChildForm(new TitleWindow());
+
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
-            LimitProgressBar.Maximum = (int)account.Limit;
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
             ReloadData();
 
@@ -59,7 +61,7 @@ namespace SmartSaver
             {
                 MonthlyGoalLabel.Text = "Limit not set";
             }
-            UpdateProgressBar();
+            //UpdateProgressBar();
         }
         private void SpendingsButton_Click(object sender, EventArgs e)
         {
@@ -73,7 +75,7 @@ namespace SmartSaver
 
         private void AddExpensesButton_Click(object sender, EventArgs e)
         {
-            HideAll();
+            AddExpensePanel.BringToFront();
             RefreshTypesList(account.UserId);
             ShowAddExpenses();
         }
@@ -157,7 +159,7 @@ namespace SmartSaver
 
         private void setAGoalButton_Click(object sender, EventArgs e)
         {
-            HideAll();
+            SetAGoalPanel.BringToFront();
             ShowSetAGoal();
         }
 
@@ -184,7 +186,7 @@ namespace SmartSaver
                         account.Limit = int.Parse(LimitAmountTextBox.Text);
                         sqlIn.AddLimit(account.UserId, account.Limit);
 
-                        LimitProgressBar.Maximum = account.Limit;
+                        //LimitProgressBar.Maximum = account.Limit;
 
                         MonthlyGoalText();
                         LimitAmountTextBox.Clear();
@@ -233,20 +235,6 @@ namespace SmartSaver
             openChildForm(settings);
         }
 
-        private void UpdateProgressBar()
-        {
-            if (account.Limit >= (int)monthlyExpenses)
-            {
-                LimitProgressBar.Value = (int)monthlyExpenses;
-                LimitProgressBar.OuterColor = Color.Gray;
-            }
-            else
-            {
-                LimitProgressBar.Value = LimitProgressBar.Maximum;
-                LimitProgressBar.OuterColor = Color.FromArgb(255, 0, 0);
-            }
-        }
-
         private void loadGreetings()
         {
             String prefix = "";
@@ -287,5 +275,9 @@ namespace SmartSaver
             this.AddToExpensesButton.BackColor = theme.BackColorFirst;
             this.SetLimitAmountButton.BackColor = theme.BackColorFirst;
         }
-    }
+
+        private void applicationName_Click(object sender, EventArgs e)
+        {
+            openChildForm(new TitleWindow());
+        }
 }

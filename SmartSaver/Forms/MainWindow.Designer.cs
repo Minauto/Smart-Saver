@@ -52,7 +52,6 @@ namespace SmartSaver
             this.LimitAmountTextBox = new System.Windows.Forms.TextBox();
             this.SetLimitAmountButton = new System.Windows.Forms.Button();
             this.AmountLabel2 = new System.Windows.Forms.Label();
-            this.LimitProgressBar = new CircularProgressBar.CircularProgressBar();
             this.lowerPanel = new System.Windows.Forms.Panel();
             this.MonthlyGoalLabel = new System.Windows.Forms.Label();
             this.logOutLabel = new System.Windows.Forms.Label();
@@ -76,7 +75,7 @@ namespace SmartSaver
             this.applicationName.Size = new System.Drawing.Size(222, 39);
             this.applicationName.TabIndex = 0;
             this.applicationName.Text = "Smart Saver";
-            this.applicationName.Click += new System.EventHandler(this.label1_Click);
+            this.applicationName.Click += new System.EventHandler(this.applicationName_Click);
             // 
             // spendingsButton
             // 
@@ -278,7 +277,6 @@ namespace SmartSaver
             // 
             this.MainPanel.Controls.Add(this.SetALimitPanel);
             this.MainPanel.Controls.Add(this.AddExpensePanel);
-            this.MainPanel.Controls.Add(this.LimitProgressBar);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(200, 0);
             this.MainPanel.Name = "MainPanel";
@@ -342,39 +340,6 @@ namespace SmartSaver
             this.AmountLabel2.Size = new System.Drawing.Size(69, 20);
             this.AmountLabel2.TabIndex = 8;
             this.AmountLabel2.Text = "Amount:";
-            // 
-            // LimitProgressBar
-            // 
-            this.LimitProgressBar.AccessibleName = "";
-            this.LimitProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LimitProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.LimitProgressBar.AnimationSpeed = 500;
-            this.LimitProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.LimitProgressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.LimitProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.LimitProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.LimitProgressBar.InnerMargin = 2;
-            this.LimitProgressBar.InnerWidth = -1;
-            this.LimitProgressBar.Location = new System.Drawing.Point(9, 341);
-            this.LimitProgressBar.MarqueeAnimationSpeed = 2000;
-            this.LimitProgressBar.Name = "LimitProgressBar";
-            this.LimitProgressBar.OuterColor = System.Drawing.Color.Gray;
-            this.LimitProgressBar.OuterMargin = -25;
-            this.LimitProgressBar.OuterWidth = 26;
-            this.LimitProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.LimitProgressBar.ProgressWidth = 25;
-            this.LimitProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.LimitProgressBar.Size = new System.Drawing.Size(140, 136);
-            this.LimitProgressBar.StartAngle = 270;
-            this.LimitProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.LimitProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.LimitProgressBar.SubscriptText = "";
-            this.LimitProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.LimitProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.LimitProgressBar.SuperscriptText = "";
-            this.LimitProgressBar.TabIndex = 15;
-            this.LimitProgressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.LimitProgressBar.Value = 68;
             // 
             // lowerPanel
             // 
@@ -444,8 +409,8 @@ namespace SmartSaver
             this.AddExpensePanel.ResumeLayout(false);
             this.AddExpensePanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
-            this.SetALimitPanel.ResumeLayout(false);
-            this.SetALimitPanel.PerformLayout();
+            this.SetAGoalPanel.ResumeLayout(false);
+            this.SetAGoalPanel.PerformLayout();
             this.lowerPanel.ResumeLayout(false);
             this.lowerPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -454,7 +419,7 @@ namespace SmartSaver
 
         private void label1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         #endregion
