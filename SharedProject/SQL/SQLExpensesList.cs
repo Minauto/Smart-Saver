@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -48,7 +48,7 @@ namespace SmartSaver
         {
             try
             {
-                string sql = "SELECT SUM (Expenses), ExpensesType FROM ExpensesData WHERE UserId = " + UserId + " GROUP BY ExpensesType";
+                string sql = "SELECT SUM (Expenses) AS SumOfExpences, ExpensesType AS TypeOfExpences FROM ExpensesData WHERE UserId = " + UserId + " GROUP BY ExpensesType";
                 con.Open();
                 sCommand = new SqlCommand(sql, con);
                 sAdapter = new SqlDataAdapter(sCommand);

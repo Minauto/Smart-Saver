@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedProject.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,10 @@ namespace SmartSaver.Forms
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         Account account;
         DataTable spSumByType;
+        TipsManager TM = new TipsManager();
+        //Label TipOfTheDay = new Label();
+
+
 
         public Spendings(Account account, MainWindow mainWindow)
         {
@@ -45,11 +50,14 @@ namespace SmartSaver.Forms
             dataGridView1.Columns["Date"].Width = 120;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+
+            LoadTips();
             loadChart();
         }
 
         private void loadChart()
         {
+
             SpendingsSeries.Points.Clear();
             DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
             List <Expences> ExpencesList = new List<Expences>();
@@ -80,6 +88,12 @@ namespace SmartSaver.Forms
             SpendingsChart.ChartAreas[0].AxisX.LabelStyle.Angle = 90;
             SpendingsChart.ChartAreas[0].AxisX.IsLabelAutoFit = false;
 
+        }
+
+        private void LoadTips()
+        {
+            Expences TipOnExpences = TM.GetTips(account.UserId);
+            TipOfTheDay1.Text = "You should maybe think about cutting expences on " + TipOnExpences.ExpencesType + "\n" + "You already spent " + TipOnExpences.ExpencesF + " on it";
         }
 
     }

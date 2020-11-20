@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLLoginReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLRemoveExpenseType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\TipsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\HashSalt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\ListExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\LoginChecker.cs" />

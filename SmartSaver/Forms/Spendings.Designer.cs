@@ -35,6 +35,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SpendingsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.TipOfTheDay1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).BeginInit();
             this.SuspendLayout();
@@ -77,11 +78,21 @@
             this.SpendingsChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.SpendingsChart.Legends.Add(legend1);
-            this.SpendingsChart.Location = new System.Drawing.Point(259, 12);
+            this.SpendingsChart.Location = new System.Drawing.Point(259, 0);
             this.SpendingsChart.Name = "SpendingsChart";
-            this.SpendingsChart.Size = new System.Drawing.Size(431, 470);
+            this.SpendingsChart.Size = new System.Drawing.Size(431, 444);
             this.SpendingsChart.TabIndex = 18;
             this.SpendingsChart.Text = "chart1";
+            // 
+            // TipOfTheDay1
+            // 
+            this.TipOfTheDay1.AutoSize = true;
+            this.TipOfTheDay1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TipOfTheDay1.Location = new System.Drawing.Point(236, 447);
+            this.TipOfTheDay1.Name = "TipOfTheDay1";
+            this.TipOfTheDay1.Size = new System.Drawing.Size(71, 13);
+            this.TipOfTheDay1.TabIndex = 19;
+            this.TipOfTheDay1.Text = "TipOfTheDay";
             // 
             // Spendings
             // 
@@ -89,6 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1076, 483);
+            this.Controls.Add(this.TipOfTheDay1);
             this.Controls.Add(this.SpendingsChart);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Spendings";
@@ -96,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsChart)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -103,5 +116,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart SpendingsChart;
+        private System.Windows.Forms.Label TipOfTheDay1;
     }
 }
