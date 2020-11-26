@@ -16,11 +16,13 @@ namespace WebApplication1.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        //public ActionResult<IEnumerable<string>> Get()
+        public Account Get()
         {
             SQLLoginReader logReadProv = new SQLLoginReader();
             account = logReadProv.Read("Minde");
-            return new string[] { "value1", "value2", ""+account.Limit+"" };
+            //return new string[] { "value1", "value2", ""+account.Limit+"" };
+            return account;
         }
 
         // GET api/values/5
