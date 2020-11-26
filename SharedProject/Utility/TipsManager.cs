@@ -9,13 +9,13 @@ namespace SharedProject.Utility
 {
     class TipsManager
     {
-        SQLExpensesList sqlExpensesList = new SQLExpensesList();
+        Lazy<SQLExpensesList> sqlExpensesList = new Lazy<SQLExpensesList>();
         List<Expences> ExpencesList = new List<Expences>();
 
         public Expences GetTips(int UserId)
         {
             //Getting a clean list
-            DataTable sTable = sqlExpensesList.GetExpensesSumByType(UserId);
+            DataTable sTable = sqlExpensesList.Value.GetExpensesSumByType(UserId);
 
             ExpencesList = (from DataRow dr in sTable.Rows
                             select new Expences()

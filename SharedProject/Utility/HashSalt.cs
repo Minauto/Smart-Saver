@@ -8,7 +8,6 @@ namespace SmartSaver
         public string Hash { get; set; }
         public string Salt { get; set; }
 
-
         public static HashSalt GenerateSaltedHash(string password, int size = 16)
         {
             var saltBytes = new byte[size];
