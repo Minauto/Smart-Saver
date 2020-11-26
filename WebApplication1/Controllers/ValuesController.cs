@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Provider;
 
 namespace WebApplication1.Controllers
 {
@@ -10,11 +11,16 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+
+        Account account = new Account();
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            SQLLoginReader logReadProv = new SQLLoginReader();
+            account = logReadProv.Read("Minde");
+            return new string[] { "value1", "value2", ""+account.Limit+"" };
         }
 
         // GET api/values/5
