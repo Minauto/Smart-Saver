@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication2.Provider;
 
 namespace WebApplication2.Controllers
 {
@@ -11,8 +12,12 @@ namespace WebApplication2.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        Account account = new Account();
+        SQLLoginReader sqlLogRead = new SQLLoginReader();
+
         private static readonly string[] Summaries = new[]
         {
+
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
@@ -22,7 +27,7 @@ namespace WebApplication2.Controllers
         {
             _logger = logger;
         }
-
+        /*
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -34,6 +39,13 @@ namespace WebApplication2.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        */
+        [HttpGet]
+        public Account GetAccount()
+        {
+            account = sqlLogRead.Read("Minde");
+            return account;
         }
     }
 }
