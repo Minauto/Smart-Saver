@@ -47,5 +47,14 @@ namespace WebApplication2.Controllers
             account = sqlLogRead.Read("Minde");
             return account;
         }
+
+        // GET api/weatherforecast/firstName
+        //                                                          GET api/weatherforecast?firstName=
+        [HttpGet("{firstName}")]
+        public Account GetAccountWithParameters(string firstName)
+        {
+            account = sqlLogRead.Read(firstName);
+            return account;
+        }
     }
 }
