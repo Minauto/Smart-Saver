@@ -1,5 +1,4 @@
-﻿using CustomExtensions;
-using SmartSaver.Forms;
+﻿using SmartSaver.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -229,7 +228,11 @@ namespace SmartSaver
         {
             ExpensesComboBox.Items.Clear();
             typesList = sqlExpTypesList.GetExpensesTypes(userId);
-            ExpensesComboBox = typesList.ToComboBox(ExpensesComboBox);
+            foreach (string item in typesList)
+            {
+                ExpensesComboBox.Items.Add(item);
+            }
+
         }
 
         private Form activeForm = null;
