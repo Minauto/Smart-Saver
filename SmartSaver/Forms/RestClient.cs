@@ -23,7 +23,7 @@ namespace SmartSaver.Forms
 
         public RestClient()
         {
-            endPoint = "https://localhost:44350/weatherforecast/";
+            endPoint = "https://localhost:44350/account/";
             httpMethod = httpVerb.GET;
         }
 

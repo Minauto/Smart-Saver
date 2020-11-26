@@ -10,7 +10,7 @@ namespace WebApplication2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class AccountController : ControllerBase
     {
         Account account = new Account();
         SQLLoginReader sqlLogRead = new SQLLoginReader();
@@ -21,9 +21,9 @@ namespace WebApplication2.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<AccountController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public AccountController(ILogger<AccountController> logger)
         {
             _logger = logger;
         }
