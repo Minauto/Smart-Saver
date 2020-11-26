@@ -21,7 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLRemoveExpenseType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\TipsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\HashSalt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utility\ListExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utility\LoginChecker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SQL\LoginChecker.cs" />
   </ItemGroup>
 </Project>

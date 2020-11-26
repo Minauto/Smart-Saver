@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SmartSaver.Forms;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartSaver
@@ -16,12 +20,24 @@ namespace SmartSaver
             InitializeComponent();
         }
 
+
         private void LogInButton_Click(object sender, EventArgs e)
         {
-
+            
+            
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
-                account = Reader.Read(usernameTxtBx.Text);
+                RestClient rClient = new RestClient();
+                rClient.endPoint += usernameTxtBx.Text;
+                MessageBox.Show("Rest Client Created");
+
+                string strResponse = string.Empty;
+
+                strResponse = rClient.makeRequest();
+
+                MessageBox.Show(strResponse);
+
+                account = JsonConvert.DeserializeObject<Account>(strResponse);
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
                     sqlIn.CreateBaseExpensesTypes(account.UserId);
@@ -34,6 +50,7 @@ namespace SmartSaver
             {
                 MessageBox.Show("Please Check Username and Password");
             }
+            
         }
 
         private void exitButton_Click(object sender, EventArgs e)

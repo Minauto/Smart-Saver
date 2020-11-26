@@ -28,11 +28,6 @@ namespace SharedProject.Utility
             ExpencesList.Sort((emp1, emp2) => emp2.ExpencesF.CompareTo(emp1.ExpencesF));
             /////////////////////////////////////////////////////////////////
 
-            //ExpencesList.Sort(ExpencesF);
-            foreach (var a in ExpencesList)
-            {
-                Console.WriteLine(a.ExpencesF + a.ExpencesType);
-            }
 
             ///Will probably need some more advanced logic, pretty basic now
             return ExpencesList[0];
