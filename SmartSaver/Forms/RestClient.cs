@@ -27,7 +27,7 @@ namespace SmartSaver.Forms
             httpMethod = httpVerb.GET;
         }
 
-        public string makeRequest()
+        public Task<string> makeRequest()
         {
 
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
@@ -61,7 +61,13 @@ namespace SmartSaver.Forms
             }
 
 
-            return strResponseValue;
+            return Task.FromResult<string>(strResponseValue);
+        }
+
+        public async Task<string> makeRequestAsync()
+        {
+            var str = makeRequest();
+            return str.Result;
         }
 
         public string makeRequestWithParameter(String userName)

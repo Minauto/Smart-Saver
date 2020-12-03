@@ -2,6 +2,7 @@
 using SmartSaver.Forms;
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,6 +10,9 @@ namespace SmartSaver
 {
     public partial class LoginWindow : Form
     {
+        delegate void MSG(string text);
+        MSG msg = delegate (string text) { MessageBox.Show(text); };
+
         Account account;
         LoginChecker checker = new LoginChecker();
         SQLLoginReader Reader = new SQLLoginReader();
@@ -21,28 +25,28 @@ namespace SmartSaver
         }
 
 
-        private void LogInButton_Click(object sender, EventArgs e)
+        private /*async*/ void LogInButton_Click(object sender, EventArgs e)
         {
-            
-            
+
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
-                /*
-                RestClient rClient = new RestClient();
+                /*RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
-                MessageBox.Show("Rest Client Created");
 
                 string strResponse = string.Empty;
 
-                strResponse = rClient.makeRequest();
+                
+                var result = rClient.makeRequestAsync();
 
-                MessageBox.Show(strResponse);
+                LoadingLabel.Visible = true;
+                LoadingLabel.Text = "Loading...";
 
-                account = JsonConvert.DeserializeObject<Account>(strResponse);
+                strResponse = await result;
 
-                */
+                account = JsonConvert.DeserializeObject<Account>(strResponse);*/
 
                 account = Reader.Read(usernameTxtBx.Text);
+
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
                     sqlIn.CreateBaseExpensesTypes(account.UserId);
@@ -53,7 +57,7 @@ namespace SmartSaver
             }
             else
             {
-                MessageBox.Show("Please Check Username and Password");
+                msg("Please Check Username and Password");
             }
             
         }

@@ -5,6 +5,9 @@ namespace SmartSaver
 {
     public partial class SignUpWindow : Form
     {
+        delegate void MSG(string text);
+        MSG msg = delegate (string text) { MessageBox.Show(text); };
+        
         LoginWindow logWin = new LoginWindow();
         SQLInput accCreator = new SQLInput();
 
@@ -36,17 +39,17 @@ namespace SmartSaver
                     }
                     else
                     {
-                        MessageBox.Show("Username taken, try another one");
+                        msg("Username taken, try another one");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Passwords do not match");
+                    msg("Passwords do not match");
                 }
             }
             else
             {
-                MessageBox.Show("Fill out missing fields");
+                msg("Fill out missing fields");
             }
         }
     }

@@ -37,6 +37,7 @@
             this.logInBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.signUpBtn = new System.Windows.Forms.Button();
+            this.LoadingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // passwdTxtBx
@@ -121,6 +122,17 @@
             this.signUpBtn.UseVisualStyleBackColor = true;
             this.signUpBtn.Click += new System.EventHandler(this.SignUpButton_Click);
             // 
+            // LoadingLabel
+            // 
+            this.LoadingLabel.AutoSize = true;
+            this.LoadingLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.LoadingLabel.Location = new System.Drawing.Point(17, 218);
+            this.LoadingLabel.Name = "LoadingLabel";
+            this.LoadingLabel.Size = new System.Drawing.Size(73, 21);
+            this.LoadingLabel.TabIndex = 9;
+            this.LoadingLabel.Text = "Loading";
+            this.LoadingLabel.Visible = false;
+            // 
             // LoginWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +140,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(331, 248);
+            this.Controls.Add(this.LoadingLabel);
             this.Controls.Add(this.signUpBtn);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.logInBtn);
@@ -154,5 +167,6 @@
         private System.Windows.Forms.Button logInBtn;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Button signUpBtn;
+        private System.Windows.Forms.Label LoadingLabel;
     }
 }

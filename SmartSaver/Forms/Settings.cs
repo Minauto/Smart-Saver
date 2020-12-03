@@ -8,6 +8,9 @@ namespace SmartSaver.Forms
 {
     public partial class Settings : Form
     {
+        delegate void MSG(string text);
+        MSG msg = delegate (string text) { MessageBox.Show(text); };
+
         Account account;
         SQLExpensesTypesList sqlExpTypesList = new SQLExpensesTypesList();
         List<String> typesList = new List<string>();
@@ -42,14 +45,14 @@ namespace SmartSaver.Forms
             {
                 if (sqlIn.AddExpensesType(account.UserId, CustomizeComboBox.Text))
                 {
-                    MessageBox.Show("Category added");
+                    msg("Category added");
                 }
                 CustomizeComboBox.Text = "";
                 RefreshTypesList(account.UserId);
             }
             else
             {
-                MessageBox.Show("Box Is Empty!");
+                msg("Box Is Empty!");
             }
 
         }
@@ -60,14 +63,14 @@ namespace SmartSaver.Forms
             {
                 if (sqlRemove.Remove(account.UserId, CustomizeComboBox.Text))
                 {
-                    MessageBox.Show("Category removed");
+                    msg("Category removed");
                 }
                 CustomizeComboBox.Text = "";
                 RefreshTypesList(account.UserId);
             }
             else
             {
-                MessageBox.Show("Box Is Empty!");
+                msg("Box Is Empty!");
             }
         }
 
