@@ -9,6 +9,9 @@ namespace SmartSaver
 {
     public partial class LoginWindow : Form
     {
+        delegate void MSG(string text);
+        MSG msg = delegate (string text) { MessageBox.Show(text); };
+
         Account account;
         LoginChecker checker = new LoginChecker();
         SQLLoginReader Reader = new SQLLoginReader();
@@ -23,10 +26,11 @@ namespace SmartSaver
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            
+
             
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
+
                 /*
                 RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
@@ -53,7 +57,7 @@ namespace SmartSaver
             }
             else
             {
-                MessageBox.Show("Please Check Username and Password");
+                msg("Please Check Username and Password");
             }
             
         }

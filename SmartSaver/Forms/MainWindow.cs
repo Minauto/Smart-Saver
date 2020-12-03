@@ -12,6 +12,20 @@ namespace SmartSaver
 {
     public partial class MainWindow : Form
     {
+        delegate void MSG(string text);
+        MSG msg = delegate (string text) { MessageBox.Show(text); };
+
+        delegate string AddPrefix(Account account);
+        AddPrefix addPref = delegate (Account account)
+        {
+            string prefix = "";
+            if (account.gender == Gender.Male)
+                prefix = "Mr. ";
+            if (account.gender == Gender.Female)
+                prefix = "Mrs. ";
+            return prefix;
+        };
+
         Account account;
         LoginWindow logWin = new LoginWindow();
         TitleWindow titleWindow;
@@ -125,18 +139,18 @@ namespace SmartSaver
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Incorrect Amount format");
+                        msg("Incorrect Amount format");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid number format. Try again");
+                    msg("Invalid number format. Try again");
                     AmountTextBox.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("Fill In Empty Fields");
+                msg("Fill In Empty Fields");
             }
         }
 
@@ -209,18 +223,18 @@ namespace SmartSaver
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Incorrect Amount format");
+                        msg("Incorrect Amount format");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid number format. Try again");
+                    msg("Invalid number format. Try again");
                     LimitAmountTextBox.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("Fill In Empty Fields");
+                msg("Fill In Empty Fields");
             }
         }
 
@@ -257,11 +271,7 @@ namespace SmartSaver
 
         private void loadGreetings()
         {
-            String prefix = "";
-            if (account.gender == Gender.Male)
-                prefix = "Mr. ";
-            if (account.gender == Gender.Female)
-                prefix = "Mrs. ";
+            String prefix = addPref(account);
             DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
         }
 
