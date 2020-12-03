@@ -271,8 +271,7 @@ namespace SmartSaver
 
         private void loadGreetings()
         {
-            String prefix = addPref(account);
-            DisplayNameLabel.Text = "Hello, " + prefix + account.Name + "!";
+            DisplayNameLabel.Text = "Hello, " + addPref(account) + account.Name + "!";
         }
 
         public void changeTheme(Theme theme)

@@ -24,29 +24,42 @@ namespace SmartSaver
         }
 
 
-        private void LogInButton_Click(object sender, EventArgs e)
+        private /*async*/ void LogInButton_Click(object sender, EventArgs e)
         {
 
             
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
 
-                /*
+/*
                 RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
                 MessageBox.Show("Rest Client Created");
 
                 string strResponse = string.Empty;
 
-                strResponse = rClient.makeRequest();
+                Task<string> taskas = rClient.makeRequest();
+
+                //strResponse = await rClient.makeRequest();
+
+                var result = await rClient.makeRequestAsync();
+
+                MessageBox.Show("Loading");
+
+                var strResp = result;
+
+                strResponse = strResp;
 
                 MessageBox.Show(strResponse);
 
                 account = JsonConvert.DeserializeObject<Account>(strResponse);
+*/
 
-                */
+
 
                 account = Reader.Read(usernameTxtBx.Text);
+
+
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
                     sqlIn.CreateBaseExpensesTypes(account.UserId);
