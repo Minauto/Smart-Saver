@@ -14,6 +14,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Gender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Theme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Themes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ILoginCheckService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\LoginCheckService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLExpensesList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLExpensesTypesList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SQL\SQLInput.cs" />

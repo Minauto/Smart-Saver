@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SmartSaver.Forms;
+using SmartSaver.Services;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace SmartSaver
         SQLLoginReader Reader = new SQLLoginReader();
         SQLInput sqlIn = new SQLInput();
         SQLExpensesTypesList sqlExTypeList = new SQLExpensesTypesList();
+        ILoginCheckService loginCheckService = new LoginCheckService();
 
         public LoginWindow()
         {
@@ -25,7 +27,7 @@ namespace SmartSaver
         {
             
             
-            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
+            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, loginCheckService))
             {
                 /*
                 RestClient rClient = new RestClient();
