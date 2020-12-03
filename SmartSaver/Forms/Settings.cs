@@ -89,6 +89,18 @@ namespace SmartSaver.Forms
 
         private void SetNewNameButton_Click(object sender, EventArgs e)
         {
+            if (ChangeNameTextBox.Text != "")
+            {
+                SetNewName();
+            }
+            else
+            {
+                MessageBox.Show("Box Is Empty!");
+            }
+        }
+
+        private void SetNewName()
+        {
             account.Name = ChangeNameTextBox.Text;
             mainWindow.ReloadData();
             usernameLabel.Text = account.Name;

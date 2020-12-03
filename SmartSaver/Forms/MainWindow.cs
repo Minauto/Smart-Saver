@@ -23,6 +23,8 @@ namespace SmartSaver
         private float monthlyExpenses;
         List<String> typesList = new List<string>();
         Theme theme;
+        public delegate void DataAddedEventHandler(object source, EventArgs args);
+        public event DataAddedEventHandler DataAdded;
 
         public MainWindow(LoginWindow logWin, Account account)
         {
@@ -43,6 +45,7 @@ namespace SmartSaver
             theme = new Theme(account.themes);
             changeTheme(theme);
             openChildForm(titleWindow);
+            this.DataAdded += spendings.OnDataAdded;
         }
 
         private void MonthlyGoalText()
@@ -147,16 +150,11 @@ namespace SmartSaver
 
         public void ReloadData()
         {
-
             DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
-
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
-
             RefreshTypesList(account.UserId);
-
             MonthlyGoalText();
-
             loadGreetings();
         }
 
@@ -301,6 +299,11 @@ namespace SmartSaver
         private void applicationName_Click(object sender, EventArgs e)
         {
             openChildForm(titleWindow);
+        }
+
+        protected virtual void OnDataAdded()
+        {
+            DataAdded?.Invoke(this, EventArgs.Empty);
         }
     }
 }

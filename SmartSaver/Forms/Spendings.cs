@@ -114,5 +114,9 @@ namespace SmartSaver.Forms
             TipOfTheDay1.Text = "You should maybe think about cutting expences on " + TipOnExpences.ExpencesType + "\n" + "You already spent " + TipOnExpences.ExpencesF + " on it";
         }
 
+        public void OnDataAdded (object source, EventArgs e)
+        {
+            ReloadData();
+        }
     }
 }
