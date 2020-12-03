@@ -48,7 +48,6 @@ namespace SmartSaver
             this.account = account;
 
 
-
             titleWindow = new TitleWindow();
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
@@ -61,6 +60,8 @@ namespace SmartSaver
             openChildForm(titleWindow);
             this.DataAdded += spendings.OnDataAdded;
         }
+
+        
 
         private void MonthlyGoalText()
         {
@@ -159,7 +160,11 @@ namespace SmartSaver
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.WindowLocation != null)
+                Location = Properties.Settings.Default.WindowLocation;
 
+            if (Properties.Settings.Default.WindowSize != null)
+                Size = Properties.Settings.Default.WindowSize;
         }
 
         public void ReloadData()
@@ -240,11 +245,7 @@ namespace SmartSaver
         {
             ExpensesComboBox.Items.Clear();
             typesList = sqlExpTypesList.GetExpensesTypes(userId);
-            foreach (string item in typesList)
-            {
-                ExpensesComboBox.Items.Add(item);
-            }
-
+            typesList.ForEach((item) => ExpensesComboBox.Items.Add(item));
         }
 
         private Form activeForm = null;
@@ -313,6 +314,14 @@ namespace SmartSaver
         protected virtual void OnDataAdded()
         {
             DataAdded?.Invoke(this, EventArgs.Empty);
+        }
+        
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.WindowLocation = Location;
+            Properties.Settings.Default.WindowSize = Size;
+
+            Properties.Settings.Default.Save();
         }
     }
 }

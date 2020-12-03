@@ -23,7 +23,7 @@ namespace SmartSaver.Forms
         DataTable spSumByType;
         TipsManager TM = new TipsManager();
         //Label TipOfTheDay = new Label();
-
+        Func<int, DataTable> getExpenses;
 
 
         public Spendings(Account account, MainWindow mainWindow)
@@ -40,13 +40,15 @@ namespace SmartSaver.Forms
             SpendingsSeries.ChartType = SeriesChartType.Column;
             LimitProgressBar.Maximum = (int)account.Limit;
 
+            getExpenses = (userId) => sqlExpensesList.GetExpenses(userId);
+
             ReloadData();
         }
 
         public void ReloadData()
         {
 
-            DataTable sTable = sqlExpensesList.GetExpenses(account.UserId);
+            DataTable sTable = getExpenses(account.UserId);
             dataGridView.DataSource = sTable;
             dataGridView.ReadOnly = true;
             dataGridView.Columns["Date"].Width = 120;
@@ -77,7 +79,7 @@ namespace SmartSaver.Forms
         {
 
             SpendingsSeries.Points.Clear();
-            DataTable ExpencesTable = sqlExpensesList.GetExpenses(account.UserId);
+            DataTable ExpencesTable = getExpenses(account.UserId);
             List <Expences> ExpencesList = new List<Expences>();
             ExpencesList = (from DataRow dr in ExpencesTable.Rows
                             select new Expences()

@@ -33,10 +33,7 @@ namespace SmartSaver.Forms
         {
             CustomizeComboBox.Items.Clear();
             typesList = sqlExpTypesList.GetExpensesTypes(userId);
-            for (int i = 0; i < typesList.Count; i++)
-            {
-                CustomizeComboBox.Items.Add(typesList[i]);
-            }
+            typesList.ForEach(delegate (string s) { CustomizeComboBox.Items.Add(s); });
         }
 
         private void AddNewChoiceButton_Click(object sender, EventArgs e)

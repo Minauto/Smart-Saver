@@ -403,6 +403,7 @@ namespace SmartSaver
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainWindow";
             this.Text = "Smart Saver";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
