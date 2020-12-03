@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading
 
 namespace SmartSaver.Forms
 {
@@ -55,10 +56,14 @@ namespace SmartSaver.Forms
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
-            UpdateProgressBar();
 
-            LoadTips();
-            loadChart();
+            Thread ProgressBar = new Thread(UpdateProgressBar);
+            Thread Tips = new Thread(LoadTips);
+            Thread Chart = new Thread(loadChart);
+
+            ProgressBar.Start();
+            Tips.Start();
+            Chart.Start();
         }
 
         private void UpdateProgressBar()
