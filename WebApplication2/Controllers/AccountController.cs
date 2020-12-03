@@ -15,11 +15,7 @@ namespace WebApplication2.Controllers
         Account account = new Account();
         SQLLoginReader sqlLogRead = new SQLLoginReader();
 
-        private static readonly string[] Summaries = new[]
-        {
-
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        
 
         private readonly ILogger<AccountController> _logger;
 
@@ -27,20 +23,7 @@ namespace WebApplication2.Controllers
         {
             _logger = logger;
         }
-        /*
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-        */
+        
         [HttpGet]
         public Account GetAccount()
         {
@@ -48,8 +31,7 @@ namespace WebApplication2.Controllers
             return account;
         }
 
-        // GET api/weatherforecast/firstName
-        //                                                          GET api/weatherforecast?firstName=
+        // GET api/account/firstname
         [HttpGet("{firstName}")]
         public Account GetAccountWithParameters(string firstName)
         {

@@ -27,6 +27,7 @@ namespace SmartSaver
             
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
+                /*
                 RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
                 MessageBox.Show("Rest Client Created");
@@ -38,6 +39,10 @@ namespace SmartSaver
                 MessageBox.Show(strResponse);
 
                 account = JsonConvert.DeserializeObject<Account>(strResponse);
+
+                */
+
+                account = Reader.Read(usernameTxtBx.Text);
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
                     sqlIn.CreateBaseExpensesTypes(account.UserId);
