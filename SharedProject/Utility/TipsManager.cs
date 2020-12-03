@@ -16,21 +16,30 @@ namespace SharedProject.Utility
         {
             //Getting a clean list
             DataTable sTable = sqlExpensesList.Value.GetExpensesSumByType(UserId);
+            if(sTable.Rows.Count == 0)
+            {
+                Expences empty = new Expences();
+                return empty;
+            }
+            else
+            {
+                ExpencesList = (from DataRow dr in sTable.Rows
+                                select new Expences()
+                                {
+                                    ExpencesF = Convert.ToDecimal(dr["SumOfExpences"]),
+                                    ExpencesType = dr["TypeOfExpences"].ToString(),
+                                }).ToList();
+                /////////////////////////////////////////////////////////////////
+                //Sorts the list
+                ExpencesList.Sort((emp1, emp2) => emp2.ExpencesF.CompareTo(emp1.ExpencesF));
+                /////////////////////////////////////////////////////////////////
 
-            ExpencesList = (from DataRow dr in sTable.Rows
-                            select new Expences()
-                            {
-                                ExpencesF = Convert.ToDecimal(dr["SumOfExpences"]),
-                                ExpencesType = dr["TypeOfExpences"].ToString(),
-                            }).ToList();
-            /////////////////////////////////////////////////////////////////
-            //Sorts the list
-            ExpencesList.Sort((emp1, emp2) => emp2.ExpencesF.CompareTo(emp1.ExpencesF));
-            /////////////////////////////////////////////////////////////////
 
+                ///Will probably need some more advanced logic, pretty basic now
 
-            ///Will probably need some more advanced logic, pretty basic now
-            return ExpencesList[0];
+                return ExpencesList[0];
+            }
+            
         }
     }
 }
