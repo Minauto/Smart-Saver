@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace SmartSaver
 {
@@ -13,7 +14,10 @@ namespace SmartSaver
         static string workingDirectory = Environment.CurrentDirectory;
         static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
 
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
+        //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
+        static string connectionString = ConfigurationManager.ConnectionStrings["SmartSaver.Properties.Settings.Database2ConnectionString"].ConnectionString;
+
+        SqlConnection con = new SqlConnection(connectionString);
 
         public bool CreateAccount(string username, string password, string name, Gender gender)
         {

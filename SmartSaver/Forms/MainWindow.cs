@@ -32,7 +32,6 @@ namespace SmartSaver
             this.account = account;
 
 
-
             titleWindow = new TitleWindow();
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
@@ -44,6 +43,8 @@ namespace SmartSaver
             changeTheme(theme);
             openChildForm(titleWindow);
         }
+
+        
 
         private void MonthlyGoalText()
         {
@@ -142,7 +143,11 @@ namespace SmartSaver
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.WindowLocation != null)
+                Location = Properties.Settings.Default.WindowLocation;
 
+            if (Properties.Settings.Default.WindowSize != null)
+                Size = Properties.Settings.Default.WindowSize;
         }
 
         public void ReloadData()
@@ -297,6 +302,14 @@ namespace SmartSaver
         private void applicationName_Click(object sender, EventArgs e)
         {
             openChildForm(titleWindow);
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.WindowLocation = Location;
+            Properties.Settings.Default.WindowSize = Size;
+
+            Properties.Settings.Default.Save();
         }
     }
 }
