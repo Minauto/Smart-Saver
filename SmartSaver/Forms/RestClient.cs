@@ -66,8 +66,8 @@ namespace SmartSaver.Forms
 
         public async Task<string> makeRequestAsync()
         {
-            string str = await makeRequest();
-            return str;
+            var str = makeRequest();
+            return str.Result;
         }
 
         public string makeRequestWithParameter(String userName)

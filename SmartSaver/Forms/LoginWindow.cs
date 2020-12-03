@@ -2,6 +2,7 @@
 using SmartSaver.Forms;
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,38 +28,24 @@ namespace SmartSaver
         private /*async*/ void LogInButton_Click(object sender, EventArgs e)
         {
 
-            
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text))
             {
-
-/*
-                RestClient rClient = new RestClient();
+                /*RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
-                MessageBox.Show("Rest Client Created");
 
                 string strResponse = string.Empty;
 
-                Task<string> taskas = rClient.makeRequest();
+                
+                var result = rClient.makeRequestAsync();
 
-                //strResponse = await rClient.makeRequest();
+                LoadingLabel.Visible = true;
+                LoadingLabel.Text = "Loading...";
 
-                var result = await rClient.makeRequestAsync();
+                strResponse = await result;
 
-                MessageBox.Show("Loading");
-
-                var strResp = result;
-
-                strResponse = strResp;
-
-                MessageBox.Show(strResponse);
-
-                account = JsonConvert.DeserializeObject<Account>(strResponse);
-*/
-
-
+                account = JsonConvert.DeserializeObject<Account>(strResponse);*/
 
                 account = Reader.Read(usernameTxtBx.Text);
-
 
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
