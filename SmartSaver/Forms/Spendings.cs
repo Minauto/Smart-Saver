@@ -26,6 +26,8 @@ namespace SmartSaver.Forms
         //Label TipOfTheDay = new Label();
         Func<int, DataTable> getExpenses;
 
+        MainWindow mw;
+
 
         public Spendings(Account account, MainWindow mainWindow)
         {
@@ -44,6 +46,13 @@ namespace SmartSaver.Forms
             getExpenses = (userId) => sqlExpensesList.GetExpenses(userId);
 
             ReloadData();
+
+            mw = mainWindow;
+            mw.ExpensesAdded += ExpensesAdded;
+        }
+        void ExpensesAdded(object sender, EventArgs e)
+        {
+            ReloadData();
         }
 
         public void ReloadData()
@@ -57,13 +66,9 @@ namespace SmartSaver.Forms
 
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
 
-            Thread ProgressBar = new Thread(UpdateProgressBar);
-            Thread Tips = new Thread(LoadTips);
-            Thread Chart = new Thread(loadChart);
-
-            ProgressBar.Start();
-            Tips.Start();
-            Chart.Start();
+            UpdateProgressBar();
+            LoadTips();
+            loadChart();
         }
 
         private void UpdateProgressBar()

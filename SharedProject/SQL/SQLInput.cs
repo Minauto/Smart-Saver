@@ -11,8 +11,9 @@ namespace SmartSaver
     class SQLInput
     {
 
-        static string connectionString = ConfigurationManager.ConnectionStrings["SmartSaver.Properties.Settings.Database2ConnectionString"].ConnectionString;
-        SqlConnection con = new SqlConnection(connectionString);
+        static string workingDirectory = Environment.CurrentDirectory;
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
         public bool CreateAccount(string username, string password, string name, Gender gender)
         {

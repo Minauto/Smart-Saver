@@ -30,24 +30,24 @@ namespace SmartSaver
         private /*async*/ void LogInButton_Click(object sender, EventArgs e)
         {
             
-            
+
             if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, loginCheckService))
             {
-                /*RestClient rClient = new RestClient();
+/*
+                RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
 
                 string strResponse = string.Empty;
 
-                
-                var result = rClient.makeRequestAsync();
+                Task<string> result = rClient.makeRequest();
 
-                LoadingLabel.Visible = true;
                 LoadingLabel.Text = "Loading...";
+                LoadingLabel.Visible = true;
 
-                strResponse = await result;
+                strResponse =  await result;
 
-                account = JsonConvert.DeserializeObject<Account>(strResponse);*/
-
+                account = JsonConvert.DeserializeObject<Account>(strResponse);
+*/
                 account = Reader.Read(usernameTxtBx.Text);
 
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
@@ -62,7 +62,7 @@ namespace SmartSaver
             {
                 msg("Please Check Username and Password");
             }
-            
+
         }
 
         private void exitButton_Click(object sender, EventArgs e)
