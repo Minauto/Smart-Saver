@@ -1,4 +1,5 @@
 ﻿using SmartSaver.Forms;
+using SmartSaver.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace SmartSaver
     public partial class MainWindow : Form
     {
         Account account;
-        LoginWindow logWin = new LoginWindow();
+        LoginWindow logWin = new LoginWindow(new LoginCheckService());
         TitleWindow titleWindow;
         Settings settings;
         Spendings spendings;

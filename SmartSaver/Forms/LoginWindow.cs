@@ -14,9 +14,11 @@ namespace SmartSaver
         SQLLoginReader Reader = new SQLLoginReader();
         SQLInput sqlIn = new SQLInput();
         SQLExpensesTypesList sqlExTypeList = new SQLExpensesTypesList();
+        ILoginCheckService loginCheckService;
 
-        public LoginWindow()
+        public LoginWindow(ILoginCheckService loginCheckService)
         {
+            this.loginCheckService = loginCheckService;
             InitializeComponent();
         }
 

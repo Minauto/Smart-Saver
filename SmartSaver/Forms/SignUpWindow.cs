@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SmartSaver.Services;
+using System;
 using System.Windows.Forms;
 
 namespace SmartSaver
 {
     public partial class SignUpWindow : Form
     {
-        LoginWindow logWin = new LoginWindow();
+        LoginWindow logWin = new LoginWindow(new LoginCheckService());
         SQLInput accCreator = new SQLInput();
 
         public SignUpWindow(LoginWindow logWin)
