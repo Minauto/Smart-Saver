@@ -15,17 +15,9 @@ namespace SmartSaver
     {
         delegate void MSG(string text);
         MSG msg = delegate (string text) { MessageBox.Show(text); };
-
         delegate string AddPrefix(Account account);
-        AddPrefix addPref = delegate (Account account)
-        {
-            string prefix = "";
-            if (account.gender == Gender.Male)
-                prefix = "Mr. ";
-            if (account.gender == Gender.Female)
-                prefix = "Mrs. ";
-            return prefix;
-        };
+
+        
 
         Account account;
         LoginWindow logWin = new LoginWindow(new LoginCheckService());
@@ -93,6 +85,7 @@ namespace SmartSaver
             Application.Exit();
         }
 
+        delegate void ShowExpLabel();
         private void AddExpensesButton_Click(object sender, EventArgs e)
         {
             //ann method implemented with lambda
@@ -106,7 +99,13 @@ namespace SmartSaver
             {
                 AddExpensePanel.BringToFront();
                 RefreshTypesList(account.UserId);
-                ShowAddExpenses();//remove
+
+                ShowExpLabel showExpLabel = delegate 
+                {
+                    AddExpensePanel.Visible = true;
+                };
+                showExpLabel();
+                //ShowAddExpenses();
             }
             //
         }
@@ -144,6 +143,7 @@ namespace SmartSaver
                         AmountTextBox.Clear();
                         ExpensesComboBox.Text = "";
                         ReloadData();
+                        OnExpensesAdded(EventArgs.Empty);
                     }
                     catch (Exception)
                     {
@@ -274,6 +274,15 @@ namespace SmartSaver
 
         private void loadGreetings()
         {
+            AddPrefix addPref = delegate (Account account)
+            {
+                string prefix = "";
+                if (account.gender == Gender.Male)
+                    prefix = "Mr. ";
+                if (account.gender == Gender.Female)
+                    prefix = "Mrs. ";
+                return prefix;
+            };
             DisplayNameLabel.Text = "Hello, " + addPref(account) + account.Name + "!";
         }
 
@@ -327,5 +336,17 @@ namespace SmartSaver
 
             Properties.Settings.Default.Save();
         }
+
+        protected virtual void OnExpensesAdded(EventArgs e)
+        {
+            EventHandler Handler = ExpensesAdded;
+
+            if(Handler != null)
+            {
+                Handler(this, e);
+            }
+        }
+
+        public event EventHandler ExpensesAdded;
     }
 }

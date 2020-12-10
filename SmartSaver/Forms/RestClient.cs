@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SmartSaver.Forms
@@ -29,7 +30,6 @@ namespace SmartSaver.Forms
 
         public Task<string> makeRequest()
         {
-
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
 
             string strResponseValue = string.Empty;
