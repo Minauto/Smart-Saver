@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartSaver.Services;
+using System;
 using System.Windows.Forms;
 
 
@@ -15,7 +16,7 @@ namespace SmartSaver
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginWindow());
+            Application.Run(new LoginWindow(new LoginCheckService()));
         }
 
     }

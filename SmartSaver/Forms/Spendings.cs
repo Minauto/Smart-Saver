@@ -64,6 +64,7 @@ namespace SmartSaver.Forms
             ProgressBar.Start();
             Tips.Start();
             Chart.Start();
+
         }
 
         private void UpdateProgressBar()

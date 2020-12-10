@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartSaver.Services;
+using System;
 using System.Windows.Forms;
 
 namespace SmartSaver
@@ -8,7 +9,7 @@ namespace SmartSaver
         delegate void MSG(string text);
         MSG msg = delegate (string text) { MessageBox.Show(text); };
         
-        LoginWindow logWin = new LoginWindow();
+        LoginWindow logWin = new LoginWindow(new LoginCheckService());
         SQLInput accCreator = new SQLInput();
 
         public SignUpWindow(LoginWindow logWin)

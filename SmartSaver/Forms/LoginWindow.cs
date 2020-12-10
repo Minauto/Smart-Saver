@@ -19,21 +19,24 @@ namespace SmartSaver
         SQLLoginReader Reader = new SQLLoginReader();
         SQLInput sqlIn = new SQLInput();
         SQLExpensesTypesList sqlExTypeList = new SQLExpensesTypesList();
-        ILoginCheckService loginCheckService = new LoginCheckService();
+        //ILoginCheckService loginCheckService = new LoginCheckService();
+        private readonly ILoginCheckService _loginCheckService;
 
-        public LoginWindow()
+        public LoginWindow(ILoginCheckService loginCheckService)
         {
+            _loginCheckService = loginCheckService;
+
             InitializeComponent();
         }
 
 
-        private /*async*/ void LogInButton_Click(object sender, EventArgs e)
+        private async void LogInButton_Click(object sender, EventArgs e, ILoginCheckService _loginCheckService)
         {
             
             
-            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, loginCheckService))
+            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, _loginCheckService))
             {
-                /*RestClient rClient = new RestClient();
+                RestClient rClient = new RestClient();
                 rClient.endPoint += usernameTxtBx.Text;
 
                 string strResponse = string.Empty;
@@ -44,9 +47,11 @@ namespace SmartSaver
                 LoadingLabel.Visible = true;
                 LoadingLabel.Text = "Loading...";
 
-                strResponse = await result;
+                //strResponse = await result;
 
-                account = JsonConvert.DeserializeObject<Account>(strResponse);*/
+                account = JsonConvert.DeserializeObject<Account>(strResponse);
+
+
 
                 account = Reader.Read(usernameTxtBx.Text);
 
@@ -81,7 +86,7 @@ namespace SmartSaver
         {
             if (e.KeyCode == Keys.Enter)
             {
-                LogInButton_Click(this, new EventArgs());
+                LogInButton_Click(this, new EventArgs(), _loginCheckService);
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }

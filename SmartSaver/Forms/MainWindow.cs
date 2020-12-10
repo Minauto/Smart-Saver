@@ -1,4 +1,5 @@
 ﻿using SmartSaver.Forms;
+using SmartSaver.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,7 +28,7 @@ namespace SmartSaver
         };
 
         Account account;
-        LoginWindow logWin = new LoginWindow();
+        LoginWindow logWin = new LoginWindow(new LoginCheckService());
         TitleWindow titleWindow;
         Settings settings;
         Spendings spendings;
@@ -94,6 +95,9 @@ namespace SmartSaver
 
         private void AddExpensesButton_Click(object sender, EventArgs e)
         {
+            //ann method implemented with lambda
+
+
             if(AddExpensePanel.Visible == true)
             {
                 AddExpensePanel.Visible = false;
@@ -102,9 +106,9 @@ namespace SmartSaver
             {
                 AddExpensePanel.BringToFront();
                 RefreshTypesList(account.UserId);
-                ShowAddExpenses();
+                ShowAddExpenses();//remove
             }
-            
+            //
         }
         private void ExitAddExpensesLabel_Click(object sender, EventArgs e)
         {
