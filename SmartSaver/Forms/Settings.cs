@@ -20,7 +20,7 @@ namespace SmartSaver.Forms
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
         MainWindow mainWindow;
-        RestClient rClient = new RestClient();
+        //RestClient rClient = new RestClient();
         Themes themes;
         Theme theme;
 
@@ -35,11 +35,11 @@ namespace SmartSaver.Forms
         private void RefreshTypesList(int userId)
         {
             CustomizeComboBox.Items.Clear();
-            getExpensesTypesAsync(userId);
-            //typesList = sqlExpTypesList.GetExpensesTypes(userId);
+            //getExpensesTypesAsync(userId);
+            typesList = sqlExpTypesList.GetExpensesTypes(userId);
             typesList.ForEach(delegate (string s) { CustomizeComboBox.Items.Add(s); });
         }
-        private async void getExpensesTypesAsync(int id)
+        /*private async void getExpensesTypesAsync(int id)
         {
 
             string strResponse;
@@ -51,7 +51,7 @@ namespace SmartSaver.Forms
             strResponse = await result;
 
             typesList = JsonConvert.DeserializeObject<List<string>>(strResponse);
-        }
+        }*/
 
         private void AddNewChoiceButton_Click(object sender, EventArgs e)
         {

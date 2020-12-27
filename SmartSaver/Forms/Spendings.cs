@@ -29,7 +29,7 @@ namespace SmartSaver.Forms
         DataTable sTable;
 
         MainWindow mw;
-        RestClient rClient = new RestClient();
+        //RestClient rClient = new RestClient();
 
         public Spendings(Account account, MainWindow mainWindow)
         {
@@ -57,7 +57,7 @@ namespace SmartSaver.Forms
             ReloadData();
         }
 
-        private async void getExpensesAsync(int id)
+        /*private async void getExpensesAsync(int id)
         {
 
             string strResponse;
@@ -69,7 +69,7 @@ namespace SmartSaver.Forms
             strResponse = await result;
 
             sTable = JsonConvert.DeserializeObject<DataTable>(strResponse);
-        }
+        }*/
 
         public void ReloadData()
         {

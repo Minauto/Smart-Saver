@@ -24,6 +24,7 @@ namespace SmartSaver.Forms
 
         public RestClient()
         {
+
             endPoint = "http://localhost:52884/account/";
             httpMethod = httpVerb.GET;
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });

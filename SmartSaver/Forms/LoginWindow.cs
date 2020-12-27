@@ -30,8 +30,9 @@ namespace SmartSaver
         }
 
         RestClient rClient = new RestClient();
-        private async void LogInButton_Click(object sender, EventArgs e)
+        private /*async*/ void LogInButton_Click(object sender, EventArgs e)
         {
+            /*
             string strResponse = string.Empty;
 
             rClient.endPoint += usernameTxtBx.Text;
@@ -43,10 +44,11 @@ namespace SmartSaver
             bool boool;
 
             boool = JsonConvert.DeserializeObject<bool>(strResponse);
-
-            //if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, _loginCheckService))
-            if (boool)
+            */
+            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, _loginCheckService))
+            //if (boool)
             {
+                /*
                 rClient.resetEndpoint();
                 rClient.endPoint += usernameTxtBx.Text;
 
@@ -55,9 +57,9 @@ namespace SmartSaver
                 strResponse = await result;
 
                 account = JsonConvert.DeserializeObject<Account>(strResponse);
+                */
                 
-                
-                //account = Reader.Read(usernameTxtBx.Text);
+                account = Reader.Read(usernameTxtBx.Text);
 
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
