@@ -12,7 +12,7 @@ namespace WebApplication2.Provider
     {
 
         static string workingDirectory = Environment.CurrentDirectory;
-        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Smart-Saver\SmartSaver\Database.mdf"; // fix this later
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + sourcePath + ";Integrated Security=True");
 
         private DataTable dataTable = new DataTable();

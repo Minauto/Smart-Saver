@@ -1,7 +1,9 @@
-﻿using SmartSaver.SQL;
+﻿using Newtonsoft.Json;
+using SmartSaver.SQL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartSaver.Forms
@@ -18,6 +20,7 @@ namespace SmartSaver.Forms
         SQLExpensesList sqlExpensesList = new SQLExpensesList();
         SQLRemoveExpenseType sqlRemove = new SQLRemoveExpenseType();
         MainWindow mainWindow;
+        RestClient rClient = new RestClient();
         Themes themes;
         Theme theme;
 
@@ -32,8 +35,22 @@ namespace SmartSaver.Forms
         private void RefreshTypesList(int userId)
         {
             CustomizeComboBox.Items.Clear();
-            typesList = sqlExpTypesList.GetExpensesTypes(userId);
+            getExpensesTypesAsync(userId);
+            //typesList = sqlExpTypesList.GetExpensesTypes(userId);
             typesList.ForEach(delegate (string s) { CustomizeComboBox.Items.Add(s); });
+        }
+        private async void getExpensesTypesAsync(int id)
+        {
+
+            string strResponse;
+            rClient.resetEndpoint();
+            rClient.endPoint += "data/types/" +id ;
+
+            Task<string> result = rClient.makeRequest();
+
+            strResponse = await result;
+
+            typesList = JsonConvert.DeserializeObject<List<string>>(strResponse);
         }
 
         private void AddNewChoiceButton_Click(object sender, EventArgs e)

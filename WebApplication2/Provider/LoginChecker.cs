@@ -11,11 +11,11 @@ namespace WebApplication2.Provider
     class LoginChecker
     {
         static string workingDirectory = Environment.CurrentDirectory;
-        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Database.mdf";
+        static string sourcePath = Directory.GetParent(workingDirectory).Parent.FullName + @"\Smart-Saver\SmartSaver\Database.mdf"; // fix this later
 
         public bool Check(string usernameTextBox, string passwordTextBox)
         {
-            string sql = string.Format("SELECT * FROM Account WHERE Username = '{0}'", usernameTextBox);
+            string sql = string.Format("SELECT * FROM Account WHERE Username = '"+usernameTextBox+"'");
 
             try
             {
@@ -27,9 +27,10 @@ namespace WebApplication2.Provider
                     {
                         if (dr.Read())
                         {
+                            
                             string storedHash = dr["Hash"].ToString();
                             string storedSalt = dr["Salt"].ToString();
-
+                            
 
                             if (HashSalt.VerifyPassword(passwordTextBox, storedHash, storedSalt))
                             {
@@ -50,6 +51,7 @@ namespace WebApplication2.Provider
             catch (Exception ex)
             {
                 return false;
+
             }
         }
     }

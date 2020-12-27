@@ -24,14 +24,20 @@ namespace SmartSaver.Forms
 
         public RestClient()
         {
-            endPoint = "https://localhost:44350/account/";
+            endPoint = "http://localhost:52884/account/";
             httpMethod = httpVerb.GET;
+            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+        }
+
+        public void resetEndpoint()
+        {
+            endPoint = "http://localhost:52884/account/";
         }
 
         public Task<string> makeRequest()
         {
-            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-
+            
             string strResponseValue = string.Empty;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
@@ -61,18 +67,13 @@ namespace SmartSaver.Forms
             }
 
 
-            return Task.FromResult<string>(strResponseValue);
-        }
 
-        public async Task<string> makeRequestAsync()
-        {
-            var str = makeRequest();
-            return str.Result;
+
+            return Task.FromResult<string>(strResponseValue);
         }
 
         public string makeRequestWithParameter(String userName)
         {
-
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
 
             string strResponseValue = string.Empty;

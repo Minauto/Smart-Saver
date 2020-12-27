@@ -29,29 +29,35 @@ namespace SmartSaver
             InitializeComponent();
         }
 
-
-        private async void LogInButton_Click(object sender, EventArgs e, ILoginCheckService _loginCheckService)
+        RestClient rClient = new RestClient();
+        private async void LogInButton_Click(object sender, EventArgs e)
         {
-            
-            
-            if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, _loginCheckService))
-            {
-                RestClient rClient = new RestClient();
-                rClient.endPoint += usernameTxtBx.Text;
+            string strResponse = string.Empty;
 
-                string strResponse = string.Empty;
+            rClient.endPoint += usernameTxtBx.Text;
+            rClient.endPoint += "/";
+            rClient.endPoint += passwdTxtBx.Text;
+
+            Task<string> res = rClient.makeRequest();
+            strResponse = await res;
+            bool boool;
+
+            boool = JsonConvert.DeserializeObject<bool>(strResponse);
+
+            //if (checker.Check(usernameTxtBx.Text, passwdTxtBx.Text, _loginCheckService))
+            if (boool)
+            {
+                rClient.resetEndpoint();
+                rClient.endPoint += usernameTxtBx.Text;
 
                 Task<string> result = rClient.makeRequest();
 
-                LoadingLabel.Text = "Loading...";
-                LoadingLabel.Visible = true;
-
-                //strResponse = await result;
+                strResponse = await result;
 
                 account = JsonConvert.DeserializeObject<Account>(strResponse);
-
                 
-                account = Reader.Read(usernameTxtBx.Text);
+                
+                //account = Reader.Read(usernameTxtBx.Text);
 
                 if (sqlExTypeList.CheckIfEmpty(account.UserId))
                 {
@@ -84,7 +90,7 @@ namespace SmartSaver
         {
             if (e.KeyCode == Keys.Enter)
             {
-                LogInButton_Click(this, new EventArgs(), _loginCheckService);
+                LogInButton_Click(this, new EventArgs());
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }

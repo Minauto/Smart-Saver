@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace SmartSaver.Forms
 {
@@ -25,9 +26,10 @@ namespace SmartSaver.Forms
         TipsManager TM = new TipsManager();
         //Label TipOfTheDay = new Label();
         Func<int, DataTable> getExpenses;
+        DataTable sTable;
 
         MainWindow mw;
-
+        RestClient rClient = new RestClient();
 
         public Spendings(Account account, MainWindow mainWindow)
         {
@@ -55,10 +57,25 @@ namespace SmartSaver.Forms
             ReloadData();
         }
 
-        public void ReloadData()
+        private async void getExpensesAsync(int id)
         {
 
-            DataTable sTable = getExpenses(account.UserId);
+            string strResponse;
+            rClient.resetEndpoint();
+            rClient.endPoint += "/data/"+id;
+
+            Task<string> result = rClient.makeRequest();
+
+            strResponse = await result;
+
+            sTable = JsonConvert.DeserializeObject<DataTable>(strResponse);
+        }
+
+        public void ReloadData()
+        {
+            
+            //getExpensesAsync(account.UserId);
+            sTable = getExpenses(account.UserId);
             dataGridView.DataSource = sTable;
             dataGridView.ReadOnly = true;
             dataGridView.Columns["Date"].Width = 120;

@@ -33,6 +33,7 @@ namespace SmartSaver
         public delegate void DataAddedEventHandler(object source, EventArgs args);
         public event DataAddedEventHandler DataAdded;
 
+
         public MainWindow(LoginWindow logWin, Account account)
         {
             InitializeComponent();
@@ -44,6 +45,10 @@ namespace SmartSaver
             titleWindow = new TitleWindow();
             settings = new Settings(account, this);
             spendings = new Spendings(account, this);
+
+
+
+
             monthlyExpenses = sqlExpensesList.GetSumOfExpenses(account.UserId);
             monthlyExpLabel.Text = "Current expenses this month: €" + monthlyExpenses;
             ReloadData();

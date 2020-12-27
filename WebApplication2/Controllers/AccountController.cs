@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.Provider;
@@ -13,9 +14,11 @@ namespace WebApplication2.Controllers
     public class AccountController : ControllerBase
     {
         Account account = new Account();
+        LoginChecker checker = new LoginChecker();
         SQLLoginReader sqlLogRead = new SQLLoginReader();
+        SQLInput sqlIn = new SQLInput();
+        SQLExpensesTypesList sqlExpensesTypesList = new SQLExpensesTypesList();
 
-        
 
         private readonly ILogger<AccountController> _logger;
 
@@ -38,5 +41,23 @@ namespace WebApplication2.Controllers
             account = sqlLogRead.Read(firstName);
             return account;
         }
+        // GET api/account/firstname/password
+        [HttpGet("{firstName}/{password}")]
+        public bool CheckLogInInfo(string firstName, string password)
+        {
+            bool boool;
+            boool = checker.Check(firstName, password);
+            return boool;
+        }
+        // GET api/account/data/types/id
+        [HttpGet("data/types/{id}")]
+        public List<String> GetDataTable(int id)
+        {
+
+            List<String> list;
+            list = sqlExpensesTypesList.GetExpensesTypes(id);
+            return list;
+        }
+
     }
 }
