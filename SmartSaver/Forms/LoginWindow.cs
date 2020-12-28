@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using SmartSaver.Forms;
-using SmartSaver.Services;
+using Saver.Forms;
+using Saver.Services;
 using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmartSaver
+namespace Saver
 {
     public partial class LoginWindow : Form
     {

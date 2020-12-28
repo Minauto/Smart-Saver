@@ -12,7 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using Newtonsoft.Json;
 
-namespace SmartSaver.Forms
+namespace Saver.Forms
 {
     public partial class Spendings : Form
     {

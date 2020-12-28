@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmartSaver.Forms
+namespace Saver.Forms
 {
     public partial class TitleWindow : Form
     {

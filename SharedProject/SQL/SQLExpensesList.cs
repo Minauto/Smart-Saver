@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SmartSaver
+namespace Saver
 {
     class SQLExpensesList
     {

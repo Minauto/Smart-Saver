@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using SmartSaver.SQL;
+using Saver.SQL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmartSaver.Forms
+namespace Saver.Forms
 {
     public partial class Settings : Form
     {

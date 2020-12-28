@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SmartSaver.SQL
+namespace Saver.SQL
 {
     class SQLRemoveExpenseType
     {

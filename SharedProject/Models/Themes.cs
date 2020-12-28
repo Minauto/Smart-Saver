@@ -1,4 +1,4 @@
-﻿namespace SmartSaver
+﻿namespace Saver
 {
     public enum Themes
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace SmartSaver
+namespace Saver
 {
     public struct Theme
     {
