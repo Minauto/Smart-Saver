@@ -10,5 +10,7 @@ namespace SmartSaver.Core
         bool CreateAccount(Account account);
         bool DeleteAccount(string nickName);
         bool ChangeAccountPassword(string nickName,string newPass);
+
+        List<Account> GetAccountList();
     }
 }

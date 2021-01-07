@@ -151,5 +151,35 @@ namespace SmartSaver.Core
 
             return expenses;
         }
+
+        public List<Expense> GetExpensesList()
+        {
+
+            List<Expense> result = new List<Expense>();
+
+            SqlDataAdapter sdaExpences = new SqlDataAdapter("Select * FROM Expenses", connection);
+            DataTable dtExpences = new DataTable();
+            sdaExpences.Fill(dtExpences);
+
+            foreach (DataRow row in dtExpences.Rows)
+            {
+                Expense expense = new Expense
+                {
+                    Id = row.Field<int>("Id"),
+                    Description = row.Field<string>("Description"),
+                    Amount = row.Field<double>("Amount"),
+                    UserId = row.Field<int>("UserId")
+                };
+
+                result.Add(expense);
+            }
+
+
+
+            return result;
+        }
+
+
+
     }
 }

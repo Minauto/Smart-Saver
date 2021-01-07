@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartSaver.Core;
 using SmartSaver.DB;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartSaver.WebApi.Controllers
 {
@@ -9,16 +11,37 @@ namespace SmartSaver.WebApi.Controllers
     public class ExpensesController : ControllerBase
     {
         private IExpensesServices _expensesServices;
+        private IAccountServices _accountServices;
 
-        public ExpensesController(IExpensesServices expensesServices)
+        public ExpensesController(IExpensesServices expensesServices, IAccountServices accountServices)
         {
             _expensesServices = expensesServices;
+            _accountServices = accountServices;
         }
 
         [HttpGet]
         public IActionResult GetExpenses()
         {
             return Ok(_expensesServices.GetExpenses());
+        }
+
+        [HttpGet("{skipAmmount} / {nickname}")]
+        public IActionResult GetExpensesByUserID(int skipAmmount, string nickName)
+        {
+            int takeAmmount = 10;
+
+            List<Expense> expenses = _expensesServices.GetExpensesList();
+            List<Account> accounts = _accountServices.GetAccountList();
+
+            var result =
+                from Accounts in accounts
+                join Expences in expenses on Accounts.UserId equals Expences.UserId
+                where Accounts.Nickname == nickName
+                select new { ExpenceName = Expences.Description, ExpenceAmmount = Expences.Amount }; 
+            result.Skip(skipAmmount);
+            result.Take(takeAmmount);
+
+            return Ok(result);
         }
 
         [HttpGet("{id}", Name = "GetExpense")]
