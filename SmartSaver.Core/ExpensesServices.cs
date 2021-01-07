@@ -28,11 +28,6 @@ namespace SmartSaver.Core
 
         public Expense CreateExpense(Expense expense)
         {
-            /*
-            _context.Add(expense);
-            _context.SaveChanges();
-            */
-
             SqlCommand cmd = new SqlCommand();
 
             cmd.CommandType = CommandType.Text;
@@ -60,11 +55,6 @@ namespace SmartSaver.Core
 
         public void DeleteExpense(Expense expense)
         {
-            /*
-            _context.Expenses.Remove(expense);
-            _context.SaveChanges();
-            */
-
             SqlCommand cmd = new SqlCommand();
 
             cmd.CommandType = CommandType.Text;
@@ -89,14 +79,6 @@ namespace SmartSaver.Core
 
         public Expense EditExpense(Expense expense)
         {
-            
-            var dbExpense = _context.Expenses.First(e => e.Id == expense.Id);
-            /*
-            dbExpense.Description = expense.Description;
-            dbExpense.Amount = expense.Amount;
-            _context.SaveChanges();
-            */
-
             SqlCommand cmd = new SqlCommand();
 
             cmd.CommandType = CommandType.Text;
@@ -117,7 +99,7 @@ namespace SmartSaver.Core
                 connection.Close();
             }
 
-            return dbExpense;
+            return expense;
         }
 
         public Expense GetExpense(int id)
