@@ -26,6 +26,8 @@ namespace SmartSaver.WebApi
 
             services.AddTransient<IExpensesServices, ExpensesServices>();
 
+            services.AddTransient<IAccountServices, AccountServices>();
+
             services.AddSwaggerDocument(settings =>
             {
                 settings.Title = "Expenses";
