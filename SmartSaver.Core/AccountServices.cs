@@ -58,6 +58,9 @@ namespace SmartSaver.Core
 
                 con.Open();
 
+
+
+                //cmd.ExecuteNonQuery();
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -119,5 +122,30 @@ namespace SmartSaver.Core
 
             return true;
         }
+
+        public List<Account> GetAccountList()
+        {
+            List<Account> accounts = new List<Account>();
+
+            SqlDataAdapter sdaAccount = new SqlDataAdapter("Select * FROM Accounts", con);
+            DataTable dtAccount = new DataTable();
+            sdaAccount.Fill(dtAccount);
+
+
+            foreach (DataRow row in dtAccount.Rows)
+            {
+                Account account = new Account
+                {
+                    UserId = row.Field<int>("UserId"),
+                    Nickname = row.Field<string>("Nickname"),
+                    Password = row.Field<string>("Password"),
+                };
+                accounts.Add(account);
+            }
+
+            return accounts;
+
+        } 
+
     }
 }

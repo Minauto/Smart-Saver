@@ -10,5 +10,6 @@ namespace SmartSaver.Core
         Expense CreateExpense(Expense expense);
         void DeleteExpense(Expense expense);
         Expense EditExpense(Expense expense);
+        List<Expense> GetExpensesList();
     }
 }
