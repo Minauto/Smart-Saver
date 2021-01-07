@@ -3,8 +3,6 @@ import ExpenseForm from "./components/ExpenseForm";
 import { Navbar } from 'react-bootstrap';
 import Logo from './save-money.png';
 
-import BarChart from './components/ExpencesGraph'
-
 const App = () => (
   <>
     <Navbar bg="dark" variant="dark">
@@ -26,11 +24,6 @@ const App = () => (
       <h3> Your Expenses</h3>
       <ExpenseList />
     </div>
-    <div>
-      <BarChart/>
-    </div>
-
-
   </>
 );
 
