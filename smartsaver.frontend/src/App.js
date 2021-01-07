@@ -1,30 +1,24 @@
-import ExpenseList from "./components/ExpenseList";
-import ExpenseForm from "./components/ExpenseForm";
-import { Navbar } from 'react-bootstrap';
-import Logo from './save-money.png';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import ExpensePage from './components/pages/ExpensesPage';
 
-const App = () => (
-  <>
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand style={{ fontFamily: 'Raleway' }}>
-        <img
-          alt=""
-          src={Logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />{' '}
-      Smart Saver
-    </Navbar.Brand>
-    </Navbar>
-    <div style={{ width: '60%', margin: 'auto', marginTop: '20px' }}>
-      <h3>New Expense</h3>
-      <ExpenseForm />
-      <hr style={{ border: '1px solid grey' }} />
-      <h3> Your Expenses</h3>
-      <ExpenseList />
-    </div>
-  </>
-);
+class App extends Component {
+  render() {
+    return (
+    <Router>
+        <div>
+          <Switch>
+              <Route exact path='/' component={SignIn} />
+              <Route path='/Expenses' component={ExpensePage} />
+              <Route path='/signup' component={SignUp} />
+              <Route path='/signin' component={SignIn} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+}
 
 export default App;

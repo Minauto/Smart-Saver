@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from './components/auth/SignIn'
+import ExpensesPage from './components/pages/ExpensesPage'
 
 ReactDOM.render(
   <React.StrictMode>
