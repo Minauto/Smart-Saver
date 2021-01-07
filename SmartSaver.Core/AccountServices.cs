@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.IO;
-using Microsoft.Data.SqlClient;
 
 namespace SmartSaver.Core
 {
@@ -82,22 +81,21 @@ namespace SmartSaver.Core
         public bool DeleteAccount(string nickName)
         {
             SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.Text;
+            cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "DELETE FROM Account WHERE Nickname = " + nickName + "'";
-                cmd.Connection = con;
+            cmd.CommandText = "DELETE FROM Accounts WHERE Nickname = '" + nickName + "'";
+            cmd.Connection = con;
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
 
-                con.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            con.Close();
 
             return true;
         }
@@ -107,7 +105,7 @@ namespace SmartSaver.Core
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "UPDATE Account SET Password = " + newPass + " WHERE Nickname = " + nickName + "'";
+            cmd.CommandText = "UPDATE Accounts SET Password = '" + newPass + "' WHERE Nickname = '" + nickName + "'";
             cmd.Connection = con;
 
             con.Open();
