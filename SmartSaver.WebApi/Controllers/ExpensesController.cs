@@ -25,21 +25,20 @@ namespace SmartSaver.WebApi.Controllers
             return Ok(_expensesServices.GetExpenses());
         }
 
-        [HttpGet("{skipAmmount} / {nickname}")]
-        public IActionResult GetExpensesByUserID(int skipAmmount, string nickName)
+        [HttpGet("{skipAmmount}/{nickname}")]
+        public IActionResult GetExpensesByUserID(int skipAmmount, string nickname)
         {
             int takeAmmount = 10;
 
-            List<Expense> expenses = _expensesServices.GetExpensesList();
+            List<Expense> expenses = _expensesServices.GetExpenses();
             List<Account> accounts = _accountServices.GetAccountList();
 
-            var result =
+            var list =
                 from Accounts in accounts
-                join Expences in expenses on Accounts.UserId equals Expences.UserId
-                where Accounts.Nickname == nickName
-                select new { ExpenceName = Expences.Description, ExpenceAmmount = Expences.Amount }; 
-            result.Skip(skipAmmount);
-            result.Take(takeAmmount);
+                join Expences in expenses on Accounts.UserId equals Expences.UserId 
+                where Accounts.Nickname == nickname
+                select new { ExpenceName = Expences.Description, ExpenceAmmount = Expences.Amount };
+            var result = list.Skip(skipAmmount).Take(takeAmmount);
 
             return Ok(result);
         }

@@ -26,7 +26,7 @@ namespace SmartSaver.Core
 
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "INSERT INTO Expenses (Description, Amount, UserId) VALUES (@Description, @Amount, @UserId)";
-                cmd.Parameters.Add(new SqlParameter("@Description", SqlDbType.NVarChar, 4000, "Description"));
+                cmd.Parameters.Add(new SqlParameter("@Description", SqlDbType.NVarChar, 100, "Description"));
                 cmd.Parameters.Add(new SqlParameter("@Amount", SqlDbType.Float));
                 cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.Int));
                 cmd.Parameters["@Amount"].SourceColumn = "Amount";
