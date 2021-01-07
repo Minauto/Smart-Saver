@@ -1,10 +1,10 @@
-﻿using SmartSaver.Services;
+﻿using Saver.Services;
 using System;
 using System.Windows.Forms;
 
 
 
-namespace SmartSaver
+namespace Saver
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSaver
+﻿namespace Saver
 {
     partial class SignUpWindow
     {

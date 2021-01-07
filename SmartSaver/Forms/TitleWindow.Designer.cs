@@ -1,5 +1,5 @@
 ﻿
-namespace SmartSaver.Forms
+namespace Saver.Forms
 {
     partial class TitleWindow
     {

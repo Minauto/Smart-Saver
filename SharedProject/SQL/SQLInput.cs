@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace SmartSaver
+namespace Saver
 {
     class SQLInput
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace SmartSaver
+namespace Saver
 {
     public class HashSalt
     {

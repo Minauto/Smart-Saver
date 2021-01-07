@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartSaver.Services
+namespace Saver.Services
 {
     public interface ILoginCheckService
     {

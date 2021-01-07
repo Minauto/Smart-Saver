@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartSaver
+namespace Saver
 {
     partial class MainWindow
     {

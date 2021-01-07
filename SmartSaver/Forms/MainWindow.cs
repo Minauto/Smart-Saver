@@ -1,5 +1,5 @@
-﻿using SmartSaver.Forms;
-using SmartSaver.Services;
+﻿using Saver.Forms;
+using Saver.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace SmartSaver
+namespace Saver
 {
     public partial class MainWindow : Form
     {
